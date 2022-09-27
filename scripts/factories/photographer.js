@@ -2,6 +2,7 @@ function photographerFactory(data) {
   const { name, portrait } = data;
 
   const picture = `assets/photographers/${portrait}`;
+  console.log(picture);
 
   function getUserCardDOM() {
     const article = document.createElement("article");
@@ -18,15 +19,18 @@ function photographerFactory(data) {
       })
       .then((data) => {
         let fiche = data.photographers[3];
-        article.innerText = fiche.name;
+        h2.innerText = fiche.name;
+        img.src = `/assets/photographers/portrait/${fiche.portrait}`;
+        //img.setAttribute("src", picture);
+
         // const name = data.photographers[0].name;
-        console.log(fiche);
+        console.log(fiche.portrait);
       })
       /*.then(function (data) {
-    let authors = data.photographers;
-    console.log(authors);
-    return authors.map(function (authors) {});
-  })*/
+          let authors = data.photographers;
+          console.log(authors);
+          return authors.map(function (authors) {});
+        })*/
       .catch((error) => {
         console.log(error);
       });

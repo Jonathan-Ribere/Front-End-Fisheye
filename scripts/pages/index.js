@@ -1,6 +1,3 @@
-const afficherNom = document.querySelectorAll(".h2");
-console.log(afficherNom);
-
 async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
   const photographers = [
