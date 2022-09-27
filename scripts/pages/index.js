@@ -1,3 +1,6 @@
+const afficherNom = document.querySelectorAll(".h2");
+console.log(afficherNom);
+
 async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
   const photographers = [
@@ -10,7 +13,7 @@ async function getPhotographers() {
       price: 400,
       portrait: "account.png",
     },
-    {
+    /*{
       name: "Autre data test",
       id: 2,
       city: "Londres",
@@ -18,22 +21,13 @@ async function getPhotographers() {
       tagline: "Ceci est ma data test 2",
       price: 500,
       portrait: "account.png",
-    },
+    },*/
   ];
   // et bien retourner le tableau photographers seulement une fois
   return {
     photographers: [...photographers, ...photographers, ...photographers],
   };
 }
-
-fetch("/data/photographers.json")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => console.log(data.photographers))
-  .catch((error) => {
-    console.log(error);
-  });
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
