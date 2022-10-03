@@ -3,12 +3,12 @@ function photographerFactory(data) {
   console.log(data);
   const picture = `assets/photographers/${portrait}`;
 
-  function getUserCardDOM() {
+  function display() {
     const article = document.createElement("article");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
-    h2.textContent = name;
+    h2.textContent = data.name;
     const txt = document.createElement("p");
     txt.textContent = city;
     article.appendChild(img);
@@ -19,5 +19,5 @@ function photographerFactory(data) {
 
     return article;
   }
-  return { name, picture, city, getUserCardDOM };
+  return { name, picture, city, display };
 }
