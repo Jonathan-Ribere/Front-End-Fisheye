@@ -5,21 +5,24 @@ function photographerFactory(data) {
 
   function display() {
     const article = document.createElement("article");
+    const head = document.createElement("div");
+    head.classList.add("enTete");
+    article.appendChild(head);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
-    article.appendChild(img);
-    article.appendChild(h2);
+    head.appendChild(img);
+    head.appendChild(h2);
     h2.innerHTML = name;
 
     // Créer une Div
-    const info = document.createElement("div");
+    const ville = document.createElement("div");
     // Ajoute une class
-    info.classList.add("info");
+    ville.classList.add("ville");
     // info et l'enfant de article
-    article.appendChild(info);
+    article.appendChild(ville);
     // on recupére le text de la bd avec city & inject avec inner
-    info.innerHTML = city;
+    ville.innerHTML = city;
 
     return article;
   }
