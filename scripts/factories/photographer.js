@@ -21,8 +21,12 @@ function photographerFactory(data) {
 
     // ajoute de "a" pour le lien
     const lien = document.createElement("a");
+    const url = "photographer.html";
+    // on récupére id dans le data
+    const id = data.id;
+    const test = `?id=${id}`;
     divImg.appendChild(lien);
-    lien.href = "http://127.0.0.1:5500/photographer.html";
+    lien.href = url + test;
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);
