@@ -8,14 +8,18 @@ function photographerFactory(data) {
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
-    h2.textContent = data.name;
-    const txt = document.createElement("p");
-    txt.textContent = city;
     article.appendChild(img);
     article.appendChild(h2);
-
     h2.innerHTML = name;
-    txt.innerHTML = city;
+
+    // Créer une Div
+    const info = document.createElement("div");
+    // Ajoute une class
+    info.classList.add("info");
+    // info et l'enfant de article
+    article.appendChild(info);
+    // on recupére le text de la bd avec city & inject avec inner
+    info.innerHTML = city;
 
     return article;
   }
