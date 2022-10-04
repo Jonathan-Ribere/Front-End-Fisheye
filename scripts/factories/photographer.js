@@ -19,10 +19,15 @@ function photographerFactory(data) {
     divImg.classList.add("divImg");
     head.appendChild(divImg);
 
+    // ajoute de "a" pour le lien
+    const lien = document.createElement("a");
+    divImg.appendChild(lien);
+    lien.href = "http://127.0.0.1:5500/photographer.html";
+
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.classList.add("classImg");
-    divImg.appendChild(img);
+    lien.appendChild(img);
 
     // Création du h2 sous la photo de profile
     const h2 = document.createElement("h2");
