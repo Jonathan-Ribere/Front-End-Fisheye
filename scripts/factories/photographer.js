@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-  const { name, portrait, city, tagline, price } = data;
+  const { name, portrait, city, country, tagline, price } = data;
   console.log(data);
   const picture = `assets/photographers/${portrait}`;
 
@@ -49,7 +49,7 @@ function photographerFactory(data) {
     h3.classList.add("h3");
     ville.appendChild(h3);
     // on recupére le text de la bd avec city & inject avec inner
-    h3.innerHTML = city;
+    h3.innerHTML = city + ", " + country;
     /* FIN DE LA DIV VILLE */
 
     /* DEBUT DU PARAGRAPHE */
