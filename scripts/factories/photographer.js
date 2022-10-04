@@ -21,11 +21,13 @@ function photographerFactory(data) {
 
     // ajoute de "a" pour le lien
     const lien = document.createElement("a");
+    lien.classList.add("lienProfil");
     const url = "photographer.html";
     // on récupére id dans le data
     const id = data.id;
     const test = `?id=${id}`;
     divImg.appendChild(lien);
+
     lien.href = url + test;
 
     const img = document.createElement("img");
@@ -35,7 +37,8 @@ function photographerFactory(data) {
 
     // Création du h2 sous la photo de profile
     const h2 = document.createElement("h2");
-    head.appendChild(h2);
+    lien.appendChild(h2);
+    //head.appendChild(h2);
     h2.innerHTML = name;
     /* FIN DE LA DIV ENTETE */
 
