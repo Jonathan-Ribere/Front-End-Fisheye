@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-  const { name, portrait, city } = data;
+  const { name, portrait, city, tagline, price } = data;
   console.log(data);
   const picture = `assets/photographers/${portrait}`;
 
@@ -52,7 +52,23 @@ function photographerFactory(data) {
     h3.innerHTML = city;
     /* FIN DE LA DIV VILLE */
 
+    /* DEBUT DU PARAGRAPHE */
+    // Créer un P avec la class "paragraphe"
+    const paragraphe = document.createElement("p");
+    paragraphe.classList.add("paragraphe");
+    ville.appendChild(paragraphe);
+    paragraphe.innerHTML = tagline;
+    /* FIN DU PARAGRAPHE */
+
+    /* DEBUT DU PARAGRAPHE PRIX*/
+    // Créer un P avec la class "prix"
+    const prix = document.createElement("p");
+    prix.classList.add("prix");
+    ville.appendChild(prix);
+    prix.innerHTML = price + "€/jour";
+    /* FIN DU PARAGRAPHE PRIX */
+
     return article;
   }
-  return { name, picture, city, display };
+  return { display };
 }
