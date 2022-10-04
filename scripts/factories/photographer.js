@@ -8,7 +8,6 @@ function photographerFactory(data) {
     const article = document.createElement("article");
 
     /* DEBUT DE LA DIV ENTETE */
-
     // Création de la div avec la class "enTete"
     const head = document.createElement("div");
     head.classList.add("enTete");
@@ -29,24 +28,29 @@ function photographerFactory(data) {
     const h2 = document.createElement("h2");
     head.appendChild(h2);
     h2.innerHTML = name;
-
     /* FIN DE LA DIV ENTETE */
 
     /* DEBUT DE LA DIV CORPS */
-
     const corps = document.createElement("div");
     corps.classList.add("corps");
     article.appendChild(corps);
 
-    // Créer une Div
+    /* DEBUT DE LA DIV VILLE */
+    // Créer une Div avec la class "ville"
     const ville = document.createElement("div");
     // Ajoute une class
     ville.classList.add("ville");
     // info et l'enfant de article
     corps.appendChild(ville);
+
+    // Créer un h3 avec la class "h3"
+    const h3 = document.createElement("h3");
+    // Ajoute une class
+    h3.classList.add("h3");
+    ville.appendChild(h3);
     // on recupére le text de la bd avec city & inject avec inner
-    ville.innerHTML = city;
-    /* FIN DE LA DIV ENTETE */
+    h3.innerHTML = city;
+    /* FIN DE LA DIV VILLE */
 
     return article;
   }
