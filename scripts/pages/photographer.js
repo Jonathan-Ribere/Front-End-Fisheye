@@ -11,9 +11,17 @@ function getArticleId() {
 }
 
 function getArticle(articleId) {
-  const response = fetch(`/data/photographers.json/${articleId}`);
-  const data = response.json();
-  return data;
+  //const response = fetch(`/data/photographers.json/${articleId}`);
+  //const data = response.json();
+  //return data;
+
+  return fetch(`/data/photographers.json/${articleId}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (articles) {
+      return articles;
+    });
 }
 
 function display(article) {}
