@@ -1,34 +1,30 @@
-(async function noName() {
-  const articleId = getArticleId();
-  console.log(articleId);
-  const article = await getArticle(articleId);
-  display(article);
-})();
+///////// JE DÉFINIE TOUTES LES FONCTION /////////////////
 
-function getArticleId() {
-  //Permet de recup l'id dans l'url
-  return new URL(location.href).searchParams.get("id");
+// Permet de récup l'id dans l'url
+function getId() {
+  const _id = new URL(location.href).searchParams.get("id");
+  return _id;
 }
 
-function getArticle(articleId) {
-  //const response = fetch(`/data/photographers.json/${articleId}`);
-  //const data = response.json();
-  //return data;
-
-  return fetch(`/data/photographers.json/${articleId}`)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (articles) {
-      return articles;
-    });
-}
-
-function display(article) {}
-
-/*async function getProfil() {
+// Permet de récupérés les données
+async function getData() {
   const response = await fetch("/data/photographers.json");
   const data = await response.json();
   return data;
 }
-*/
+
+async function getPhotographer(id) {
+  const data = await getData();
+  const photographer = data.photographers.find(function (element) {
+    return element.id == id;
+  });
+  return photographer;
+}
+
+// function final
+async function init() {
+  const photographerId = getId();
+  const photographer = await getPhotographer(photographerId);
+  console.log(photographer.tagline);
+}
+init();
