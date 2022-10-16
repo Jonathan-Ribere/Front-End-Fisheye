@@ -21,10 +21,16 @@ async function getPhotographer(id) {
   return photographer;
 }
 
+async function displayProfil(photographer) {
+  const photographerHeader = document.querySelector(".photograph-header");
+  console.log(photographerHeader);
+}
+
 // function final
 async function init() {
   const photographerId = getId();
   const photographer = await getPhotographer(photographerId);
-  console.log(photographer.tagline);
+  console.log(photographer);
+  displayProfil(photographer);
 }
 init();
