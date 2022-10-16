@@ -21,7 +21,7 @@ async function getPhotographer(id) {
   return photographer;
 }
 
-async function displayProfil(photographer) {
+async function displayHeader(photographer) {
   const photographerHeader = document.querySelector(".photograph-header");
   console.log(photographerHeader);
 }
@@ -31,6 +31,6 @@ async function init() {
   const photographerId = getId();
   const photographer = await getPhotographer(photographerId);
   console.log(photographer);
-  displayProfil(photographer);
+  displayHeader(photographer);
 }
 init();
