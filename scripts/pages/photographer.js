@@ -21,10 +21,11 @@ async function getPhotographer(id) {
   return photographer;
 }
 
+// function qui retourne les media grace a l'id
 async function getMedia(id) {
   const data = await getData();
   const media = data.media.find(function (element) {
-    return element.id == id;
+    return element.photographerId == id;
   });
   console.log(media);
   return media;
@@ -34,7 +35,6 @@ async function getMedia(id) {
 function displayHeader(photographer) {
   // Je séléctionne la Class photograph-header
   const photographerHeader = document.querySelector(".photograph-header");
-  console.log(photographerHeader);
 
   // Je crée une section pour affichée les info du photographe
   const section = document.createElement("section");
@@ -135,11 +135,18 @@ const containerBodyCard = document.createElement("div");
 containerBodyCard.classList.add("containerBodyCard");
 containerBody.appendChild(containerBodyCard);
 
+async function displayMedia(media) {
+  const mediaSection = document.querySelector(".containerBodyCard");
+
+  media.forEach((medias) => {});
+}
+
 // function final
 async function init() {
   const photographerId = getId();
+  const mediaId = getMedia;
   const photographer = await getPhotographer(photographerId);
-  console.log(photographer);
+  const media = await getMedia(photographerId);
   displayHeader(photographer);
 }
 init();
