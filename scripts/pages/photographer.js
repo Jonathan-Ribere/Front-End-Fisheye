@@ -21,7 +21,17 @@ async function getPhotographer(id) {
   return photographer;
 }
 
-async function displayHeader(photographer) {
+async function getMedia(id) {
+  const data = await getData();
+  const media = data.media.find(function (element) {
+    return element.id == id;
+  });
+  console.log(media);
+  return media;
+}
+
+// La partie photgraphe-header //
+function displayHeader(photographer) {
   // Je séléctionne la Class photograph-header
   const photographerHeader = document.querySelector(".photograph-header");
   console.log(photographerHeader);
@@ -70,7 +80,7 @@ async function displayHeader(photographer) {
   console.log(portrait);
   const picture1 = `../../assets/photographers/${portrait}`;
   img.setAttribute("src", picture1);
-  img.classList.add("classImg");
+  img.classList.add("img");
   divImg.appendChild(img);
 
   /*// Je séléctionne Button pour modifier son emplacement
@@ -86,6 +96,26 @@ async function displayHeader(photographer) {
   divButton.classList.add("divButton");
   button.appendChild(divButton);*/
 }
+// Fin de la partie photgraphe-header //
+
+const divContainer = document.createElement("div");
+divContainer.classList.add("container");
+main.appendChild(divContainer);
+
+const divContainerHeader = document.createElement("div");
+divContainerHeader.classList.add("container-header");
+divContainer.appendChild(divContainerHeader);
+
+const titreH2 = document.createElement("p");
+titreH2.classList.add("titreH2");
+titreH2.innerHTML = "Trier par ";
+divContainerHeader.appendChild(titreH2);
+
+const select = document.createElement("select");
+let newOption = new Option("Option Text");
+divContainerHeader.appendChild(select);
+const selectOption = document.querySelector("select");
+selectOption.add(newOption);
 
 // function final
 async function init() {
