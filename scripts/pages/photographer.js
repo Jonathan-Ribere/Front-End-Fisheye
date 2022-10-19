@@ -98,24 +98,34 @@ function displayHeader(photographer) {
 }
 // Fin de la partie photgraphe-header //
 
+// Début de la partie Container sous photographe-header //
+
+// Je créer une div qui va englobée tous la 2eme partie de la page
 const divContainer = document.createElement("div");
 divContainer.classList.add("container");
 main.appendChild(divContainer);
 
+// Je créer une div qui va me servir pour flexbox pour l'entete de la div
 const divContainerHeader = document.createElement("div");
 divContainerHeader.classList.add("container-header");
 divContainer.appendChild(divContainerHeader);
 
-const titreH2 = document.createElement("p");
+// je créer un h2 ds le header du container
+const titreH2 = document.createElement("h2");
 titreH2.classList.add("titreH2");
 titreH2.innerHTML = "Trier par ";
 divContainerHeader.appendChild(titreH2);
 
+// je créer le select
 const select = document.createElement("select");
-let newOption = new Option("Option Text");
+let popularite = new Option("Popularité");
+let date = new Option("Date");
+let titre = new Option("Titre");
 divContainerHeader.appendChild(select);
 const selectOption = document.querySelector("select");
-selectOption.add(newOption);
+selectOption.add(popularite);
+selectOption.add(date);
+selectOption.add(titre);
 
 // function final
 async function init() {
