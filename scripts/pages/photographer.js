@@ -127,6 +127,14 @@ selectOption.add(popularite);
 selectOption.add(date);
 selectOption.add(titre);
 
+const containerBody = document.createElement("div");
+containerBody.classList.add("containerBody");
+divContainer.appendChild(containerBody);
+
+const containerBodyCard = document.createElement("div");
+containerBodyCard.classList.add("containerBodyCard");
+containerBody.appendChild(containerBodyCard);
+
 // function final
 async function init() {
   const photographerId = getId();
