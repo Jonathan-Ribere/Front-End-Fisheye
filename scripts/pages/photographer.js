@@ -18,6 +18,7 @@ async function getPhotographer(id) {
   const photographer = data.photographers.find(function (element) {
     return element.id == id;
   });
+  console.log(photographer);
   return photographer;
 }
 
@@ -82,19 +83,6 @@ function displayHeader(photographer) {
   img.setAttribute("src", picture1);
   img.classList.add("img");
   divImg.appendChild(img);
-
-  /*// Je séléctionne Button pour modifier son emplacement
-  const button = document.querySelector(".contact_button");
-  console.log(button);
-
-  // 2eme section ( Button )
-  const sectionButton = document.createElement("section");
-  sectionButton.classList.add("sectionButton");
-  section.appendChild(sectionButton);
-
-  const divButton = document.createElement("div");
-  divButton.classList.add("divButton");
-  button.appendChild(divButton);*/
 }
 // Fin de la partie photgraphe-header //
 
@@ -131,14 +119,24 @@ const containerBody = document.createElement("div");
 containerBody.classList.add("containerBody");
 divContainer.appendChild(containerBody);
 
-const containerBodyCard = document.createElement("div");
-containerBodyCard.classList.add("containerBodyCard");
-containerBody.appendChild(containerBodyCard);
-
 async function displayMedia(media) {
-  const mediaSection = document.querySelector(".containerBodyCard");
+  const mediaSection = document.querySelector(".containerBody");
+  const section = document.createElement("section");
+  section.classList.add("mediaSection");
+  mediaSection.appendChild(section);
 
-  media.forEach((medias) => {});
+  const containerBodyCard = document.createElement("div");
+  containerBodyCard.classList.add("containerBodyCard");
+  section.appendChild(containerBodyCard);
+
+  const titre = document.createElement("h3");
+  containerBodyCard.appendChild(titre);
+  titre.innerHTML = media.title;
+
+  const p = document.createElement("p");
+  containerBodyCard.appendChild(p);
+  //head.appendChild(h2);
+  p.innerHTML = "Likes, " + media.likes;
 }
 
 // function final
@@ -148,5 +146,6 @@ async function init() {
   const photographer = await getPhotographer(photographerId);
   const media = await getMedia(photographerId);
   displayHeader(photographer);
+  displayMedia(media);
 }
 init();
