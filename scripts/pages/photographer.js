@@ -120,6 +120,9 @@ containerBody.classList.add("containerBody");
 divContainer.appendChild(containerBody);
 
 async function displayMedia(media) {
+  //const name = document.getElementsByClassName("h1");
+  //console.log(name);
+  //const picture = `assets/medias/${photographer.name}`;
   const mediaSection = document.querySelector(".containerBody");
   const section = document.createElement("section");
   section.classList.add("mediaSection");
@@ -128,6 +131,11 @@ async function displayMedia(media) {
   const containerBodyCard = document.createElement("div");
   containerBodyCard.classList.add("containerBodyCard");
   section.appendChild(containerBodyCard);
+
+  const img = document.createElement("img");
+  //img.setAttribute("src", picture);
+  img.classList.add("classImgCard");
+  containerBodyCard.appendChild(img);
 
   const titre = document.createElement("h3");
   containerBodyCard.appendChild(titre);
