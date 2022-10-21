@@ -122,7 +122,7 @@ divContainer.appendChild(containerBody);
 async function displayMedia(media) {
   //const name = document.getElementsByClassName("h1");
   //console.log(name);
-  //const picture = `assets/medias/${photographer.name}`;
+  const picture = `assets/medias/${media.photographerId + "/" + media.image}`;
   const mediaSection = document.querySelector(".containerBody");
   const section = document.createElement("section");
   section.classList.add("mediaSection");
@@ -133,7 +133,7 @@ async function displayMedia(media) {
   section.appendChild(containerBodyCard);
 
   const img = document.createElement("img");
-  //img.setAttribute("src", picture);
+  img.setAttribute("src", picture);
   img.classList.add("classImgCard");
   containerBodyCard.appendChild(img);
 
