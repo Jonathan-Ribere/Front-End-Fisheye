@@ -10,6 +10,7 @@ function getId() {
 async function getData() {
   const response = await fetch("/data/photographers.json");
   const data = await response.json();
+  console.log(data);
   return data;
 }
 
@@ -120,31 +121,38 @@ containerBody.classList.add("containerBody");
 divContainer.appendChild(containerBody);
 
 async function displayMedia(media) {
-  //const name = document.getElementsByClassName("h1");
-  //console.log(name);
-  const picture = `assets/medias/${media.photographerId + "/" + media.image}`;
-  const mediaSection = document.querySelector(".containerBody");
-  const section = document.createElement("section");
-  section.classList.add("mediaSection");
-  mediaSection.appendChild(section);
+  const data = await getData();
+  console.log(data);
+  const dataMedia = data.media;
+  console.log(dataMedia);
+  dataMedia.forEach((element) => {
+    console.log(element);
+    const picture = `assets/medias/${
+      element.photographerId + "/" + element.image
+    }`;
+    const mediaSection = document.querySelector(".containerBody");
+    const section = document.createElement("section");
+    section.classList.add("mediaSection");
+    mediaSection.appendChild(section);
 
-  const containerBodyCard = document.createElement("div");
-  containerBodyCard.classList.add("containerBodyCard");
-  section.appendChild(containerBodyCard);
+    const containerBodyCard = document.createElement("div");
+    containerBodyCard.classList.add("containerBodyCard");
+    section.appendChild(containerBodyCard);
 
-  const img = document.createElement("img");
-  img.setAttribute("src", picture);
-  img.classList.add("classImgCard");
-  containerBodyCard.appendChild(img);
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.classList.add("classImgCard");
+    containerBodyCard.appendChild(img);
 
-  const titre = document.createElement("h3");
-  containerBodyCard.appendChild(titre);
-  titre.innerHTML = media.title;
+    const titre = document.createElement("h3");
+    containerBodyCard.appendChild(titre);
+    titre.innerHTML = element.title;
 
-  const p = document.createElement("p");
-  containerBodyCard.appendChild(p);
-  //head.appendChild(h2);
-  p.innerHTML = "Likes, " + media.likes;
+    const p = document.createElement("p");
+    containerBodyCard.appendChild(p);
+    //head.appendChild(h2);
+    p.innerHTML = "Likes, " + element.likes;
+  });
 }
 
 // function final
