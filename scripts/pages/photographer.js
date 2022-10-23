@@ -21,7 +21,7 @@ async function getPhotographer(id) {
   console.log(photographer.id);
   return photographer;
 }
-// function qui retourne les media grace a l'id
+// Function qui retourne les media grace a l'id
 async function getMedia() {
   const data = await getData();
   const dataMedia = data.media;
@@ -30,8 +30,39 @@ async function getMedia() {
   const mediaId = dataMedia.filter(function (id) {
     return id.photographerId == idProfil;
   });
-
   console.log(mediaId);
+
+  mediaId.forEach((element) => {
+    //console.log(element);
+    element;
+    const picture = `assets/medias/${
+      element.photographerId + "/" + element.image
+    }`;
+    const mediaSection = document.querySelector(".containerBody");
+    const section = document.createElement("section");
+    section.classList.add("mediaSection");
+    mediaSection.appendChild(section);
+
+    const containerBodyCard = document.createElement("div");
+    containerBodyCard.classList.add("containerBodyCard");
+    section.appendChild(containerBodyCard);
+
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.classList.add("classImgCard");
+    containerBodyCard.appendChild(img);
+
+    const titre = document.createElement("h3");
+    containerBodyCard.appendChild(titre);
+    titre.innerHTML = element.title;
+
+    const p = document.createElement("p");
+    containerBodyCard.appendChild(p);
+    //head.appendChild(h2);
+    p.innerHTML = "Likes, " + element.likes;
+  });
+
+  return mediaId;
 }
 ///////// FIN DE LA PARTIE JE DÉFINIE TOUTES LES FONCTION /////////////////
 
@@ -137,6 +168,51 @@ function displayHeader(photographer) {
   ////// Fin de partie PHOTOGRAPHE-HEADER ///////
 }
 ///////// FIN PARTIE AFFICHAGE (Display) /////////////////
+///////// DEBUT DE LA PARTIE DISPLAY DES MEDIAS //////////
+
+/* Je créer une div qui va englobée tous la 2eme partie */
+const divContainer = document.createElement("div");
+/* Je lui ajoute une classe "container" */
+divContainer.classList.add("container");
+/* J'indique que "divContainer" et l'enfant de "main" */
+main.appendChild(divContainer);
+
+/* Je créer une div pour la partie "Trier par : "  */
+const divContainerHeader = document.createElement("div");
+/* Je lui ajoute une classe "container-header" */
+divContainerHeader.classList.add("container-header");
+/* J'indique que "divContainerHeader" et l'enfant de "divContainer" */
+divContainer.appendChild(divContainerHeader);
+/* Je créer un h2  */
+const titreH2 = document.createElement("h2");
+/* Je lui ajoute une classe "titreH2" */
+titreH2.classList.add("titreH2");
+/* Je lui inject du texte avec innerHTML*/
+titreH2.innerHTML = "Trier par ";
+/* J'indique que "titreH2" et l'enfant de "divContainerHeader" */
+divContainerHeader.appendChild(titreH2);
+/* Je créer le Select */
+const select = document.createElement("select");
+/* Je créer les variable des option du Select */
+let popularite = new Option("Popularité");
+let date = new Option("Date");
+let titre = new Option("Titre");
+/* J'indique que "select" et l'enfant de "divContainerHeader" */
+divContainerHeader.appendChild(select);
+/* J'ajoute les option au Select */
+const selectOption = document.querySelector("select");
+selectOption.add(popularite);
+selectOption.add(date);
+selectOption.add(titre);
+
+/* Je créer une div pour la partie qui affiche les medias */
+const containerBody = document.createElement("div");
+/* Je lui ajoute une classe "containerBody" */
+containerBody.classList.add("containerBody");
+/* J'indique que "containerBody" et l'enfant de "divContainer" */
+divContainer.appendChild(containerBody);
+
+///////// FIN DE LA PARTIE DISPLAY DES MEDIAS ////////////
 
 // function final
 async function init() {
@@ -144,8 +220,7 @@ async function init() {
   console.log(photographerId);
   const photographer = await getPhotographer(photographerId);
   console.log(photographer);
-  const media = await getMedia();
-  console.log(media);
   displayHeader(photographer);
+  getMedia();
 }
 init();
