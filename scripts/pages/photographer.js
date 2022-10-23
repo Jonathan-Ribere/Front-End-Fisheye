@@ -37,6 +37,8 @@ async function getMedia() {
 
 ///////// PARTIE AFFICHAGE (Display) /////////////////
 function displayHeader(photographer) {
+  /////// Partie pour le fixed en bas de l'ecrant //////
+
   /* Je séléctionne la partie 'main' */
   const main = document.querySelector("main");
   /* Je créer une div */
@@ -46,29 +48,44 @@ function displayHeader(photographer) {
   /* J'indique que "bar" et l'enfant de "main" */
   main.appendChild(bar);
 
+  /* Je créer un élément paragraphe */
   const barInfo = document.createElement("p");
+  /* Je lui ajoute une classe "barInfo" */
   barInfo.classList.add("barInfo");
+  /* J'indique que "barInfo" et l'enfant de "bar" */
   bar.appendChild(barInfo);
+  /* Je lui inject du texte avec innerHTML*/
   barInfo.innerHTML = "bar";
 
-  // Je séléctionne la Class photograph-header
-  const photographerHeader = document.querySelector(".photograph-header");
+  /////// Fin de partie pour le fixed en bas de l'ecrant //////
 
-  // Je crée une section pour affichée les info du photographe
+  ////// Partie PHOTOGRAPHE-HEADER ///////
+
+  /* Je séléctionne la Class photograph-header */
+  const photographerHeader = document.querySelector(".photograph-header");
+  /* Je créer une "div" pour affichée les infos du photographe */
   const divHeader = document.createElement("div");
+  /* Je lui ajoute une classe "divHeaderInfo" */
   divHeader.classList.add("divHeaderInfo");
+  /* J'indique que "divHeader" et l'enfant de "photographerHeader" */
   photographerHeader.appendChild(divHeader);
 
-  // Je créer une div pour nom, pays, ville et tagline
+  /* Je créer une div pour nom, pays, ville et tagline */
   const divInfo = document.createElement("div");
+  /* Je lui ajoute une classe "divInfo" */
   divInfo.classList.add("divInfo");
+  /* J'indique que "divHeader" et l'enfant de "photographerHeader" */
   divHeader.appendChild(divInfo);
 
-  // Je créer un H1, city, country & tagline
+  /* Je créer H1 qui sera dans la div "divInfo" */
   const h1 = document.createElement("h1");
+  /* Je lui ajoute une classe "h1" */
   h1.classList.add("h1");
+  /* J'indique que "h1" et l'enfant de "divInfo" */
   divInfo.appendChild(h1);
+  /* Je lui inject du texte avec innerHTML*/
   h1.innerHTML = photographer.name;
+  ////// Fin de partie PHOTOGRAPHE-HEADER ///////
 
   const city = document.createElement("p");
   city.classList.add("city");
