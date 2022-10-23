@@ -118,10 +118,11 @@ h3 {
 
 .bar {
   width: 100px;
-  height: 30px;
+  height: 50px;
   background-color: #e08c74;
   overflow: hidden;
   bottom: 0;
   position: fixed;
   right: 30px;
+  border-radius: 5px;
 }
