@@ -38,13 +38,14 @@ function displayHeader(photographer) {
   const photographerHeader = document.querySelector(".photograph-header");
 
   // Je crée une section pour affichée les info du photographe
-  const section = document.createElement("section");
-  photographerHeader.appendChild(section);
+  const divHeader = document.createElement("div");
+  divHeader.classList.add("divHeaderInfo");
+  photographerHeader.appendChild(divHeader);
 
   // Je créer une div pour nom, pays, ville et tagline
   const divInfo = document.createElement("div");
   divInfo.classList.add("divInfo");
-  section.appendChild(divInfo);
+  divHeader.appendChild(divInfo);
 
   // Je créer un H1, city, country & tagline
   const h1 = document.createElement("h1");

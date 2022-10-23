@@ -77,7 +77,41 @@ h3 {
   text-decoration: none;
 }
 
-.classImgCard {
-  width: 20%;
+/* CSS DE LA PARTIE "photographer-header" */
+.photograph-header {
+  align-items: center;
+}
+
+.img {
   height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.divHeaderInfo {
+  order: -1;
+}
+
+/* CSS DE LA PARTIE CONTAINER DES MEDIAS */
+
+.container .containerBody {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mediaSection {
+  width: 30%;
+}
+
+.containerBodyCard {
+  width: 100%;
+}
+
+.classImgCard {
+  object-fit: cover;
+  height: 268px;
+  width: 100%;
 }
