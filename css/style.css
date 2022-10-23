@@ -115,3 +115,13 @@ h3 {
   height: 268px;
   width: 100%;
 }
+
+.bar {
+  width: 100px;
+  height: 30px;
+  background-color: #e08c74;
+  overflow: hidden;
+  bottom: 0;
+  position: fixed;
+  right: 30px;
+}

@@ -34,6 +34,16 @@ async function getMedia(id) {
 
 // La partie photgraphe-header //
 function displayHeader(photographer) {
+  const body = document.querySelector("main");
+  const bar = document.createElement("div");
+  bar.classList.add("bar");
+  body.appendChild(bar);
+
+  const barInfo = document.createElement("p");
+  barInfo.classList.add("barInfo");
+  bar.appendChild(barInfo);
+  barInfo.innerHTML = "bar";
+
   // Je séléctionne la Class photograph-header
   const photographerHeader = document.querySelector(".photograph-header");
 
