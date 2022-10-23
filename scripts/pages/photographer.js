@@ -36,6 +36,7 @@ async function getMedia() {
 ///////// FIN DE LA PARTIE JE DÉFINIE TOUTES LES FONCTION /////////////////
 
 ///////// PARTIE AFFICHAGE (Display) /////////////////
+
 function displayHeader(photographer) {
   /////// Partie pour le fixed en bas de l'ecrant //////
 
@@ -85,42 +86,58 @@ function displayHeader(photographer) {
   divInfo.appendChild(h1);
   /* Je lui inject du texte avec innerHTML*/
   h1.innerHTML = photographer.name;
-  ////// Fin de partie PHOTOGRAPHE-HEADER ///////
 
+  /* Je créer un paragraphe pour affichée city*/
   const city = document.createElement("p");
   city.classList.add("city");
   divInfo.appendChild(city);
-
-  const contry = document.createElement("p");
-  contry.classList.add("contry");
-  divInfo.appendChild(contry);
-
+  /* Je créer un paragraphe pour affichée country*/
+  const country = document.createElement("p");
+  /* Je lui ajoute une classe "country" */
+  country.classList.add("country");
+  /* J'indique que "country" et l'enfant de "divInfo" */
+  divInfo.appendChild(country);
+  /* Je lui inject du texte avec innerHTML*/
   city.innerHTML = photographer.city + ", " + photographer.country;
 
+  /* Je créer un paragraphe pour affichée tagline*/
   const tagline = document.createElement("p");
+  /* Je lui ajoute une classe "tagline" */
   tagline.classList.add("tagline");
+  /* J'indique que "tagline" et l'enfant de "divInfo" */
   divInfo.appendChild(tagline);
+  /* Je lui inject du texte avec innerHTML*/
   tagline.innerHTML = photographer.tagline;
 
-  //////////////////
-
+  // Partie pour la photo //
+  /* Je créer une section sectionImg" */
   const sectionImg = document.createElement("section");
+  /* J'indique que "sectionImg" et l'enfant de "photographerHeader" */
   photographerHeader.appendChild(sectionImg);
-
+  /* Je créer une div */
   const divImg = document.createElement("div");
+  /* Je lui ajoute une classe "divImg" */
   divInfo.classList.add("divImg");
+  /* J'indique que "divImg" et l'enfant de "sectionImg" */
   sectionImg.appendChild(divImg);
-
+  /* Je créer l'élément "img" */
   const img = document.createElement("img");
+  /* Je récupére le data dans l'objet photographer que je mets dans la variable portrait */
   const portrait = photographer.portrait;
   console.log(portrait);
+  /* Je créer la variable picture1 qui indique le chemin d'ou se trouve la photo */
   const picture1 = `../../assets/photographers/${portrait}`;
+  /* Je lui indique la source avec setAttribute */
   img.setAttribute("src", picture1);
+  /* Je lui ajoute une classe "img" */
   img.classList.add("img");
+  /* J'indique que "img" et l'enfant de "divImg" */
   divImg.appendChild(img);
-}
 
+  ////// Fin de partie PHOTOGRAPHE-HEADER ///////
+}
 ///////// FIN PARTIE AFFICHAGE (Display) /////////////////
+
 // function final
 async function init() {
   const photographerId = getId();
