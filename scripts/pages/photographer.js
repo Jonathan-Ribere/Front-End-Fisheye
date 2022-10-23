@@ -6,7 +6,7 @@ function getId() {
   return _id;
 }
 
-// Permet de récupérés les données
+// Permet de récupérés les données du json
 async function getData() {
   const response = await fetch("/data/photographers.json");
   const data = await response.json();
@@ -14,23 +14,22 @@ async function getData() {
   return data;
 }
 
+// Permet de récupéré le Array du profil qui corespond a
 async function getPhotographer(id) {
   const data = await getData();
   const photographer = data.photographers.find(function (element) {
     return element.id == id;
   });
-  console.log(photographer);
+  console.log(photographer.id);
   return photographer;
 }
 
 // function qui retourne les media grace a l'id
 async function getMedia(id) {
   const data = await getData();
-  const media = data.media.find(function (element) {
-    return element.photographerId == id;
-  });
-  console.log(media);
-  return media;
+  const medias = data.media;
+
+  return medias;
 }
 
 // La partie photgraphe-header //
@@ -123,10 +122,13 @@ divContainer.appendChild(containerBody);
 async function displayMedia(media) {
   const data = await getData();
   console.log(data);
+
   const dataMedia = data.media;
   console.log(dataMedia);
+
   dataMedia.forEach((element) => {
     console.log(element);
+    element;
     const picture = `assets/medias/${
       element.photographerId + "/" + element.image
     }`;
