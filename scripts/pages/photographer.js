@@ -57,12 +57,20 @@ async function getMedia() {
     titre.innerHTML = element.title;
 
     const p = document.createElement("p");
+    //const coeur = <i class="fa-solid fa-heart"></i>;
     containerBodyCard.appendChild(p);
     //head.appendChild(h2);
     p.innerHTML = "Likes, " + element.likes;
   });
 
   return mediaId;
+}
+
+// Function qui calcule les likes
+async function likes() {
+  const data = await getMedia();
+  const price = data.price;
+  console.log(price);
 }
 ///////// FIN DE LA PARTIE JE DÉFINIE TOUTES LES FONCTION /////////////////
 
@@ -95,6 +103,11 @@ function displayHeader(photographer) {
 
   /* Je séléctionne la Class photograph-header */
   const photographerHeader = document.querySelector(".photograph-header");
+
+  const photographerHeaderContainer = document.createElement("div");
+  photographerHeaderContainer.classList.add("photographerHeaderContainer");
+  photographerHeader.appendChild(photographerHeaderContainer);
+
   /* Je créer une "div" pour affichée les infos du photographe */
   const divHeader = document.createElement("div");
   /* Je lui ajoute une classe "divHeaderInfo" */
