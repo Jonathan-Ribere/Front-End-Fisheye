@@ -137,3 +137,25 @@ h3 {
   right: 30px;
   border-radius: 5px;
 }
+
+.classSvgIcon {
+  width: 20px;
+}
+
+.containerBodyCardinfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerBodyCardLikes {
+  display: flex;
+  align-items: center;
+}
+
+.titreH3 {
+  margin-top: 0px;
+}
+
+.classSvgIcon {
+  margin-left: 6px;
+}

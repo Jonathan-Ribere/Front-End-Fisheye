@@ -229,3 +229,48 @@ class Media {
 const fullMedia = new Media();
 
 fullMedia.data();
+
+//// patern du tuto ////
+
+//// PATTERN OBSERVER ////
+class Media {
+  constructor() {
+    this.reactions = {
+      photo: [],
+      video: [],
+    };
+  }
+
+  addReaction(type, callback) {
+    this.reactions[type].push(callback);
+  }
+
+  dispatch(type) {
+    if (this.reactions[type].length > 0) {
+      for (let reaction of this.reactions[type]) {
+        reaction();
+      }
+    }
+  }
+
+  displayMedia() {
+    console.log("Je prepare mon IMAGE");
+    this.dispatch("photo");
+    console.log("Mon image et en place ");
+    this.dispatch("video");
+
+    console.log("Mon image patiente");
+  }
+}
+
+const newMedia = new Media();
+
+newMedia.addReaction("video", function () {
+  console.log("comportement supllementaire");
+});
+
+newMedia.addReaction("photo", function () {
+  console.log("comportement supllementaire 2");
+});
+
+newMedia.displayMedia();
