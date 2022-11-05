@@ -2,9 +2,11 @@
 
 // 2 paramétre (types, data)
 function creatMedia(type, data) {
-  if (type === data.img) {
-    return MediaPicture;
+  if (type === "image") {
+    return new MediaPicture(data);
+  } else if (type === "video") {
+    return new MediaVideo(data);
   } else {
-    return MediaVideo;
+    throw "Mauvais type de format ";
   }
 }
