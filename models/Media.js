@@ -18,13 +18,4 @@ class Media {
   get title() {
     return this._title;
   }
-
-  get media() {
-    return this._media_img ? this._media_img : this._media_video;
-  }
 }
-const dataBase = getMedia(data);
-console.log(dataBase);
-
-const MediaTest = new Media(dataBase);
-console.log(MediaTest);

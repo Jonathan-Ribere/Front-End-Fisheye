@@ -1,7 +1,6 @@
 class MediaVideo extends Media {
   constructor(data) {
     super(data);
-
     this._video = data.video;
   }
 
@@ -9,5 +8,6 @@ class MediaVideo extends Media {
     return `/assets/medias/$(this._id)/$(this._video)`;
   }
   // ici créer function pour afficher les video
+  display() {}
 }
-const mediaVideo = new MediaVideo();
+//const media = createMedia("video", data);

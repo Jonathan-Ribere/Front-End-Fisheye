@@ -22,17 +22,15 @@ async function getPhotographer(id) {
   return photographer;
 }
 // Function qui retourne les media grace a l'id
-async function getMedia() {
+async function getMedia(idProfil) {
   const data = await getData();
   const dataMedia = data.media;
-  const idProfil = getId();
 
-  const mediaId = dataMedia.filter(function (id) {
+  let medias = dataMedia.filter(function (id) {
     return id.photographerId == idProfil;
   });
-  console.log(mediaId);
 
-  mediaId.forEach((element) => {
+  /* mediaId.forEach((element) => {
     element;
     const picture = `assets/medias/${
       element.photographerId + "/" + element.image
@@ -81,9 +79,20 @@ async function getMedia() {
     icon.setAttribute("src", pictureIcon);
     icon.classList.add("classSvgIcon");
     containerBodyCardLikes.appendChild(icon);
+  });*/
+
+  // Création des objects media
+
+  medias = medias.map(function (media) {
+    if (media.hasOwnProperty("image")) {
+      return creatMedia("image", media);
+    }
+    if (media.hasOwnProperty("video")) {
+      return creatMedia("video", media);
+    }
   });
 
-  return mediaId;
+  return medias;
 }
 
 // Function qui calcule les likes
@@ -254,6 +263,8 @@ async function init() {
   const photographer = await getPhotographer(photographerId);
   console.log(photographer);
   displayHeader(photographer);
-  getMedia();
+  const medias = await getMedia(photographerId);
+  console.log(medias);
+  // Boucler sur tous les media et appelée sa function display
 }
 init();
