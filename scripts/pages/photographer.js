@@ -266,5 +266,12 @@ async function init() {
   const medias = await getMedia(photographerId);
   console.log(medias);
   // Boucler sur tous les media et appelée sa function display
+  const displayMedia = (display) => {
+    medias.forEach((element) => {
+      const media = element.display();
+      console.log(media);
+    });
+  };
+  displayMedia();
 }
 init();
