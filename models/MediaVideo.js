@@ -4,12 +4,14 @@ class MediaVideo extends Media {
     this._video = data.video;
   }
 
-  get video() {
-    return `/assets/medias/$(this._id)/$(this._video)`;
-  }
+  //get video() {
+  //return `/assets/medias/$(this._id)/$(this._video)`;
+  //}
   // ici créer function pour afficher les video
   display() {
-    const picture = `assets/medias/${this._photographerId + "/" + this._image}`;
+    const video = `assets/medias/${this._photographerId + "/" + this._video}`;
+    console.log(video);
+
     const pictureIcon = `assets/icons/heart.svg`;
     const mediaSection = document.querySelector(".containerBody");
     const section = document.createElement("section");
@@ -24,10 +26,17 @@ class MediaVideo extends Media {
     containerBodyCardImg.classList.add("containerBodyCardImg");
     containerBodyCard.appendChild(containerBodyCardImg);
 
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    img.classList.add("classImgCard");
-    containerBodyCardImg.appendChild(img);
+    const v = document.createElement("video");
+    v.setAttribute("src", video);
+    v.controls = true;
+    v.muted = false;
+    v.classList.add("classVideoCard");
+    containerBodyCardImg.appendChild(v);
+
+    //const img = document.createElement("img");
+    //img.setAttribute("src", picture);
+    //img.classList.add("classImgCard");
+    //containerBodyCardImg.appendChild(img);
 
     const containerBodyCardinfo = document.createElement("div");
     containerBodyCardinfo.classList.add("containerBodyCardinfo");

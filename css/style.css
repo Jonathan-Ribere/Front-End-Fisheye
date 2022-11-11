@@ -126,6 +126,11 @@ h3 {
   height: 268px;
   width: 100%;
 }
+.classVideoCard {
+  object-fit: cover;
+  height: 268px;
+  width: 100%;
+}
 
 .bar {
   width: 100px;

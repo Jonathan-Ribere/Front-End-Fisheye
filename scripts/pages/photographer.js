@@ -269,7 +269,7 @@ async function init() {
   const displayMedia = (display) => {
     medias.forEach((element) => {
       const media = element.display();
-      console.log(media);
+      //console.log(media);
     });
   };
   displayMedia();
