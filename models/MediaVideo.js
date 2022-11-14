@@ -25,18 +25,24 @@ class MediaVideo extends Media {
     const containerBodyCardImg = document.createElement("div");
     containerBodyCardImg.classList.add("containerBodyCardImg");
     containerBodyCard.appendChild(containerBodyCardImg);
+    /**
+      const lien = document.createElement("a");
+    lien.setAttribute("href", picture);
+    lien.classList.add("lienImg");
+    containerBodyCardImg.appendChild(lien); 
+     */
+
+    const lienMp4 = document.createElement("a");
+    lienMp4.setAttribute("href", video);
+    lienMp4.classList.add("lienImg");
+    containerBodyCardImg.appendChild(lienMp4);
 
     const v = document.createElement("video");
     v.setAttribute("src", video);
     v.controls = true;
     v.muted = false;
     v.classList.add("classVideoCard");
-    containerBodyCardImg.appendChild(v);
-
-    //const img = document.createElement("img");
-    //img.setAttribute("src", picture);
-    //img.classList.add("classImgCard");
-    //containerBodyCardImg.appendChild(img);
+    lienMp4.appendChild(v);
 
     const containerBodyCardinfo = document.createElement("div");
     containerBodyCardinfo.classList.add("containerBodyCardinfo");
