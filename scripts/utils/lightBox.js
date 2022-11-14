@@ -15,6 +15,7 @@ class Lightbox {
           new Lightbox(e.currentTarget.getAttribute("href"));
         })
       );
+    console.log(links);
   }
   // Je commente mon code
   /**
