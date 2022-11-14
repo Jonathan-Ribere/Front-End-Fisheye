@@ -25,10 +25,15 @@ class MediaPicture extends Media {
     containerBodyCardImg.classList.add("containerBodyCardImg");
     containerBodyCard.appendChild(containerBodyCardImg);
 
+    const lien = document.createElement("a");
+    lien.setAttribute("href", picture);
+    lien.classList.add("lienImg");
+    containerBodyCardImg.appendChild(lien);
+
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.classList.add("classImgCard");
-    containerBodyCardImg.appendChild(img);
+    lien.appendChild(img);
 
     const containerBodyCardinfo = document.createElement("div");
     containerBodyCardinfo.classList.add("containerBodyCardinfo");
