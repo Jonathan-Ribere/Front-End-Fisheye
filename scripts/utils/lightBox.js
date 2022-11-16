@@ -2,7 +2,7 @@ class Lightbox {
   static init() {
     // Je sélectionne tous mes lien "a" dans la const links
     const links = document
-      .querySelectorAll('a[href$=".jpeg"], a[href$=".mp4"]')
+      .querySelectorAll('a[href$=".jpg"]')
       // Pour chaque lien je fait un listener pour ecoutée au click les événements
       .forEach((link) =>
         // Je lui ajoute un événement au click
@@ -15,16 +15,14 @@ class Lightbox {
           new Lightbox(e.currentTarget.getAttribute("href"));
         })
       );
-    console.log(links);
   }
   // Je commente mon code
   /**
-   *
    * @param {string} url URL de l'image
    */
   constructor(url) {
-    const element = this.buildDom(url);
-    document.body.appendChild(element);
+    const element = this.buildDOM(url);
+    containerBodyCardImg.appendChild(element);
   }
   // Je commente mon code
   /**
@@ -32,7 +30,8 @@ class Lightbox {
    * @param {string} url URL de l'image
    * @return {HTMLElement}
    */
-  buildDom(url) {
+
+  buildDOM(url) {
     const dom = document.createElement("div");
     dom.classList.add("lightbox");
     dom.innerHTML = `
@@ -42,6 +41,7 @@ class Lightbox {
       <div class="lightbox__container">
         <img src=${url} alt="" />
       </div>`;
+    body.appendChild(dom);
     return dom;
   }
 }
