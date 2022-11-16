@@ -22,7 +22,7 @@ class Lightbox {
    */
   constructor(url) {
     const element = this.buildDOM(url);
-    containerBodyCardImg.appendChild(element);
+    document.body.appendChild(element);
   }
   // Je commente mon code
   /**
@@ -41,7 +41,7 @@ class Lightbox {
       <div class="lightbox__container">
         <img src=${url} alt="" />
       </div>`;
-    body.appendChild(dom);
+    //body.appendChild(dom);
     return dom;
   }
 }
