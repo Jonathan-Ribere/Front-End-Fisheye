@@ -47,7 +47,6 @@ class Lightbox {
   }
   // Je commente mon code
   /**
-   *
    * @param {string} url URL de l'image
    * @return {HTMLElement}
    */
