@@ -42,12 +42,6 @@ async function getMedia(idProfil) {
   return medias;
 }
 
-// Function qui calcule les likes
-async function likes() {
-  const data = await getMedia();
-  const price = data.price;
-  console.log(price);
-}
 ///////// FIN DE LA PARTIE JE DÉFINIE TOUTES LES FONCTION /////////////////
 
 ///////// PARTIE AFFICHAGE (Display) /////////////////
@@ -201,7 +195,15 @@ containerBody.classList.add("containerBody");
 /* J'indique que "containerBody" et l'enfant de "divContainer" */
 divContainer.appendChild(containerBody);
 
+const displayMedia = (medias) => {
+  medias.forEach((element) => {
+    const media = element.display();
+    //console.log(media);
+  });
+};
 ///////// FIN DE LA PARTIE DISPLAY DES MEDIAS ////////////
+
+///////Lightbox///////
 
 // function final
 async function init() {
@@ -213,12 +215,7 @@ async function init() {
   const medias = await getMedia(photographerId);
   console.log(medias);
   // Boucler sur tous les media et appelée sa function display
-  const displayMedia = (display) => {
-    medias.forEach((element) => {
-      const media = element.display();
-      //console.log(media);
-    });
-  };
-  displayMedia();
+  displayMedia(medias);
+  Lightbox.init();
 }
 init();
