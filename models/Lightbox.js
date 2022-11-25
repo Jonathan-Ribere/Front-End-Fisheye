@@ -32,7 +32,9 @@ class Lightbox {
   constructor(url) {
     this.element = this.buildDOM(url);
     this.loadImg(url);
+    this.onkeyUp = this.onkeyUp.bind(this);
     document.body.appendChild(this.element);
+    document.addEventListener("keyup", this.onkeyUp);
   }
 
   /**
@@ -50,6 +52,27 @@ class Lightbox {
     };
     image.src = url;
   }
+  /**
+   * @param {KeyboardEvent} e
+   */
+  onkeyUp(e) {
+    if (e.key === "Escape") {
+      this.close(e);
+    }
+  }
+
+  /**
+   * Ferme la lightbox
+   * @param {MouseEvent} e
+   */
+  close(e) {
+    e.preventDefault();
+    this.element.classList.add("fadeOut");
+    window.setTimeout(() => {
+      this.element.parentElement.removeChild(this.element);
+    }, 500);
+  }
+
   // Je commente mon code
   /**
    * @param {string} url URL de l'image
@@ -68,7 +91,9 @@ class Lightbox {
          
         </div>`;
 
-    //body.appendChild(dom);
+    dom
+      .querySelector(".lightbox__close")
+      .addEventListener("click", this.close.bind(this));
     return dom;
   }
 }
