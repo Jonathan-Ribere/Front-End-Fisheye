@@ -35,6 +35,7 @@ class MediaVideo extends Media {
     const lienMp4 = document.createElement("a");
     lienMp4.setAttribute("href", video);
     lienMp4.classList.add("lienImg");
+    lienMp4.setAttribute("data-type", "video");
     containerBodyCardImg.appendChild(lienMp4);
 
     const v = document.createElement("video");
