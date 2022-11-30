@@ -22,7 +22,7 @@ class MediaVideo extends Media {
     containerBodyCard.classList.add("containerBodyCard");
     section.appendChild(containerBodyCard);
 
-    const containerBodyCardImg = document.createElement("div");
+    const containerBodyCardImg = document.createElement("figure");
     containerBodyCardImg.classList.add("containerBodyCardImg");
     containerBodyCard.appendChild(containerBodyCardImg);
     /**
@@ -39,7 +39,8 @@ class MediaVideo extends Media {
     containerBodyCardImg.appendChild(lienMp4);
 
     const v = document.createElement("video");
-    v.setAttribute("src", video);
+    v.setAttribute("poster", video);
+    //v.setAttribute("src", video);
     v.controls = true;
     v.muted = false;
     v.classList.add("classVideoCard");
