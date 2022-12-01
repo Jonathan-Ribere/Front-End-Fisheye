@@ -3,6 +3,7 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/lightbox.css" />
+    <link rel="stylesheet" href="/css//photographer.css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -33,24 +34,36 @@
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <div class="blocHeader"></div>
+        <header class="headerForm">
+          <div class="titreH2">
+            <h2 id="formH2" class="h2Form">Contactez-moi</h2>
+          </div>
+          <div class="titreImg">
+            <img
+              src="assets/icons/close.svg"
+              onclick="closeModal()"
+              class="closeForm"
+            />
+          </div>
         </header>
-        <form>
-          <div>
+        <form class="form" id="form">
+          <div class="form-control error">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" />
+            <small></small>
           </div>
-          <div>
+          <div class="form-control success">
             <label for="nom">Nom</label>
             <input type="text" id="nom" />
+            <small></small>
           </div>
-          <div>
+          <div class="form-control">
             <label for="email">Email</label>
             <input type="email" id="email" />
+            <small></small>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button type="submit" class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
@@ -64,5 +77,6 @@
     <script src="/models/MediaVideo.js"></script>
     <script src="/models/MediaPicture.js"></script>
     <script src="/scripts/factories/mediaFactory.js"></script>
+    <script src="/scripts/utils/formulaire.js"></script>
   </body>
 </html>
