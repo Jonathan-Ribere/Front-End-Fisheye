@@ -20,6 +20,17 @@ form.nom.addEventListener("change", function () {
 form.email.addEventListener("change", function () {
   validEmail(this);
 });
+// Ecouter la soumission du formulaire
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (
+    validPrenom(form.prenom) &&
+    validPrenom(form.nom) &&
+    validEmail(form.email)
+  ) {
+    form.submit();
+  }
+});
 
 //VALIDATION DU PRÉNOM /////
 const validPrenom = function (inputPrenom) {
@@ -34,10 +45,12 @@ const validPrenom = function (inputPrenom) {
     small.innerHTML = "Champs valide";
     small.classList.remove("error");
     small.classList.add("success");
+    return true;
   } else {
     small.innerHTML = "Champs Invalide";
     small.classList.remove("success");
     small.classList.add("error");
+    return false;
   }
 };
 
@@ -57,9 +70,22 @@ const validEmail = function (inputEmail) {
     small.innerHTML = "Email valide";
     small.classList.remove("error");
     small.classList.add("success");
+    return true;
   } else {
     small.innerHTML = "Email Invalide";
     small.classList.remove("success");
     small.classList.add("error");
+    return false;
   }
 };
+
+function getValue() {
+  e.preventDefault();
+  // Sélectionner l'élément input et récupérer sa valeur
+  var input = document.getElementById("nom").value;
+  var inpu1 = document.getElementById("prenom").value;
+  var input2 = document.getElementById("email").value;
+
+  // Afficher la valeur
+  console.log(input, inpu1, input2);
+}
