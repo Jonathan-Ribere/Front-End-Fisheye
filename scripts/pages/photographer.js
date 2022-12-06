@@ -178,8 +178,11 @@ divContainerHeader.appendChild(titreH2);
 const select = document.createElement("select");
 /* Je créer les variable des option du Select */
 let popularite = new Option("Popularité");
+popularite.setAttribute("value", "popularite");
 let date = new Option("Date");
+date.setAttribute("value", "date");
 let titre = new Option("Titre");
+titre.setAttribute("value", "titre");
 /* J'indique que "select" et l'enfant de "divContainerHeader" */
 divContainerHeader.appendChild(select);
 /* J'ajoute les option au Select */
