@@ -221,6 +221,32 @@ const displayMedia = (medias) => {
 
 ///////// FIN DE LA PARTIE DISPLAY DES MEDIAS ////////////
 
+//////// Custom des value du select //////////
+customSortDate = (a, b) => {
+  const dateA = new Date(a._date);
+  const dateB = new Date(b._date);
+  if (dateA > dateB) return 1;
+  else if (dateA < dateB) return -1;
+  return 0;
+};
+
+customSortLikes = (a, b) => {
+  const likesA = a._likes;
+  const likesB = b._likes;
+  if (likesA > likesB) return 1;
+  else if (likesA < likesB) return -1;
+  return 0;
+};
+
+customSortTitre = (a, b) => {
+  const titreA = a._title;
+  const titreB = b._title;
+  if (titreA > titreB) return 1;
+  else if (titreA < titreB) return -1;
+  return 0;
+};
+//////// Fin custom des value du select //////////
+
 // function final
 async function init() {
   const photographerId = getId();
@@ -230,14 +256,11 @@ async function init() {
   const medias = await getMedia(photographerId);
   console.log(medias);
 
-  customSort = (a, b) => {
-    console.log(a);
-  };
-  console.log(medias.sort(customSort));
+  //console.log(medias.sort(customSortLikes));
 
   //customTitle();
   // Boucler sur tous les media et appelée sa function display
-  displayMedia(medias);
+  displayMedia(medias.sort(customSortTitre));
   Lightbox.init();
 }
 init();
