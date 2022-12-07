@@ -37,7 +37,6 @@ async function getMedia(idProfil) {
       return creatMedia("video", media);
     }
   });
-
   return medias;
 }
 
@@ -53,6 +52,8 @@ async function getMedia(idProfil) {
     console.log(a);
   };
 }*/
+
+//console.log(getMedia.sort(customSort));
 
 ////////////// FIN TRIE ///////
 
@@ -228,13 +229,15 @@ async function init() {
   displayHeader(photographer);
   const medias = await getMedia(photographerId);
   console.log(medias);
-  //customTitle();
-  // Boucler sur tous les media et appelée sa function display
-  displayMedia(medias);
+
   customSort = (a, b) => {
     console.log(a);
   };
-  console.log(displayMedia(medias).sort(customSort));
+  console.log(medias.sort(customSort));
+
+  //customTitle();
+  // Boucler sur tous les media et appelée sa function display
+  displayMedia(medias);
   Lightbox.init();
 }
 init();
