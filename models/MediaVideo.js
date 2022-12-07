@@ -10,7 +10,6 @@ class MediaVideo extends Media {
   // ici créer function pour afficher les video
   display() {
     const video = `assets/medias/${this._photographerId + "/" + this._video}`;
-    console.log(video);
 
     const pictureIcon = `assets/icons/heart.svg`;
     const mediaSection = document.querySelector(".containerBody");

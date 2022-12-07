@@ -9,7 +9,6 @@ function getId() {
 async function getData() {
   const response = await fetch("/data/photographers.json");
   const data = await response.json();
-  console.log(data);
   return await data;
 }
 // Permet de récupéré l'object du profil qui corespond a l'id
@@ -18,9 +17,9 @@ async function getPhotographer(id) {
   const photographer = data.photographers.find(function (element) {
     return element.id == id;
   });
-  console.log(photographer.id);
   return photographer;
 }
+
 // Function qui retourne les media grace a l'id
 async function getMedia(idProfil) {
   const data = await getData();
@@ -41,6 +40,21 @@ async function getMedia(idProfil) {
 
   return medias;
 }
+
+////////////// TRIE ///////
+
+/*async function customTitle() {
+  const photographerId = getId();
+  const medias = await getMedia(photographerId);
+  console.log(medias);
+  console.log(medias.sort());
+
+  customElement = (a, b) => {
+    console.log(a);
+  };
+}*/
+
+////////////// FIN TRIE ///////
 
 ///////// FIN DE LA PARTIE JE DÉFINIE TOUTES LES FONCTION /////////////////
 
@@ -138,7 +152,6 @@ function displayHeader(photographer) {
   const img = document.createElement("img");
   /* Je récupére le data dans l'objet photographer que je mets dans la variable portrait */
   const portrait = photographer.portrait;
-  console.log(portrait);
   /* Je créer la variable picture1 qui indique le chemin d'ou se trouve la photo */
   const picture1 = `../../assets/photographers/${portrait}`;
   /* Je lui indique la source avec setAttribute */
@@ -204,21 +217,24 @@ const displayMedia = (medias) => {
     //console.log(media);
   });
 };
-///////// FIN DE LA PARTIE DISPLAY DES MEDIAS ////////////
 
-///////Lightbox///////
+///////// FIN DE LA PARTIE DISPLAY DES MEDIAS ////////////
 
 // function final
 async function init() {
   const photographerId = getId();
-  console.log(photographerId);
   const photographer = await getPhotographer(photographerId);
   console.log(photographer);
   displayHeader(photographer);
   const medias = await getMedia(photographerId);
   console.log(medias);
+  //customTitle();
   // Boucler sur tous les media et appelée sa function display
   displayMedia(medias);
+  customSort = (a, b) => {
+    console.log(a);
+  };
+  console.log(displayMedia(medias).sort(customSort));
   Lightbox.init();
 }
 init();

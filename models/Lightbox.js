@@ -11,7 +11,7 @@ class Lightbox {
     const links = Array.from(
       document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
     );
-    console.log(links);
+    //console.log(links);
     const gallery = links.map((link) => link.getAttribute("href"));
     // Pour chaque lien je fait un listener pour ecoutée au click les événements
     links.forEach((link) => {
@@ -25,9 +25,9 @@ class Lightbox {
         new Lightbox(e.currentTarget.getAttribute("href"), gallery);
       });
     });
-    console.log(
+    /* console.log(
       document.querySelectorAll('a[href$=".jpg"]', 'a[href$=".mp4"]')
-    );
+    );*/
   }
   // Je commente mon code
   /**
