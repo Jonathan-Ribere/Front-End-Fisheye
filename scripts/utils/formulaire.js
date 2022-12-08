@@ -5,6 +5,10 @@ nomPhotographe.classList.add("nomPhotographe");
 formH2.appendChild(nomPhotographe);
 nomPhotographe.innerHTML = data.name;*/
 
+// Afichage du nom du photographe dynamique
+const nomPhotographer = document.querySelector("#nomPhotographer");
+nomPhotographer.innerHTML = "Trier par ";
+
 // La récupération des éléments
 const form = document.querySelector("#form");
 

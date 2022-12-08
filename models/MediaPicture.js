@@ -55,13 +55,17 @@ class MediaPicture extends Media {
     containerBodyCardinfo.appendChild(containerBodyCardLikes);
 
     const p = document.createElement("p");
+    p.setAttribute("id", "numberLikes");
     containerBodyCardLikes.appendChild(p);
     p.innerHTML = this._likes;
 
+    const divImg = document.createElement("div");
+    divImg.setAttribute("id", "imgLikes");
+    containerBodyCardLikes.appendChild(divImg);
     const icon = document.createElement("img");
     icon.setAttribute("src", pictureIcon);
     icon.classList.add("classSvgIcon");
-    containerBodyCardLikes.appendChild(icon);
+    divImg.appendChild(icon);
   }
 }
 

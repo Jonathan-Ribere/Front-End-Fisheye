@@ -190,6 +190,8 @@ titreH2.innerHTML = "Trier par ";
 divContainerHeader.appendChild(titreH2);
 /* Je créer le Select */
 const select = document.createElement("select");
+select.setAttribute("id", "mySelect");
+select.setAttribute("onchange", "myFunction()");
 /* Je créer les variable des option du Select */
 let popularite = new Option("Popularité");
 popularite.setAttribute("value", "popularite");
@@ -212,10 +214,22 @@ containerBody.classList.add("containerBody");
 /* J'indique que "containerBody" et l'enfant de "divContainer" */
 divContainer.appendChild(containerBody);
 
+function myFunction(medias) {
+  let x = document.getElementById("mySelect").value;
+  console.log(x);
+  if (x === "popularite") {
+    displayMedia(medias.sort(customSortLikes));
+  } else if (x === "date") {
+    displayMedia(medias.sort(customSortDate));
+  } else if (x === "titre") {
+    displayMedia(medias.sort(customSortTitre));
+  }
+  return;
+}
+
 const displayMedia = (medias) => {
   medias.forEach((element) => {
-    const media = element.display();
-    //console.log(media);
+    const media = element.display(medias.sort(customSortLikes));
   });
 };
 
@@ -245,7 +259,20 @@ customSortTitre = (a, b) => {
   else if (titreA < titreB) return -1;
   return 0;
 };
+
+const selectInput = document.querySelector("select");
+console.log(selectInput);
+selectInput.addEventListener("change", updateValue);
+function updateValue(e) {
+  console.log(e.value);
+}
 //////// Fin custom des value du select //////////
+
+////// LIKES //////
+let btnLike = document.querySelectorAll("#imgLikes");
+console.log(btnLike);
+
+////// FIN LIKES //////
 
 // function final
 async function init() {
@@ -258,9 +285,10 @@ async function init() {
 
   //console.log(medias.sort(customSortLikes));
 
-  //customTitle();
+  //customTitle();;
   // Boucler sur tous les media et appelée sa function display
-  displayMedia(medias.sort(customSortTitre));
+  //displayMedia(medias.sort(customSortLikes));
+  myFunction(medias);
   Lightbox.init();
 }
 init();
