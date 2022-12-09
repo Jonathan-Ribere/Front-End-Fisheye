@@ -166,57 +166,55 @@ function displayHeader(photographer) {
 }
 ///////// FIN PARTIE AFFICHAGE (Display) /////////////////
 ///////// DEBUT DE LA PARTIE DISPLAY DES MEDIAS //////////
+function filter() {
+  /* Je créer une div qui va englobée tous la 2eme partie */
+  const divContainer = document.createElement("div");
+  /* Je lui ajoute une classe "container" */
+  divContainer.classList.add("container");
+  /* J'indique que "divContainer" et l'enfant de "main" */
+  main.appendChild(divContainer);
 
-/* Je créer une div qui va englobée tous la 2eme partie */
-const divContainer = document.createElement("div");
-/* Je lui ajoute une classe "container" */
-divContainer.classList.add("container");
-/* J'indique que "divContainer" et l'enfant de "main" */
-main.appendChild(divContainer);
+  /* Je créer une div pour la partie "Trier par : "  */
+  const divContainerHeader = document.createElement("div");
+  /* Je lui ajoute une classe "container-header" */
+  divContainerHeader.classList.add("container-header");
+  /* J'indique que "divContainerHeader" et l'enfant de "divContainer" */
+  divContainer.appendChild(divContainerHeader);
+  /* Je créer un h2  */
+  const titreH2 = document.createElement("h2");
+  /* Je lui ajoute une classe "titreH2" */
+  titreH2.classList.add("titreH2");
+  /* Je lui inject du texte avec innerHTML*/
+  titreH2.innerHTML = "Trier par ";
+  /* J'indique que "titreH2" et l'enfant de "divContainerHeader" */
+  divContainerHeader.appendChild(titreH2);
+  /* Je créer le Select */
+  const select = document.createElement("select");
+  select.setAttribute("id", "mySelect");
+  /* Je créer les variable des option du Select */
+  let popularite = new Option("Popularité");
+  popularite.setAttribute("value", "popularite");
+  let date = new Option("Date");
+  date.setAttribute("value", "date");
+  let titre = new Option("Titre");
+  titre.setAttribute("value", "titre");
+  /* J'indique que "select" et l'enfant de "divContainerHeader" */
+  divContainerHeader.appendChild(select);
+  /* J'ajoute les option au Select */
+  const selectOption = document.querySelector("select");
+  selectOption.add(popularite);
+  selectOption.add(date);
+  selectOption.add(titre);
 
-/* Je créer une div pour la partie "Trier par : "  */
-const divContainerHeader = document.createElement("div");
-/* Je lui ajoute une classe "container-header" */
-divContainerHeader.classList.add("container-header");
-/* J'indique que "divContainerHeader" et l'enfant de "divContainer" */
-divContainer.appendChild(divContainerHeader);
-/* Je créer un h2  */
-const titreH2 = document.createElement("h2");
-/* Je lui ajoute une classe "titreH2" */
-titreH2.classList.add("titreH2");
-/* Je lui inject du texte avec innerHTML*/
-titreH2.innerHTML = "Trier par ";
-/* J'indique que "titreH2" et l'enfant de "divContainerHeader" */
-divContainerHeader.appendChild(titreH2);
-/* Je créer le Select */
-const select = document.createElement("select");
-select.setAttribute("id", "mySelect");
-select.setAttribute("onchange", "myFunction()");
-/* Je créer les variable des option du Select */
-let popularite = new Option("Popularité");
-popularite.setAttribute("value", "popularite");
-let date = new Option("Date");
-date.setAttribute("value", "date");
-let titre = new Option("Titre");
-titre.setAttribute("value", "titre");
-/* J'indique que "select" et l'enfant de "divContainerHeader" */
-divContainerHeader.appendChild(select);
-/* J'ajoute les option au Select */
-const selectOption = document.querySelector("select");
-selectOption.add(popularite);
-selectOption.add(date);
-selectOption.add(titre);
-
-/* Je créer une div pour la partie qui affiche les medias */
-const containerBody = document.createElement("div");
-/* Je lui ajoute une classe "containerBody" */
-containerBody.classList.add("containerBody");
-/* J'indique que "containerBody" et l'enfant de "divContainer" */
-divContainer.appendChild(containerBody);
-
+  /* Je créer une div pour la partie qui affiche les medias */
+  const containerBody = document.createElement("div");
+  /* Je lui ajoute une classe "containerBody" */
+  containerBody.classList.add("containerBody");
+  /* J'indique que "containerBody" et l'enfant de "divContainer" */
+  divContainer.appendChild(containerBody);
+}
 function myFunction(medias) {
   let x = document.getElementById("mySelect").value;
-  console.log(x);
   if (x === "popularite") {
     displayMedia(medias.sort(customSortLikes));
   } else if (x === "date") {
@@ -228,8 +226,9 @@ function myFunction(medias) {
 }
 
 const displayMedia = (medias) => {
+  document.querySelector(".containerBody").innerHTML = "";
   medias.forEach((element) => {
-    const media = element.display(medias.sort(customSortLikes));
+    const media = element.display();
   });
 };
 
@@ -260,12 +259,6 @@ customSortTitre = (a, b) => {
   return 0;
 };
 
-const selectInput = document.querySelector("select");
-console.log(selectInput);
-selectInput.addEventListener("change", updateValue);
-function updateValue(e) {
-  console.log(e.value);
-}
 //////// Fin custom des value du select //////////
 
 ////Function calcul des likes///////
@@ -274,7 +267,7 @@ async function calculLikes(dataa) {
   dataa = await getMedia(photographerId);
   console.log(dataa);
   let a = dataa._likes;
-  console.log(a);
+  //console.log(a);
 }
 // function final
 async function init() {
@@ -282,12 +275,12 @@ async function init() {
   const photographer = await getPhotographer(photographerId);
   console.log(photographer);
   displayHeader(photographer);
+  filter();
   const medias = await getMedia(photographerId);
   console.log(medias);
-
-  //console.log(medias.sort(customSortLikes));
-
-  //customTitle();;
+  document.getElementById("mySelect").addEventListener("change", () => {
+    myFunction(medias);
+  });
   // Boucler sur tous les media et appelée sa function display
   //displayMedia(medias.sort(customSortLikes));
   myFunction(medias);
