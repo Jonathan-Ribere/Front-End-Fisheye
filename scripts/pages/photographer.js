@@ -268,12 +268,14 @@ function updateValue(e) {
 }
 //////// Fin custom des value du select //////////
 
-////// LIKES //////
-let btnLike = document.querySelectorAll("#imgLikes");
-console.log(btnLike);
-
-////// FIN LIKES //////
-
+////Function calcul des likes///////
+async function calculLikes(dataa) {
+  const photographerId = getId();
+  dataa = await getMedia(photographerId);
+  console.log(dataa);
+  let a = dataa._likes;
+  console.log(a);
+}
 // function final
 async function init() {
   const photographerId = getId();
@@ -290,5 +292,20 @@ async function init() {
   //displayMedia(medias.sort(customSortLikes));
   myFunction(medias);
   Lightbox.init();
+  calculLikes();
 }
 init();
+
+////// LIKES //////
+//let valeur = document.getElementById("#numberLikes").textContent;
+//console.log(valeur);
+//let increLike = document.getElementById("imgLikes");
+//console.log(increLike);
+//let numberLike = document.getElementById("#numberLikes");
+
+//increLike.addEventListener("click", () => {
+//numberLike.value = parseInt(numberLike.value) + 1;
+//console.log("increLike");
+//});
+
+////// FIN LIKES //////
