@@ -248,6 +248,14 @@ customSortTitre = (a, b) => {
 
 //////// Fin custom des value du select //////////
 
+/*function totalLikes(medias) {
+  for (const like of likes){
+    medias._like
+  }
+  const nombre = medias;
+  console.log(nombre);
+}*/
+
 function changeLike() {
   const coeurs = document.querySelectorAll("#imgLikes");
   console.log(coeurs);
@@ -280,5 +288,7 @@ async function init() {
   changeLike();
   Lightbox.init();
   //calculLikes(data);
+  // totalLikes(medias);
+  displayName(photographer);
 }
 init();
