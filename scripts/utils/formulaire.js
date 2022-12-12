@@ -1,10 +1,3 @@
-/*const formH2 = document.querySelector("#formH2");
-console.log(formH2);
-let nomPhotographe = document.createElement("p");
-nomPhotographe.classList.add("nomPhotographe");
-formH2.appendChild(nomPhotographe);
-nomPhotographe.innerHTML = data.name;*/
-
 // Afichage du nom du photographe dynamique
 const nomPhotographer = document.querySelector("#nomPhotographer");
 nomPhotographer.innerHTML = "Trier par ";
