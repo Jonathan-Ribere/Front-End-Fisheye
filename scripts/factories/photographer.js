@@ -79,7 +79,6 @@ function photographerFactory(data) {
     ville.appendChild(prix);
     prix.innerHTML = price + "€/jour";
     /* FIN DU PARAGRAPHE PRIX */
-
     return article;
   }
   return { display };

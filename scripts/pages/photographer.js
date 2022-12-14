@@ -248,25 +248,49 @@ customSortTitre = (a, b) => {
 
 //////// Fin custom des value du select //////////
 
-/*function totalLikes(medias) {
-  for (const like of likes){
-    medias._like
-  }
-  const nombre = medias;
-  console.log(nombre);
-}*/
-
-function changeLike() {
+/*function changeLike() {
   const coeurs = document.querySelectorAll("#imgLikes");
   console.log(coeurs);
-  const nombreLike = document.querySelectorAll("#numberLikes");
-  console.log(nombreLike);
-
+  const nombre = document.querySelectorAll("#numberLikes");
+  console.log(nombre.valueOf());
+  for (const coeur of coeurs) {
+    //console.log(coeur);
+    coeur.addEventListener("click", function onClick() {
+      //event.target.innerHTML = "12";
+      console.log(nombre.innerHTML);
+      //const nbr = medias[key]._likes;
+      //console.log(nbr);
+      //const nombreLike = document.querySelector("#numberLikes");
+      //console.log(nombreLike);
+      //medias._likes++;
+      // document.getElementById("numberLikes").innerHTML = medias._likes++;
+      //console.log(coeur);
+      //document.getElementById
+      //alert("Coeur cliké");
+      //console.log(nombreLike);
+      //console.log("Coeur cliké");
+      //nombreLike++;
+      // alert("coeur cliké" + document.get);
+    });
+  }
+}*/
+function changeLike() {
+  const coeurs = document.querySelectorAll("#imgLikes");
   for (const coeur of coeurs) {
     coeur.addEventListener("click", function onClick() {
-      console.log("Coeur cliké");
-      nombreLike.innerHTML = "ok";
+      const nombre = document.getElementById("numberLikes");
+      console.log(nombre.innerHTML);
     });
+  }
+}
+
+function calculLikes() {
+  let likes = document.querySelectorAll("#numberLikes");
+  console.log(likes);
+
+  for (let index = 0; index < likes.length; index++) {
+    const element = likes[index].innerHTML;
+    console.log(element);
   }
 }
 
@@ -278,17 +302,19 @@ async function init() {
   displayHeader(photographer);
   filter();
   const medias = await getMedia(photographerId);
-  console.log(medias);
   document.getElementById("mySelect").addEventListener("change", () => {
     myFunction(medias);
   });
   // Boucler sur tous les media et appelée sa function display
   //displayMedia(medias.sort(customSortLikes));
   myFunction(medias);
-  changeLike();
+  console.log(medias);
+
+  changeLike(medias);
   Lightbox.init();
   //calculLikes(data);
   // totalLikes(medias);
-  displayName(photographer);
+  displayName(photographer); // Affiche le nom du photographe au formulaire
+  calculLikes();
 }
 init();

@@ -2,7 +2,6 @@
 function displayName(photographer) {
   const nomPhotographer = document.querySelector("#nomPhotographer");
   nomPhotographer.innerHTML = `${photographer.name}`;
-  return;
 }
 
 // La récupération des éléments
