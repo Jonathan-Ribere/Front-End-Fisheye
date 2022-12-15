@@ -248,73 +248,64 @@ customSortTitre = (a, b) => {
 
 //////// Fin custom des value du select //////////
 
-/*function changeLike() {
-  const coeurs = document.querySelectorAll("#imgLikes");
-  console.log(coeurs);
-  const nombre = document.querySelectorAll("#numberLikes");
-  console.log(nombre.valueOf());
-  for (const coeur of coeurs) {
-    //console.log(coeur);
-    coeur.addEventListener("click", function onClick() {
-      //event.target.innerHTML = "12";
-      console.log(nombre.innerHTML);
-      //const nbr = medias[key]._likes;
-      //console.log(nbr);
-      //const nombreLike = document.querySelector("#numberLikes");
-      //console.log(nombreLike);
-      //medias._likes++;
-      // document.getElementById("numberLikes").innerHTML = medias._likes++;
-      //console.log(coeur);
-      //document.getElementById
-      //alert("Coeur cliké");
-      //console.log(nombreLike);
-      //console.log("Coeur cliké");
-      //nombreLike++;
-      // alert("coeur cliké" + document.get);
-    });
-  }
-}*/
-function changeLike() {
-  const coeurs = document.querySelectorAll("#imgLikes");
-  for (const coeur of coeurs) {
-    coeur.addEventListener("click", function onClick() {
-      const nombre = document.getElementById("numberLikes");
-      console.log(nombre.innerHTML);
-    });
-  }
-}
-
-function calculLikes() {
-  let likes = document.querySelectorAll("#numberLikes");
-  console.log(likes);
-
-  for (let index = 0; index < likes.length; index++) {
-    const element = likes[index].innerHTML;
+/*function getLikes(medias) {
+  // Récupére les likes
+  const media = medias;
+  for (let index = 0; index < media.length; index++) {
+    const element = media[index]._likes;
     console.log(element);
   }
-}
+}*/
+
+/*function incrementLike(getLikesAll) {
+  const coeurs = getLikesAll;
+  console.log(coeurs);
+  const nombre = document.querySelectorAll("#numberLikes");
+  console.log(nombre);
+  /*for (const coeur of coeurs) {
+    coeur.addEventListener("click", function onClick() {
+      console.log("click");
+      let nombre = document.getElementById("numberLikes").innerHTML;
+      console.log(nombre);
+      nombre++;
+      console.log(nombre);
+    });
+  }*/
+
+const incrementLike = (medias) => {
+  let likes = medias;
+  console.log(likes);
+  for (const like of likes) {
+    console.log(like._likes);
+    document.getElementById("imgLikes").addEventListener("click", (e) => {
+      console.log("on est bon");
+      let lii = like._likes;
+      console.log(lii);
+      lii++;
+      console.log(lii);
+    });
+  }
+
+  //console.log(nombres);
+};
 
 // function final
 async function init() {
   const photographerId = getId();
   const photographer = await getPhotographer(photographerId);
-  console.log(photographer);
   displayHeader(photographer);
   filter();
   const medias = await getMedia(photographerId);
+  console.log(medias);
   document.getElementById("mySelect").addEventListener("change", () => {
     myFunction(medias);
   });
-  // Boucler sur tous les media et appelée sa function display
-  //displayMedia(medias.sort(customSortLikes));
   myFunction(medias);
-  console.log(medias);
-
-  changeLike(medias);
   Lightbox.init();
-  //calculLikes(data);
-  // totalLikes(medias);
   displayName(photographer); // Affiche le nom du photographe au formulaire
-  calculLikes();
+  incrementLike(medias);
 }
+//const getLikesAll = getLikes(medias);
+//incrementLike(getLikesAll);
+
 init();
