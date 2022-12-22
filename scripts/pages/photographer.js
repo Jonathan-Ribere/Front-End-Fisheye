@@ -272,7 +272,7 @@ customSortTitre = (a, b) => {
     });
   }*/
 
-const incrementLike = (medias) => {
+/*const incrementLike = (medias) => {
   let likes = medias;
   console.log(likes);
   for (const like of likes) {
@@ -287,7 +287,29 @@ const incrementLike = (medias) => {
   }
 
   //console.log(nombres);
-};
+};*/
+
+function idLike(medias) {
+  const selectCoeurs = document.getElementsByClassName("imgLikes");
+  console.log(selectCoeurs);
+
+  const array = medias;
+  console.log(array);
+
+  for (const selectCoeur of selectCoeurs) {
+    selectCoeur.addEventListener("click", (e) => {
+      const id = e.currentTarget.dataset.id;
+      console.log(id);
+
+      const media = array.find((media) => media._id === id);
+      console.log(media);
+
+      if (media) {
+        media._likes += 1;
+      }
+    });
+  }
+}
 
 // function final
 async function init() {
@@ -296,16 +318,14 @@ async function init() {
   displayHeader(photographer);
   filter();
   const medias = await getMedia(photographerId);
-  console.log(medias);
   document.getElementById("mySelect").addEventListener("change", () => {
     myFunction(medias);
   });
   myFunction(medias);
   Lightbox.init();
   displayName(photographer); // Affiche le nom du photographe au formulaire
-  incrementLike(medias);
+
+  idLike(medias);
 }
-//const getLikesAll = getLikes(medias);
-//incrementLike(getLikesAll);
 
 init();

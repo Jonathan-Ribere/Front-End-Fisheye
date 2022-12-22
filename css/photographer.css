@@ -115,6 +115,6 @@ form input {
 .error {
   color: red;
 }
-#imgLikes {
+.imgLikes {
   cursor: pointer;
 }
