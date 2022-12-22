@@ -278,7 +278,7 @@ const incrementLike = (medias) => {
   for (const like of likes) {
     console.log(like._likes);
     document.getElementById("imgLikes").addEventListener("click", (e) => {
-      console.log("on est bon");
+      console.log("Coeur cliké");
       let lii = like._likes;
       console.log(lii);
       lii++;

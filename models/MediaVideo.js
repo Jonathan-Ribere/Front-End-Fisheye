@@ -63,7 +63,7 @@ class MediaVideo extends Media {
     containerBodyCardinfo.appendChild(containerBodyCardLikes);
 
     const p = document.createElement("p");
-    p.setAttribute("id", "numberLikes");
+    p.classList.add("numberLikes");
     containerBodyCardLikes.appendChild(p);
     p.innerHTML = this._likes;
 

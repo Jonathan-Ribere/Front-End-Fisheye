@@ -53,12 +53,13 @@ class MediaPicture extends Media {
     containerBodyCardinfo.appendChild(containerBodyCardLikes);
 
     const p = document.createElement("p");
-    p.setAttribute("id", "numberLikes");
+    p.classList.add("numberLikes");
     containerBodyCardLikes.appendChild(p);
     p.innerHTML = this._likes;
 
     const divImg = document.createElement("div");
-    divImg.setAttribute("id", "imgLikes");
+    divImg.setAttribute("data-id", this._id);
+    divImg.classList.add("imgLikes");
     containerBodyCardLikes.appendChild(divImg);
     const icon = document.createElement("img");
     icon.setAttribute("src", pictureIcon);
