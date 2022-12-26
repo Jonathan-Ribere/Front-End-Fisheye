@@ -248,64 +248,24 @@ customSortTitre = (a, b) => {
 
 //////// Fin custom des value du select //////////
 
-/*function getLikes(medias) {
-  // Récupére les likes
-  const media = medias;
-  for (let index = 0; index < media.length; index++) {
-    const element = media[index]._likes;
-    console.log(element);
-  }
-}*/
-
-/*function incrementLike(getLikesAll) {
-  const coeurs = getLikesAll;
-  console.log(coeurs);
-  const nombre = document.querySelectorAll("#numberLikes");
-  console.log(nombre);
-  /*for (const coeur of coeurs) {
-    coeur.addEventListener("click", function onClick() {
-      console.log("click");
-      let nombre = document.getElementById("numberLikes").innerHTML;
-      console.log(nombre);
-      nombre++;
-      console.log(nombre);
-    });
-  }*/
-
-/*const incrementLike = (medias) => {
-  let likes = medias;
-  console.log(likes);
-  for (const like of likes) {
-    console.log(like._likes);
-    document.getElementById("imgLikes").addEventListener("click", (e) => {
-      console.log("Coeur cliké");
-      let lii = like._likes;
-      console.log(lii);
-      lii++;
-      console.log(lii);
-    });
-  }
-
-  //console.log(nombres);
-};*/
-
 function idLike(medias) {
   const selectCoeurs = document.getElementsByClassName("imgLikes");
-  console.log(selectCoeurs);
 
   const array = medias;
-  console.log(array);
 
   for (const selectCoeur of selectCoeurs) {
     selectCoeur.addEventListener("click", (e) => {
-      const id = e.currentTarget.dataset.id;
-      console.log(id);
+      let id = e.currentTarget.dataset.id;
 
-      const media = array.find((media) => media._id === id);
-      console.log(media);
+      const media = array.find((media) => {
+        id = Number(id);
 
+        return media._id === id;
+      });
       if (media) {
         media._likes += 1;
+
+        e.currentTarget.parentNode.firstChild.textContent = media._likes;
       }
     });
   }
