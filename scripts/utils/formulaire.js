@@ -27,7 +27,9 @@ form.addEventListener("submit", function (e) {
     validPrenom(form.nom) &&
     validEmail(form.email)
   ) {
-    form.submit();
+    // console.log(getValue());
+    getValue(); // appel de la fonction getValue() ici
+    // form.submit();
   }
 });
 
@@ -79,7 +81,6 @@ const validEmail = function (inputEmail) {
 };
 
 function getValue() {
-  e.preventDefault();
   // Sélectionner l'élément input et récupérer sa valeur
   var input = document.getElementById("nom").value;
   var inpu1 = document.getElementById("prenom").value;

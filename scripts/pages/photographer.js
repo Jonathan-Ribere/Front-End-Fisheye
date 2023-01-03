@@ -50,7 +50,7 @@ async function getMedia(idProfil) {
 
 function displayHeader(photographer) {
   /////// Partie pour le fixed en bas de l'ecrant //////
-
+  const pictureIcon = `/assets/icons/heart.svg`;
   /* Je séléctionne la partie 'main' */
   const main = document.querySelector("main");
   /* Je créer une div */
@@ -61,13 +61,30 @@ function displayHeader(photographer) {
   main.appendChild(bar);
 
   /* Je créer un élément paragraphe */
-  const barInfo = document.createElement("p");
+  const barInfo = document.createElement("div");
   /* Je lui ajoute une classe "barInfo" */
-  barInfo.classList.add("barInfo");
+  barInfo.classList.add("barLikes");
   /* J'indique que "barInfo" et l'enfant de "bar" */
   bar.appendChild(barInfo);
-  /* Je lui inject du texte avec innerHTML*/
-  barInfo.innerHTML = "bar";
+
+  const nombre = document.createElement("div");
+  nombre.classList.add("nombre");
+  barInfo.appendChild(nombre);
+
+  const txtBar = document.createElement("p");
+  txtBar.classList.add("txtBar");
+  nombre.appendChild(txtBar);
+  txtBar.innerHTML = "hhvvhvh";
+
+  const coeur = document.createElement("div");
+  coeur.classList.add("coeur");
+  barInfo.appendChild(coeur);
+
+  const pictureHeart = `assets/icons/heart.svg`;
+  const imgHeart = document.createElement("img");
+  imgHeart.setAttribute("src", pictureHeart);
+  imgHeart.classList.add("barHeart");
+  coeur.appendChild(imgHeart);
 
   /////// Fin de partie pour le fixed en bas de l'ecrant //////
 
@@ -144,6 +161,7 @@ function displayHeader(photographer) {
   const picture1 = `../../assets/photographers/${portrait}`;
   /* Je lui indique la source avec setAttribute */
   img.setAttribute("src", picture1);
+  img.setAttribute("alt", "Photo de profil du photographe");
   /* Je lui ajoute une classe "img" */
   img.classList.add("img");
   /* J'indique que "img" et l'enfant de "divImg" */
@@ -153,7 +171,7 @@ function displayHeader(photographer) {
 }
 ///////// FIN PARTIE AFFICHAGE (Display) /////////////////
 ///////// DEBUT DE LA PARTIE DISPLAY DES MEDIAS //////////
-function filter() {
+function filter(medias) {
   /* Je créer une div qui va englobée tous la 2eme partie */
   const divContainer = document.createElement("div");
   /* Je lui ajoute une classe "container" */
@@ -271,21 +289,42 @@ function idLike(medias) {
   }
 }
 
+function numberLikeTotal() {
+  // Récupère tous les éléments qui contiennent un nombre
+  const elements = document.querySelectorAll(".numberLikes");
+
+  // Définit la variable qui stockera la somme totale
+  let somme = 0;
+  // Parcours chaque élément avec une boucle for
+  for (let i = 0; i < elements.length; i++) {
+    // Récupère le contenu de l'élément sous forme de chaîne de caractères
+    const str = elements[i].innerHTML;
+
+    // Convertit la chaîne de caractères en nombre avec parseInt
+    const num = parseInt(str);
+
+    // Ajoute le nombre à la somme totale
+    somme += num;
+  }
+  return somme;
+  // Affiche la somme totale des nombres
+}
 // function final
 async function init() {
   const photographerId = getId();
   const photographer = await getPhotographer(photographerId);
   displayHeader(photographer);
-  filter();
   const medias = await getMedia(photographerId);
+  filter(medias);
   document.getElementById("mySelect").addEventListener("change", () => {
     myFunction(medias);
   });
   myFunction(medias);
   Lightbox.init();
-  displayName(photographer); // Affiche le nom du photographe au formulaire
+  //displayName(photographer); // Affiche le nom du photographe au formulaire
 
   idLike(medias);
+  numberLikeTotal();
 }
 
 init();

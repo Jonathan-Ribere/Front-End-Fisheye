@@ -32,6 +32,7 @@ function photographerFactory(data) {
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "Photo de profile de : " + name);
     img.classList.add("classImg");
     lien.appendChild(img);
 

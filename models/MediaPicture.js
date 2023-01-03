@@ -31,6 +31,7 @@ class MediaPicture extends Media {
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "Photo :" + this._title);
     img.setAttribute("loading", "lazy");
     img.classList.add("classImgCard");
     lien.appendChild(img);
@@ -63,6 +64,7 @@ class MediaPicture extends Media {
     containerBodyCardLikes.appendChild(divImg);
     const icon = document.createElement("img");
     icon.setAttribute("src", pictureIcon);
+    icon.setAttribute("alt", "Icon qui représente une coeur pour le like");
     icon.classList.add("classSvgIcon");
     divImg.appendChild(icon);
   }
