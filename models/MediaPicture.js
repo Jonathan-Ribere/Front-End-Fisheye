@@ -21,6 +21,8 @@ class MediaPicture extends Media {
 
     const containerBodyCardImg = document.createElement("div");
     containerBodyCardImg.classList.add("containerBodyCardImg");
+    containerBodyCardImg.setAttribute("role", "Image link");
+    containerBodyCardImg.setAttribute("arial-label", "Ouvre la vue lightbox");
     containerBodyCard.appendChild(containerBodyCardImg);
 
     const lien = document.createElement("a");
@@ -46,6 +48,7 @@ class MediaPicture extends Media {
 
     const titre = document.createElement("h3");
     titre.classList.add("titreH3");
+    titre.setAttribute("role", "Nom de la photo");
     containerBodyCardH3.appendChild(titre);
     titre.innerHTML = this._title;
 
@@ -61,10 +64,11 @@ class MediaPicture extends Media {
     const divImg = document.createElement("div");
     divImg.setAttribute("data-id", this._id);
     divImg.classList.add("imgLikes");
+    divImg.setAttribute("role", "Icon en forme de coeur");
     containerBodyCardLikes.appendChild(divImg);
     const icon = document.createElement("img");
     icon.setAttribute("src", pictureIcon);
-    icon.setAttribute("alt", "Icon qui représente une coeur pour le like");
+    icon.setAttribute("alt", "Icon qui représente un coeur pour le like");
     icon.classList.add("classSvgIcon");
     divImg.appendChild(icon);
   }

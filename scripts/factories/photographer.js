@@ -17,6 +17,9 @@ function photographerFactory(data) {
     // Création de la div qui englobe la photo de profile
     const divImg = document.createElement("div");
     divImg.classList.add("divImg");
+    divImg.setAttribute("role", "Link Image");
+    divImg.setAttribute("alt", data.name);
+
     head.appendChild(divImg);
 
     // ajoute de "a" pour le lien
@@ -53,6 +56,7 @@ function photographerFactory(data) {
     const ville = document.createElement("div");
     // Ajoute une class
     ville.classList.add("ville");
+    ville.setAttribute("role", "Information sur " + data.name);
     // info et l'enfant de article
     corps.appendChild(ville);
 

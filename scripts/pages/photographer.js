@@ -57,6 +57,7 @@ function displayHeader(photographer) {
   const bar = document.createElement("div");
   /* Je lui ajoute une classe "bar" */
   bar.classList.add("bar");
+  bar.setAttribute("aria-label", "Nombre total de likes et prix par jour");
   /* J'indique que "bar" et l'enfant de "main" */
   main.appendChild(bar);
 
@@ -82,6 +83,7 @@ function displayHeader(photographer) {
   const pictureHeart = `assets/icons/heart.svg`;
   const imgHeart = document.createElement("img");
   imgHeart.setAttribute("src", pictureHeart);
+  imgHeart.setAttribute("alt", "Icon représentant un coeur");
   imgHeart.classList.add("barHeart");
   coeur.appendChild(imgHeart);
 
@@ -111,6 +113,8 @@ function displayHeader(photographer) {
   const divHeader = document.createElement("div");
   /* Je lui ajoute une classe "divHeaderInfo" */
   divHeader.classList.add("divHeaderInfo");
+  divHeader.setAttribute("aria-label", "informations sur le photographe");
+
   /* J'indique que "divHeader" et l'enfant de "photographerHeader" */
   photographerHeader.appendChild(divHeader);
 
@@ -118,6 +122,8 @@ function displayHeader(photographer) {
   const divInfo = document.createElement("div");
   /* Je lui ajoute une classe "divInfo" */
   divInfo.classList.add("divInfo");
+  divInfo.setAttribute("aria-label", "Lieux et métier du photographe");
+  divInfo.setAttribute("role", "Text");
   /* J'indique que "divHeader" et l'enfant de "photographerHeader" */
   divHeader.appendChild(divInfo);
 
@@ -125,8 +131,11 @@ function displayHeader(photographer) {
   const h1 = document.createElement("h1");
   /* Je lui ajoute une classe "h1" */
   h1.classList.add("h1");
+  h1.setAttribute("aria-label", "Nom du photographe");
+  h1.setAttribute("role", "Header(h1)");
   /* J'indique que "h1" et l'enfant de "divInfo" */
   divInfo.appendChild(h1);
+
   /* Je lui inject du texte avec innerHTML*/
   h1.innerHTML = photographer.name;
 
@@ -171,7 +180,8 @@ function displayHeader(photographer) {
   const picture1 = `../../assets/photographers/${portrait}`;
   /* Je lui indique la source avec setAttribute */
   img.setAttribute("src", picture1);
-  img.setAttribute("alt", "Photo de profil du photographe");
+  img.setAttribute("aria-label", "Photo de profil du photographe");
+  img.setAttribute("role", "Image");
   /* Je lui ajoute une classe "img" */
   img.classList.add("img");
   /* J'indique que "img" et l'enfant de "divImg" */
@@ -202,6 +212,7 @@ function filter(medias) {
   /* Je lui inject du texte avec innerHTML*/
   titreH2.innerHTML = "Trier par ";
   titreH2.setAttribute("arial-label", "Trier par");
+  titreH2.setAttribute("role", "Input label");
   /* J'indique que "titreH2" et l'enfant de "divContainerHeader" */
   divContainerHeader.appendChild(titreH2);
   /* Je créer le Select */

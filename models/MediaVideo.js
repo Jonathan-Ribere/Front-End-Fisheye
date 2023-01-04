@@ -21,8 +21,10 @@ class MediaVideo extends Media {
     containerBodyCard.classList.add("containerBodyCard");
     section.appendChild(containerBodyCard);
 
-    const containerBodyCardImg = document.createElement("figure");
+    const containerBodyCardImg = document.createElement("div");
     containerBodyCardImg.classList.add("containerBodyCardImg");
+    containerBodyCardImg.setAttribute("role", "Image link");
+    containerBodyCardImg.setAttribute("arial-label", "Ouvre la vue lightbox");
     containerBodyCard.appendChild(containerBodyCardImg);
     /**
       const lien = document.createElement("a");

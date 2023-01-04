@@ -2,37 +2,46 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Cache-Control" content="max-age=3600" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+
     <title>Fisheye</title>
   </head>
   <body>
-    <header">
-    <div class="header">
+    <header role="”banner”">
       <div>
-        <img
-          src="assets/images/logo.png"
-          class="logo"
-          role="img"
-          alt="logo du site"
-        />
+        <a
+          href="http://127.0.0.1:5500"
+          aria-label="Lien vers la page d'accueil"
+          alt="Fisheye Home page"
+          role="Image link"
+        >
+          <img
+            src="assets/images/logo.png"
+            class="logo"
+            role="img"
+            alt="logo du site"
+          />
+        </a>
       </div>
       <div>
-        <h1 class="h1Photographer">Nos photographes <i class="fa-solid fa-heart"></i></h1>
+        <h1 class="h1Photographer">
+          Nos photographes <i class="fa-solid fa-heart"></i>
+        </h1>
       </div>
-    </div>
     </header>
     <main id="main">
-      <div class="photographer_section"></div>
+      <section class="photographer_section" role="”region”"></section>
     </main>
     <script
-    src="https://kit.fontawesome.com/aaf38cea95.js"
-    crossorigin="anonymous"
-  ></script>
+      src="https://kit.fontawesome.com/aaf38cea95.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/models//Photographer.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>

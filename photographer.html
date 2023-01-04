@@ -17,19 +17,23 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-  
-    <header">
-      <a href="http://127.0.0.1:5500">
-        <img
-          src="assets/images/logo.png"
-          class="logo"
-          alt="logo du site"
-        />
+    <header role="”banner”">
+      <a
+        href="http://127.0.0.1:5500"
+        aria-label="Lien vers la page d'accueil"
+        role="Image link"
+      >
+        <img src="assets/images/logo.png" class="logo" alt="logo du site" />
       </a>
     </header>
-    <main id="main" aria-label="Contenu principal">
+    <main id="main" arial-label="Contenu principal">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()" aria-label="Ouvrir la fenêtre de contact">
+        <button
+          class="contact_button"
+          onclick="displayModal()"
+          arial-label="Ouvrir la fenêtre de contact"
+          role="button"
+        >
           Contactez-moi
         </button>
       </div>
@@ -40,10 +44,12 @@
         <header class="headerForm">
           <div class="headerFormInfo">
             <div class="headerFormInfo--h2">
-              <h2 id="formH2" class="h2Form" aria-label="Contactez-moi">Contactez-moi</h2>
+              <h2 id="formH2" class="h2Form" arial-label="Contactez-moi">
+                Contactez-moi
+              </h2>
             </div>
             <div class="headerFormInfo--name">
-              <p id="nomPhotographer" aria-label="Nom du photographe"></p>
+              <p id="nomPhotographer" arial-label="Nom du photographe"></p>
             </div>
           </div>
           <div class="titreImg">
@@ -55,7 +61,7 @@
             />
           </div>
         </header>
-        <form class="form" id="form">
+        <form class="form" id="form" role="”form”">
           <div class="form-control error">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" />
