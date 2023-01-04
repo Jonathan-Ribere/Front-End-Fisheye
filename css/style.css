@@ -12,7 +12,14 @@ header {
   align-items: center;
   height: 90px;
 }
-
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.h1Photographer {
+  text-align: end;
+}
 h1 {
   color: #901c1c;
   margin-right: 100px;
@@ -133,14 +140,27 @@ h3 {
 }
 
 .bar {
-  width: 100px;
-  height: 50px;
+  display: flex;
   background-color: #e08c74;
   overflow: hidden;
   bottom: 0;
   position: fixed;
   right: 30px;
   border-radius: 5px;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+}
+.barLikes {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.txtBar {
+  margin-right: 5px;
+}
+.coeur {
+  width: 20px;
+  height: 20px;
 }
 
 .classSvgIcon {

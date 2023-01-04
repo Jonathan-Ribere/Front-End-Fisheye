@@ -27,9 +27,9 @@
         />
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-label="Contenu principal">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
+        <button class="contact_button" onclick="displayModal()" aria-label="Ouvrir la fenêtre de contact">
           Contactez-moi
         </button>
       </div>
@@ -38,9 +38,13 @@
       <div class="modal">
         <div class="blocHeader"></div>
         <header class="headerForm">
-          <div class="titreH2">
-            <h2 id="formH2" class="h2Form">Contactez-moi</h2>
-            <p id="nomPhotographer">Nom du photographe</p>
+          <div class="headerFormInfo">
+            <div class="headerFormInfo--h2">
+              <h2 id="formH2" class="h2Form" aria-label="Contactez-moi">Contactez-moi</h2>
+            </div>
+            <div class="headerFormInfo--name">
+              <p id="nomPhotographer" aria-label="Nom du photographe"></p>
+            </div>
           </div>
           <div class="titreImg">
             <img

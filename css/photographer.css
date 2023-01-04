@@ -59,12 +59,6 @@
   cursor: pointer;
 }
 
-.modal header h2 {
-  font-size: 30px;
-  font-weight: normal;
-  text-align: center;
-}
-
 form {
   display: flex;
   width: 100%;
@@ -96,15 +90,25 @@ form input {
   width: 100%;
   height: auto;
 }
+.headerFormInfo {
+  display: flex;
+  flex-direction: column;
+}
+#nomPhotographer {
+  margin-top: 0;
+  font-size: 3rem;
+}
 .titreH2 {
   width: 60%;
 }
 .h2Form {
-  font-size: 30px;
-  margin: 0;
+  font-size: 3rem;
+  margin-top: 0px;
 }
 .titreImg {
   width: 10%;
+  display: flex;
+  justify-content: end;
 }
 .closeForm {
   width: 25px;

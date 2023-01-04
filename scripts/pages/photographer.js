@@ -74,7 +74,6 @@ function displayHeader(photographer) {
   const txtBar = document.createElement("p");
   txtBar.classList.add("txtBar");
   nombre.appendChild(txtBar);
-  txtBar.innerHTML = "hhvvhvh";
 
   const coeur = document.createElement("div");
   coeur.classList.add("coeur");
@@ -85,6 +84,17 @@ function displayHeader(photographer) {
   imgHeart.setAttribute("src", pictureHeart);
   imgHeart.classList.add("barHeart");
   coeur.appendChild(imgHeart);
+
+  const barPrice = document.createElement("div");
+  /* Je lui ajoute une classe "barPrice" */
+  barPrice.classList.add("barPrice");
+  /* J'indique que "barPrice" et l'enfant de "bar" */
+  bar.appendChild(barPrice);
+
+  const priceDay = document.createElement("div");
+  priceDay.classList.add("priceDay");
+  barPrice.appendChild(priceDay);
+  priceDay.innerHTML = "300 / jours";
 
   /////// Fin de partie pour le fixed en bas de l'ecrant //////
 
@@ -191,11 +201,13 @@ function filter(medias) {
   titreH2.classList.add("titreH2");
   /* Je lui inject du texte avec innerHTML*/
   titreH2.innerHTML = "Trier par ";
+  titreH2.setAttribute("arial-label", "Trier par");
   /* J'indique que "titreH2" et l'enfant de "divContainerHeader" */
   divContainerHeader.appendChild(titreH2);
   /* Je créer le Select */
   const select = document.createElement("select");
   select.setAttribute("id", "mySelect");
+  select.setAttribute("arial-label", "Sélecteur de tri");
   /* Je créer les variable des option du Select */
   let popularite = new Option("Popularité");
   popularite.setAttribute("value", "popularite");
@@ -294,7 +306,7 @@ function numberLikeTotal() {
   const elements = document.querySelectorAll(".numberLikes");
 
   // Définit la variable qui stockera la somme totale
-  let somme = 0;
+  let total = 0;
   // Parcours chaque élément avec une boucle for
   for (let i = 0; i < elements.length; i++) {
     // Récupère le contenu de l'élément sous forme de chaîne de caractères
@@ -304,9 +316,12 @@ function numberLikeTotal() {
     const num = parseInt(str);
 
     // Ajoute le nombre à la somme totale
-    somme += num;
+    total += num;
   }
-  return somme;
+  const element = document.querySelector(".txtBar");
+  element.innerHTML = total;
+  //txtBar.innerHTML = somme;
+  //return somme;
   // Affiche la somme totale des nombres
 }
 // function final
@@ -314,6 +329,10 @@ async function init() {
   const photographerId = getId();
   const photographer = await getPhotographer(photographerId);
   displayHeader(photographer);
+  const prix = document.querySelector(".priceDay");
+  prix.innerHTML = photographer.price + "€ /jour";
+  const namePhotographeForm = document.querySelector("#nomPhotographer");
+  namePhotographeForm.innerHTML = photographer.name;
   const medias = await getMedia(photographerId);
   filter(medias);
   document.getElementById("mySelect").addEventListener("change", () => {
