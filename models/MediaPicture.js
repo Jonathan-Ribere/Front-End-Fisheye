@@ -22,7 +22,8 @@ class MediaPicture extends Media {
     const containerBodyCardImg = document.createElement("div");
     containerBodyCardImg.classList.add("containerBodyCardImg");
     containerBodyCardImg.setAttribute("role", "img");
-    containerBodyCardImg.setAttribute("arial-label", "Ouvre la vue lightbox");
+    containerBodyCardImg.setAttribute("aria-label", "Ouvre la vue lightbox");
+    containerBodyCardImg.setAttribute("tabindex", "9");
     containerBodyCard.appendChild(containerBodyCardImg);
 
     const lien = document.createElement("a");
@@ -44,6 +45,7 @@ class MediaPicture extends Media {
 
     const containerBodyCardH3 = document.createElement("div");
     containerBodyCardH3.classList.add("containerBodyCardH3");
+    containerBodyCardH3.setAttribute("tabindex", "10");
     containerBodyCardinfo.appendChild(containerBodyCardH3);
 
     const titre = document.createElement("h3");
@@ -54,6 +56,7 @@ class MediaPicture extends Media {
 
     const containerBodyCardLikes = document.createElement("div");
     containerBodyCardLikes.classList.add("containerBodyCardLikes");
+    containerBodyCardLikes.setAttribute("tabindex", "11");
     containerBodyCardinfo.appendChild(containerBodyCardLikes);
 
     const p = document.createElement("p");
@@ -68,7 +71,8 @@ class MediaPicture extends Media {
     containerBodyCardLikes.appendChild(divImg);
     const icon = document.createElement("img");
     icon.setAttribute("src", pictureIcon);
-    icon.setAttribute("alt", "Icon qui représente un coeur pour le like");
+    icon.setAttribute("alt", "like");
+    icon.setAttribute("aria-label", "likes");
     icon.classList.add("classSvgIcon");
     divImg.appendChild(icon);
   }

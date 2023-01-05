@@ -1,9 +1,11 @@
+//getPhotographers récupère la liste des photographes disponibles à partir d'un fichier JSON.
 async function getPhotographers() {
   const response = await fetch("/data/photographers.json");
   const data = await response.json();
   return data;
 }
 
+//displayData affiche la liste des photographes
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
@@ -15,7 +17,7 @@ async function displayData(photographers) {
 }
 
 async function init() {
-  // Récupère les datas des photographes
+  // Récupération de la liste des photographes à partir du fichier JSON
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }

@@ -99,7 +99,7 @@ form input {
   font-size: 3rem;
 }
 .titreH2 {
-  width: 60%;
+  width: 100%;
 }
 .h2Form {
   font-size: 3rem;
@@ -121,4 +121,7 @@ form input {
 }
 .imgLikes {
   cursor: pointer;
+}
+.divTitreH2 {
+  width: 10%;
 }

@@ -1,6 +1,4 @@
-{
-  /* Partie qui regroupe tous les functions de récupération */
-}
+/* Partie qui regroupe tous les functions de récupération */
 
 //getId récupère l'ID du profil dans l'URL de la page.
 function getId() {
@@ -52,6 +50,7 @@ function displayHeader(photographer) {
   const bar = document.createElement("div");
   bar.classList.add("bar");
   bar.setAttribute("aria-label", "Nombre total de likes et prix par jour");
+  bar.setAttribute("tabindex", "6");
   main.appendChild(bar);
 
   const barInfo = document.createElement("div");
@@ -102,30 +101,37 @@ function displayHeader(photographer) {
   divInfo.classList.add("divInfo");
   divInfo.setAttribute("aria-label", "Lieux et métier du photographe");
   divInfo.setAttribute("role", "txt");
+  divInfo.setAttribute("tabindex", "2");
   divHeader.appendChild(divInfo);
+
+  const namePhotographe = document.createElement("div");
+  namePhotographe.classList.add("namePhotographe");
+  divInfo.appendChild(namePhotographe);
 
   /* Je créer H1 qui sera dans la div "divInfo" */
   const h1 = document.createElement("h1");
   h1.classList.add("h1");
   h1.setAttribute("aria-label", "Nom du photographe");
   h1.setAttribute("role", "heading");
-  divInfo.appendChild(h1);
   h1.innerHTML = photographer.name;
+  namePhotographe.appendChild(h1);
+
+  const info = document.createElement("div");
+  info.classList.add("info");
+  info.setAttribute("aria-label", "info du photographe");
+  info.setAttribute("tabindex", "3");
+  divInfo.appendChild(info);
 
   /* Je créer un paragraphe pour affichée city*/
   const city = document.createElement("p");
   city.classList.add("city");
-  divInfo.appendChild(city);
-
-  const country = document.createElement("p");
-  country.classList.add("country");
-  divInfo.appendChild(country);
   city.innerHTML = photographer.city + ", " + photographer.country;
+  info.appendChild(city);
 
   /* Je créer un paragraphe pour affichée tagline*/
   const tagline = document.createElement("p");
   tagline.classList.add("tagline");
-  divInfo.appendChild(tagline);
+  info.appendChild(tagline);
   tagline.innerHTML = photographer.tagline;
 
   // Partie pour la photo //
@@ -142,6 +148,7 @@ function displayHeader(photographer) {
   img.setAttribute("src", picture1);
   img.setAttribute("aria-label", "Photo de profil du photographe");
   img.setAttribute("role", "img");
+  img.setAttribute("tabindex", "5");
   img.classList.add("img");
   divImg.appendChild(img);
 }
@@ -154,6 +161,7 @@ const displayMedia = (medias) => {
   });
 };
 
+/* Partie pour le tri */
 // filter crée et ajoute à la page web un formulaire de tri des médias.
 function filter(medias) {
   const divContainer = document.createElement("div");
@@ -164,23 +172,33 @@ function filter(medias) {
   divContainerHeader.classList.add("container-header");
   divContainer.appendChild(divContainerHeader);
 
+  const divTitreH2 = document.createElement("div");
+  divTitreH2.classList.add("divTitreH2");
+  divTitreH2.setAttribute("tabindex", "7");
+  divContainerHeader.appendChild(divTitreH2);
+
   const titreH2 = document.createElement("h2");
   titreH2.classList.add("titreH2");
   titreH2.innerHTML = "Trier par ";
-  titreH2.setAttribute("arial-label", "Trier par");
+  titreH2.setAttribute("aria-label", "Trier par");
   titreH2.setAttribute("role", "heading");
-  divContainerHeader.appendChild(titreH2);
+  divTitreH2.appendChild(titreH2);
+
+  const divSelect = document.createElement("div");
+  divSelect.classList.add("divSelect");
+  divSelect.setAttribute("tabindex", "8");
+  divContainerHeader.appendChild(divSelect);
 
   const select = document.createElement("select");
   select.setAttribute("id", "mySelect");
-  select.setAttribute("arial-label", "Sélecteur de tri");
+  select.setAttribute("aria-label", "Sélecteur de tri");
   let popularite = new Option("Popularité");
   popularite.setAttribute("value", "popularite");
   let date = new Option("Date");
   date.setAttribute("value", "date");
   let titre = new Option("Titre");
   titre.setAttribute("value", "titre");
-  divContainerHeader.appendChild(select);
+  divSelect.appendChild(select);
 
   const selectOption = document.querySelector("select");
   selectOption.add(popularite);
@@ -290,7 +308,7 @@ async function init() {
   // Ajout d'un écouteur d'événement sur le menu déroulant du formulaire de tri pour trier
   // les médias à chaque changement de sélection
   document.getElementById("mySelect").addEventListener("change", () => {
-    myFunction(medias);
+    sortMedias(medias);
   });
   // Tri des médias selon le critère par défaut (popularité)
   sortMedias(medias);

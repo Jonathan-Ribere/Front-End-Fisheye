@@ -1,4 +1,3 @@
-//import { enableBodyScroll, disableBodyScroll } from "../js/body-scroll-lock";
 /**
  * @property {HTMLElement} element
  * @property {string[]} images Chemins des images de la lightbox
@@ -7,11 +6,9 @@
 
 class Lightbox {
   static init() {
-    // Je sélectionne tous mes lien "a" dans la const links
     const links = Array.from(
       document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
     );
-    //console.log(links);
     const gallery = links.map((link) => link.getAttribute("href"));
     // Pour chaque lien je fait un listener pour ecoutée au click les événements
     links.forEach((link) => {
@@ -25,9 +22,6 @@ class Lightbox {
         new Lightbox(e.currentTarget.getAttribute("href"), gallery);
       });
     });
-    /* console.log(
-      document.querySelectorAll('a[href$=".jpg"]', 'a[href$=".mp4"]')
-    );*/
   }
   // Je commente mon code
   /**

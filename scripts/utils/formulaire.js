@@ -1,24 +1,25 @@
-// Afichage du nom du photographe dynamique
+//displayName affiche le nom du photographe dans un élément HTML spécifié
 function displayName(photographer) {
   const nomPhotographer = document.querySelector("#nomPhotographer");
   nomPhotographer.innerHTML = `${photographer.name}`;
 }
 
-// La récupération des éléments
+//Récupération des éléments
 const form = document.querySelector("#form");
 
-// Ecouter les modfi sur l'input prénom
+// Ecouter les modfi sur l'input
 form.prenom.addEventListener("change", function () {
   validPrenom(this);
 });
-// Ecouter les modfi sur l'input Nom
+
 form.nom.addEventListener("change", function () {
   validPrenom(this);
 });
-// Ecouter les modfi sur l'input Email
+
 form.email.addEventListener("change", function () {
   validEmail(this);
 });
+
 // Ecouter la soumission du formulaire
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -27,9 +28,7 @@ form.addEventListener("submit", function (e) {
     validPrenom(form.nom) &&
     validEmail(form.email)
   ) {
-    // console.log(getValue());
     getValue(); // appel de la fonction getValue() ici
-    // form.submit();
   }
 });
 

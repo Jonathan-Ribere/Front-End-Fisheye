@@ -86,8 +86,10 @@ h3 {
 
 .container-header {
   display: flex;
+  width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+  align-items: center;
 }
 .titreH2 {
   margin-right: 15px;
