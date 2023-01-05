@@ -81,10 +81,11 @@ const validEmail = function (inputEmail) {
 
 function getValue() {
   // Sélectionner l'élément input et récupérer sa valeur
-  var input = document.getElementById("nom").value;
-  var inpu1 = document.getElementById("prenom").value;
-  var input2 = document.getElementById("email").value;
+  let Nom = document.getElementById("nom").value;
+  let Prenom = document.getElementById("prenom").value;
+  let Email = document.getElementById("email").value;
+  let Message = document.getElementById("textarea").value;
 
   // Afficher la valeur
-  console.log(input, inpu1, input2);
+  console.log(Nom, Prenom, Email, Message);
 }

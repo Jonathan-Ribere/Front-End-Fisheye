@@ -45,11 +45,11 @@
       role="dialog"
       aria-describedby="modalForm"
     >
-      <div class="modal">
+      <div class="modal" tabindex="1">
         <div class="blocHeader"></div>
         <header class="headerForm">
           <div class="headerFormInfo">
-            <div class="headerFormInfo--h2">
+            <div class="headerFormInfo--h2" tabindex="2">
               <h2 id="formH2" class="h2Form" aria-label="Contactez-moi">
                 Contactez-moi
               </h2>
@@ -74,18 +74,30 @@
           aria-labelledby="coordonnees"
         >
           <div class="form-control error">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" />
+            <label for="prenom" tabindex="3">Prénom</label>
+            <input type="text" id="prenom" tabindex="4" />
             <small></small>
           </div>
           <div class="form-control success">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" />
+            <label for="nom" tabindex="5">Nom</label>
+            <input type="text" id="nom" tabindex="6" />
             <small></small>
           </div>
           <div class="form-control">
-            <label for="email">Email</label>
-            <input type="email" id="email" />
+            <label for="email" tabindex="7">Email</label>
+            <input type="email" id="email" tabindex="8" />
+            <small></small>
+          </div>
+          <div class="form-control">
+            <label for="textarea" tabindex="9">Votre Message</label>
+            <textarea
+              name="textarea"
+              id="textarea"
+              cols="60"
+              rows="10"
+              tabindex="10"
+            ></textarea>
+
             <small></small>
           </div>
           <button
@@ -93,6 +105,7 @@
             onclick="getValue()"
             class="contact_button"
             role="button"
+            tabindex="11"
           >
             Envoyer
           </button>
