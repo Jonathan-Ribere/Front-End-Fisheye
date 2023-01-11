@@ -10,7 +10,8 @@ class MediaVideo extends Media {
   // ici créer function pour afficher les video
   display() {
     const video = `assets/medias/${this._photographerId + "/" + this._video}`;
-
+    let thumbnail = "../assets/medias/82/Art_Wooden_Horse_Sculpture.png";
+    console.log(thumbnail);
     const pictureIcon = `assets/icons/heart.svg`;
     const mediaSection = document.querySelector(".containerBody");
     const section = document.createElement("section");
@@ -23,15 +24,9 @@ class MediaVideo extends Media {
 
     const containerBodyCardImg = document.createElement("div");
     containerBodyCardImg.classList.add("containerBodyCardImg");
-    containerBodyCardImg.setAttribute("role", "img");
+    containerBodyCardImg.setAttribute("role", "video");
     containerBodyCardImg.setAttribute("aria-label", "Ouvre la vue lightbox");
     containerBodyCard.appendChild(containerBodyCardImg);
-    /**
-      const lien = document.createElement("a");
-    lien.setAttribute("href", picture);
-    lien.classList.add("lienImg");
-    containerBodyCardImg.appendChild(lien); 
-     */
 
     const lienMp4 = document.createElement("a");
     lienMp4.setAttribute("href", video);
@@ -40,8 +35,8 @@ class MediaVideo extends Media {
     containerBodyCardImg.appendChild(lienMp4);
 
     const v = document.createElement("video");
-    v.setAttribute("poster", video);
-    //v.setAttribute("src", video);
+    v.setAttribute("src", video);
+    v.setAttribute("poster", thumbnail);
     v.controls = true;
     v.muted = false;
     v.classList.add("classVideoCard");
