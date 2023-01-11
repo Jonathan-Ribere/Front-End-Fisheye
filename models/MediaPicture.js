@@ -66,6 +66,7 @@ class MediaPicture extends Media {
 
     const divImg = document.createElement("div");
     divImg.setAttribute("data-id", this._id);
+    divImg.setAttribute("data-like", false);
     divImg.classList.add("imgLikes");
     divImg.setAttribute("role", "img");
     containerBodyCardLikes.appendChild(divImg);

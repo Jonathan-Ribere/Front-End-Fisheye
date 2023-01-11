@@ -26,6 +26,7 @@ class MediaVideo extends Media {
     containerBodyCardImg.classList.add("containerBodyCardImg");
     containerBodyCardImg.setAttribute("role", "video");
     containerBodyCardImg.setAttribute("aria-label", "Ouvre la vue lightbox");
+    containerBodyCardImg.setAttribute("tabindex", "9");
     containerBodyCard.appendChild(containerBodyCardImg);
 
     const lienMp4 = document.createElement("a");
@@ -48,6 +49,7 @@ class MediaVideo extends Media {
 
     const containerBodyCardH3 = document.createElement("div");
     containerBodyCardH3.classList.add("containerBodyCardH3");
+    containerBodyCardH3.setAttribute("tabindex", "10");
     containerBodyCardinfo.appendChild(containerBodyCardH3);
 
     const titre = document.createElement("h3");
@@ -57,6 +59,7 @@ class MediaVideo extends Media {
 
     const containerBodyCardLikes = document.createElement("div");
     containerBodyCardLikes.classList.add("containerBodyCardLikes");
+    containerBodyCardLikes.setAttribute("tabindex", "11");
     containerBodyCardinfo.appendChild(containerBodyCardLikes);
 
     const p = document.createElement("p");
@@ -64,10 +67,18 @@ class MediaVideo extends Media {
     containerBodyCardLikes.appendChild(p);
     p.innerHTML = this._likes;
 
+    const divImg = document.createElement("div");
+    divImg.setAttribute("data-id", this._id);
+    divImg.setAttribute("data-like", false);
+    divImg.setAttribute("role", "img");
+    divImg.classList.add("imgLikes");
+    containerBodyCardLikes.appendChild(divImg);
     const icon = document.createElement("img");
     icon.setAttribute("src", pictureIcon);
+    icon.setAttribute("alt", "like");
+    icon.setAttribute("aria-label", "likes");
     icon.classList.add("classSvgIcon");
-    containerBodyCardLikes.appendChild(icon);
+    divImg.appendChild(icon);
   }
 }
 //const media = createMedia("video", data);

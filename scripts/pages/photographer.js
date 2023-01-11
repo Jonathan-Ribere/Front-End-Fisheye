@@ -215,9 +215,11 @@ customSortTitre = (a, b) => {
 function idLike(medias) {
   const selectCoeurs = document.getElementsByClassName("imgLikes");
   const array = medias;
+  console.log(array);
   for (const selectCoeur of selectCoeurs) {
     selectCoeur.addEventListener("click", (e) => {
       let id = e.currentTarget.dataset.id;
+      console.log(id);
       const media = array.find((media) => {
         id = Number(id);
         return media._id === id;
