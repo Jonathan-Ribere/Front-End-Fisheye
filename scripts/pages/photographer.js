@@ -44,47 +44,6 @@ async function getMedia(idProfil) {
 
 /* Partie qui regroupe tous les functions d'affichage */
 function displayHeader(photographer) {
-  /////// Partie pour le fixed en bas de l'ecrant //////
-  const pictureIcon = `/assets/icons/heart.svg`;
-  const main = document.querySelector("main");
-  const bar = document.createElement("div");
-  bar.classList.add("bar");
-  bar.setAttribute("aria-label", "Nombre total de likes et prix par jour");
-  bar.setAttribute("tabindex", "6");
-  main.appendChild(bar);
-
-  const barInfo = document.createElement("div");
-  barInfo.classList.add("barLikes");
-  bar.appendChild(barInfo);
-
-  const nombre = document.createElement("div");
-  nombre.classList.add("nombre");
-  barInfo.appendChild(nombre);
-
-  const txtBar = document.createElement("p");
-  txtBar.classList.add("txtBar");
-  nombre.appendChild(txtBar);
-
-  const coeur = document.createElement("div");
-  coeur.classList.add("coeur");
-  barInfo.appendChild(coeur);
-
-  const pictureHeart = `assets/icons/heart.svg`;
-  const imgHeart = document.createElement("img");
-  imgHeart.setAttribute("src", pictureHeart);
-  imgHeart.setAttribute("alt", "Icon représentant un coeur");
-  imgHeart.classList.add("barHeart");
-  coeur.appendChild(imgHeart);
-
-  const barPrice = document.createElement("div");
-  barPrice.classList.add("barPrice");
-  bar.appendChild(barPrice);
-
-  const priceDay = document.createElement("div");
-  priceDay.classList.add("priceDay");
-  barPrice.appendChild(priceDay);
-  priceDay.innerHTML = "300 / jours";
-
   const photographerHeader = document.querySelector(".photograph-header");
   const photographerHeaderContainer = document.createElement("div");
   photographerHeaderContainer.classList.add("photographerHeaderContainer");
@@ -284,6 +243,52 @@ function numberLikeTotal() {
   element.innerHTML = total;
 }
 
+function displayBar(photographer) {
+  const pictureIcon = `/assets/icons/heart.svg`;
+  const main = document.querySelector("main");
+  const bar = document.createElement("div");
+  bar.classList.add("bar");
+  bar.setAttribute("aria-label", "Nombre total de likes et prix par jour");
+  bar.setAttribute("tabindex", "6");
+  main.appendChild(bar);
+
+  const barInfo = document.createElement("div");
+  barInfo.classList.add("barLikes");
+  bar.appendChild(barInfo);
+
+  const nombre = document.createElement("div");
+  nombre.classList.add("nombre");
+  barInfo.appendChild(nombre);
+
+  const txtBar = document.createElement("p");
+  txtBar.classList.add("txtBar");
+  nombre.appendChild(txtBar);
+
+  const coeur = document.createElement("div");
+  coeur.classList.add("coeur");
+  barInfo.appendChild(coeur);
+
+  const pictureHeart = `assets/icons/heart.svg`;
+  const imgHeart = document.createElement("img");
+  imgHeart.setAttribute("src", pictureHeart);
+  imgHeart.setAttribute("alt", "Icon représentant un coeur");
+  imgHeart.classList.add("barHeart");
+  coeur.appendChild(imgHeart);
+
+  const barPrice = document.createElement("div");
+  barPrice.classList.add("barPrice");
+  bar.appendChild(barPrice);
+
+  const priceDay = document.createElement("div");
+  priceDay.classList.add("priceDay");
+  barPrice.appendChild(priceDay);
+  priceDay.innerHTML = "300 / jours";
+
+  // Mise à jour du prix affiché sur la page web
+  const prix = document.querySelector(".priceDay");
+  prix.innerHTML = photographer.price + "€ /jour";
+}
+
 // init initialise l'affichage des informations du photographe et des médias sur la page web.
 // Elle récupère l'identifiant du photographe, puis utilise cet identifiant pour récupérer les informations du photographe et des médias associés à ce photographe.
 // Elle affiche ces informations sur la page web en utilisant les fonctions displayHeader, filter et sortMedias
@@ -295,9 +300,7 @@ async function init() {
   const photographer = await getPhotographer(photographerId);
   // Affichage des informations du photographe sur la page web
   displayHeader(photographer);
-  // Mise à jour du prix affiché sur la page web
-  const prix = document.querySelector(".priceDay");
-  prix.innerHTML = photographer.price + "€ /jour";
+
   // Mise à jour du nom du photographe affiché dans le formulaire de contact
   const namePhotographeForm = document.querySelector("#nomPhotographer");
   namePhotographeForm.innerHTML = photographer.name;
@@ -313,7 +316,9 @@ async function init() {
   // Tri des médias selon le critère par défaut (popularité)
   sortMedias(medias);
   // Initialisation de la fonctionnalité de "lightbox"
-  Lightbox.init();
+  //Lightbox.init();
+  displayBar(photographer);
+
   // Gestion des likes des médias
   idLike(medias);
   // Mise à jour du nombre total de likes affiché sur la page web
