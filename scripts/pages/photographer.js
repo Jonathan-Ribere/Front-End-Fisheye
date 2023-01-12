@@ -214,13 +214,13 @@ customSortTitre = (a, b) => {
 /* idLike a pour but de gérer le comportement de "like" sur les photos du profil. */
 function idLike(medias) {
   // Récupère tous les éléments ayant la classe "imgLikes"
-  const selectCoeurs = document.getElementsByClassName("imgLikes");
+  const elementsLikes = document.getElementsByClassName("imgLikes");
   // Crée une référence à la liste de médias passée en paramètre
   const array = medias;
   // Pour chaque élément ayant la classe "imgLikes"
-  for (const selectCoeur of selectCoeurs) {
+  for (const elementsLike of elementsLikes) {
     // Ajoute un écouteur d'événement "click" à l'élément
-    selectCoeur.addEventListener("click", (e) => {
+    elementsLike.addEventListener("click", (e) => {
       // Récupère la valeur de l'attribut "data-id" de l'élément cliqué
       const id = e.currentTarget.dataset.id;
       // Vérifie que l'attribut "data-id" existe
