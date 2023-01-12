@@ -10,8 +10,8 @@ class MediaVideo extends Media {
   // ici créer function pour afficher les video
   display() {
     const video = `assets/medias/${this._photographerId + "/" + this._video}`;
-    let thumbnail = "../assets/medias/82/Art_Wooden_Horse_Sculpture.png";
-    console.log(thumbnail);
+    let thumbnailUrl = "../assets/medias/82/Art_Wooden_Horse_Sculpture.png";
+    console.log(thumbnailUrl);
     const pictureIcon = `assets/icons/heart.svg`;
     const mediaSection = document.querySelector(".containerBody");
     const section = document.createElement("section");
@@ -29,21 +29,42 @@ class MediaVideo extends Media {
     containerBodyCardImg.setAttribute("tabindex", "9");
     containerBodyCard.appendChild(containerBodyCardImg);
 
+    const thumbnail_ = document.createElement("img");
+    thumbnail_.setAttribute("src", thumbnailUrl);
+    thumbnail_.setAttribute("id", "thumbnail1");
+    thumbnail_.setAttribute("alt", "Vignette de la vidéo : " + this._title);
+    thumbnail_.classList.add("classImgCard");
+    containerBodyCardImg.appendChild(thumbnail_);
+
     const lienMp4 = document.createElement("a");
     lienMp4.setAttribute("href", video);
-    lienMp4.classList.add("lienImg");
+    lienMp4.classList.add("lienImg", "play-button");
     lienMp4.setAttribute("data-type", "video");
-    lienMp4.setAttribute("aria-label", "lien de la video");
+    lienMp4.setAttribute("aria-label", "lancer la video");
     containerBodyCardImg.appendChild(lienMp4);
 
     const v = document.createElement("video");
-    v.setAttribute("src", video);
-    v.setAttribute("poster", thumbnail);
-    v.setAttribute("alt", "Video : " + this._title);
-    v.controls = true;
-    v.muted = false;
-    v.classList.add("classVideoCard");
-    lienMp4.appendChild(v);
+    v.setAttribute("poster", thumbnailUrl);
+    v.setAttribute("id", "video1");
+    v.setAttribute("controls", "controls");
+    v.classList.add("classImgCard");
+    containerBodyCardImg.appendChild(v);
+
+    const source = document.createElement("source");
+    source.setAttribute("src", video);
+    source.setAttribute("type", "video/mp4");
+    v.appendChild(source);
+
+    const thumbnail1 = document.getElementById("thumbnail");
+    const video1 = document.getElementById("video");
+    const playButton = document.querySelector(".play-button");
+    thumbnail1.addEventListener("click", function () {
+      video1.play();
+    });
+
+    playButton.addEventListener("click", function () {
+      video1.play();
+    });
 
     const containerBodyCardinfo = document.createElement("div");
     containerBodyCardinfo.classList.add("containerBodyCardinfo");
