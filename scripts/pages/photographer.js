@@ -213,21 +213,60 @@ customSortTitre = (a, b) => {
 
 /* idLike a pour but de gérer le comportement de "like" sur les photos du profil. */
 function idLike(medias) {
+  // Récupère tous les éléments ayant la classe "imgLikes"
   const selectCoeurs = document.getElementsByClassName("imgLikes");
+  // Crée une référence à la liste de médias passée en paramètre
   const array = medias;
-  console.log(array);
+  // Pour chaque élément ayant la classe "imgLikes"
   for (const selectCoeur of selectCoeurs) {
+    // Ajoute un écouteur d'événement "click" à l'élément
     selectCoeur.addEventListener("click", (e) => {
-      let id = e.currentTarget.dataset.id;
-      console.log(id);
-      const media = array.find((media) => {
-        id = Number(id);
-        return media._id === id;
-      });
-      if (media) {
-        media._likes += 1;
-        e.currentTarget.parentNode.firstChild.textContent = media._likes;
+      // Récupère la valeur de l'attribut "data-id" de l'élément cliqué
+      const id = e.currentTarget.dataset.id;
+      // Vérifie que l'attribut "data-id" existe
+      if (id === undefined) {
+        console.error("attribut 'data-id' manquant");
+        return;
       }
+      // Vérifie que la valeur de l'attribut "data-id" est bien un nombre
+      if (isNaN(id)) {
+        console.error("attribut 'data-id' doit être un nombre");
+        return;
+      }
+      // Récupère le média correspondant à l'id
+      const media = array.find((media) => {
+        return media._id === Number(id);
+      });
+      // Vérifie si le média a été trouvé
+      if (!media) {
+        console.error("média introuvable");
+        return;
+      }
+      // Récupère la valeur de l'attribut "data-like" de l'élément cliqué
+      let atributValue = e.currentTarget.dataset.like;
+
+      // Si l'attribut "data-like" n'existe pas, il est mis à faux par défaut
+      if (atributValue === undefined) {
+        atributValue = false;
+        e.currentTarget.dataset.like = atributValue;
+      }
+      // Si la valeur de l'attribut "data-like" est fausse, incrémente le nombre de likes
+      if (atributValue === "false") {
+        media._likes += 1;
+        e.currentTarget.dataset.like = true;
+        // Si la valeur de l'attribut "data-like" est vraie, décrémente le nombre de likes
+      } else if (atributValue === "true") {
+        media._likes -= 1;
+        e.currentTarget.dataset.like = false;
+      }
+      // Récupère le noeud de compte
+      const countNode = e.currentTarget.parentNode.firstChild;
+      // Vérifie si le noeud de compte a été trouvé
+      if (!countNode) {
+        console.error("noeud de compte introuvable");
+        return;
+      }
+      countNode.textContent = media._likes;
     });
   }
 }
