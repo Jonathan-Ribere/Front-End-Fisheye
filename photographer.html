@@ -17,12 +17,8 @@
     <title tabindex="1">Fisheye - photographe</title>
   </head>
   <body>
-    <header role="”banner”">
-      <a
-        href="http://127.0.0.1:5500"
-        aria-label="Lien vers la page d'accueil"
-        role="img"
-      >
+    <header>
+      <a href="/index.html" aria-label="Lien vers la page d'accueil" role="img">
         <img src="assets/images/logo.png" class="logo" alt="logo du site" />
       </a>
     </header>
@@ -32,19 +28,13 @@
           class="contact_button"
           onclick="displayModal()"
           aria-label="Ouvrir la fenêtre de contact"
-          role="button"
           tabindex="4"
         >
           Contactez-moi
         </button>
       </div>
     </main>
-    <div
-      id="contact_modal"
-      aria-hidden="true"
-      role="dialog"
-      aria-describedby="modalForm"
-    >
+    <div id="contact_modal" aria-hidden="true" role="dialog">
       <div class="modal" tabindex="1">
         <div class="blocHeader"></div>
         <header class="headerForm">
@@ -55,7 +45,7 @@
               </h2>
             </div>
             <div class="headerFormInfo--name">
-              <p id="nomPhotographer" aria-label="Nom du photographe"></p>
+              <p id="nomPhotographer"></p>
             </div>
           </div>
           <div class="titreImg">
@@ -67,12 +57,7 @@
             />
           </div>
         </header>
-        <form
-          class="form"
-          id="form"
-          role="”form”"
-          aria-labelledby="coordonnees"
-        >
+        <form class="form" id="form">
           <div class="form-control error">
             <label for="prenom" tabindex="3">Prénom</label>
             <input type="text" id="prenom" tabindex="4" />
@@ -104,7 +89,6 @@
             type="submit"
             onclick="getValue()"
             class="contact_button"
-            role="button"
             tabindex="11"
           >
             Envoyer

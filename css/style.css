@@ -186,3 +186,11 @@ h3 {
 .classSvgIcon {
   margin-left: 6px;
 }
+
+.select {
+  width: 9rem;
+  padding: 11px;
+  background-color: #901c1c;
+  color: white;
+  font-weight: bold;
+}

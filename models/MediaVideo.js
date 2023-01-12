@@ -33,11 +33,13 @@ class MediaVideo extends Media {
     lienMp4.setAttribute("href", video);
     lienMp4.classList.add("lienImg");
     lienMp4.setAttribute("data-type", "video");
+    lienMp4.setAttribute("aria-label", "lien de la video");
     containerBodyCardImg.appendChild(lienMp4);
 
     const v = document.createElement("video");
     v.setAttribute("src", video);
     v.setAttribute("poster", thumbnail);
+    v.setAttribute("alt", "Video : " + this._title);
     v.controls = true;
     v.muted = false;
     v.classList.add("classVideoCard");

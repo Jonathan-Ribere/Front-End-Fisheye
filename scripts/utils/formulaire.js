@@ -5,15 +5,15 @@ function displayName(photographer) {
 }
 
 //Récupération des éléments
-const form = document.querySelector("#form");
+const form = document.querySelector("form");
 
 // Ecouter les modfi sur l'input
 form.prenom.addEventListener("change", function () {
-  validPrenom(this);
+  validName(this);
 });
 
 form.nom.addEventListener("change", function () {
-  validPrenom(this);
+  validName(this);
 });
 
 form.email.addEventListener("change", function () {
@@ -23,17 +23,13 @@ form.email.addEventListener("change", function () {
 // Ecouter la soumission du formulaire
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (
-    validPrenom(form.prenom) &&
-    validPrenom(form.nom) &&
-    validEmail(form.email)
-  ) {
+  if (validName(form.prenom) && validName(form.nom) && validEmail(form.email)) {
     getValue(); // appel de la fonction getValue() ici
   }
 });
 
 //VALIDATION DU PRÉNOM /////
-const validPrenom = function (inputPrenom) {
+const validName = function (inputPrenom) {
   // Création de la reg exp pour valid le prénom
   let prenomRegexp = new RegExp("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
 
@@ -81,10 +77,10 @@ const validEmail = function (inputEmail) {
 
 function getValue() {
   // Sélectionner l'élément input et récupérer sa valeur
-  let Nom = document.getElementById("nom").value;
-  let Prenom = document.getElementById("prenom").value;
-  let Email = document.getElementById("email").value;
-  let Message = document.getElementById("textarea").value;
+  let Nom = document.querySelector("#nom").value;
+  let Prenom = document.querySelector("#prenom").value;
+  let Email = document.querySelector("#email").value;
+  let Message = document.querySelector("#textarea").value;
 
   // Afficher la valeur
   console.log(Nom, Prenom, Email, Message);

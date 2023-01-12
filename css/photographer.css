@@ -124,7 +124,7 @@ form input {
   cursor: pointer;
 }
 .divTitreH2 {
-  width: 10%;
+  width: auto;
 }
 textarea {
   width: 100%;

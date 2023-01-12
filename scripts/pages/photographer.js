@@ -47,6 +47,10 @@ function displayHeader(photographer) {
   const photographerHeader = document.querySelector(".photograph-header");
   const photographerHeaderContainer = document.createElement("div");
   photographerHeaderContainer.classList.add("photographerHeaderContainer");
+  photographerHeaderContainer.setAttribute(
+    "aria-label",
+    "Informations sur le photographe"
+  );
   photographerHeader.appendChild(photographerHeaderContainer);
 
   /* Je créer une "div" pour affichée les infos du photographe */
@@ -58,7 +62,10 @@ function displayHeader(photographer) {
   /* Je créer une div pour nom, pays, ville et tagline */
   const divInfo = document.createElement("div");
   divInfo.classList.add("divInfo");
-  divInfo.setAttribute("aria-label", "Lieux et métier du photographe");
+  divInfo.setAttribute(
+    "aria-label",
+    "Contient le nom, l'emplacement et la profession du photographe"
+  );
   divInfo.setAttribute("role", "txt");
   divInfo.setAttribute("tabindex", "2");
   divHeader.appendChild(divInfo);
@@ -84,12 +91,14 @@ function displayHeader(photographer) {
   /* Je créer un paragraphe pour affichée city*/
   const city = document.createElement("p");
   city.classList.add("city");
+  city.setAttribute("aria-label", "La ville du photographe");
   city.innerHTML = photographer.city + ", " + photographer.country;
   info.appendChild(city);
 
   /* Je créer un paragraphe pour affichée tagline*/
   const tagline = document.createElement("p");
   tagline.classList.add("tagline");
+  tagline.setAttribute("aria-label", "Citation du photographe");
   info.appendChild(tagline);
   tagline.innerHTML = photographer.tagline;
 
@@ -99,14 +108,15 @@ function displayHeader(photographer) {
 
   const divImg = document.createElement("div");
   divInfo.classList.add("divImg");
+  divImg.setAttribute("aria-label", "Photo de profil du photographe");
   sectionImg.appendChild(divImg);
 
   const img = document.createElement("img");
   const portrait = photographer.portrait;
   const picture1 = `../../assets/photographers/${portrait}`;
   img.setAttribute("src", picture1);
-  img.setAttribute("aria-label", "Photo de profil du photographe");
   img.setAttribute("role", "img");
+  img.setAttribute("alt", "Photo du photographe");
   img.setAttribute("tabindex", "5");
   img.classList.add("img");
   divImg.appendChild(img);
@@ -144,12 +154,13 @@ function filter(medias) {
   divTitreH2.appendChild(titreH2);
 
   const divSelect = document.createElement("div");
-  divSelect.classList.add("divSelect");
-  divSelect.setAttribute("tabindex", "8");
+  divSelect.classList.add("custom-select");
   divContainerHeader.appendChild(divSelect);
 
   const select = document.createElement("select");
   select.setAttribute("id", "mySelect");
+  select.classList.add("select");
+  select.setAttribute("tabindex", "8");
   select.setAttribute("aria-label", "Sélecteur de tri");
   let popularite = new Option("Popularité");
   popularite.setAttribute("value", "popularite");
@@ -212,7 +223,7 @@ customSortTitre = (a, b) => {
 };
 
 /* idLike a pour but de gérer le comportement de "like" sur les photos du profil. */
-function idLike(medias) {
+function gestionnaireClicLikes(medias) {
   // Récupère tous les éléments ayant la classe "imgLikes"
   const elementsLikes = document.getElementsByClassName("imgLikes");
   // Crée une référence à la liste de médias passée en paramètre
@@ -267,6 +278,9 @@ function idLike(medias) {
         return;
       }
       countNode.textContent = media._likes;
+      // Appele la fonction "numberLikeTotal" après chaque modification du nombre de "likes"
+      // pour mettre à jour le nombre total affiché sur la bar en bas de la page.
+      numberLikeTotal();
     });
   }
 }
@@ -361,7 +375,7 @@ async function init() {
   displayBar(photographer);
 
   // Gestion des likes des médias
-  idLike(medias);
+  gestionnaireClicLikes(medias);
   // Mise à jour du nombre total de likes affiché sur la page web
   numberLikeTotal();
 }
