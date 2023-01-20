@@ -370,8 +370,7 @@ async function init() {
   });
   // Tri des médias selon le critère par défaut (popularité)
   sortMedias(medias);
-  // Initialisation de la fonctionnalité de "lightbox"
-  //Lightbox.init();
+  const lightbox = new Lightbox(medias);
   displayBar(photographer);
 
   // Gestion des likes des médias

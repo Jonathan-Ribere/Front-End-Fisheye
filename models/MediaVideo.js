@@ -29,13 +29,6 @@ class MediaVideo extends Media {
     containerBodyCardImg.setAttribute("tabindex", "9");
     containerBodyCard.appendChild(containerBodyCardImg);
 
-    const thumbnail_ = document.createElement("img");
-    thumbnail_.setAttribute("src", thumbnailUrl);
-    thumbnail_.setAttribute("id", "thumbnail1");
-    thumbnail_.setAttribute("alt", "Vignette de la vidéo : " + this._title);
-    thumbnail_.classList.add("classImgCard");
-    containerBodyCardImg.appendChild(thumbnail_);
-
     const lienMp4 = document.createElement("a");
     lienMp4.setAttribute("href", video);
     lienMp4.classList.add("lienImg", "play-button");
@@ -43,6 +36,14 @@ class MediaVideo extends Media {
     lienMp4.setAttribute("aria-label", "lancer la video");
     containerBodyCardImg.appendChild(lienMp4);
 
+    const thumbnail_ = document.createElement("img");
+    thumbnail_.setAttribute("src", thumbnailUrl);
+    thumbnail_.setAttribute("id", "thumbnail1");
+    thumbnail_.setAttribute("alt", "Vignette de la vidéo : " + this._title);
+    thumbnail_.classList.add("classImgCard");
+    lienMp4.appendChild(thumbnail_);
+
+    /*
     const v = document.createElement("video");
     v.setAttribute("poster", thumbnailUrl);
     v.setAttribute("id", "video1");
@@ -55,7 +56,7 @@ class MediaVideo extends Media {
     source.setAttribute("type", "video/mp4");
     v.appendChild(source);
 
-    const thumbnail1 = document.getElementById("thumbnail");
+    const thumbnail1 = document.getElementById("thumbnail1");
     const video1 = document.getElementById("video");
     const playButton = document.querySelector(".play-button");
     thumbnail1.addEventListener("click", function () {
@@ -65,7 +66,7 @@ class MediaVideo extends Media {
     playButton.addEventListener("click", function () {
       video1.play();
     });
-
+*/
     const containerBodyCardinfo = document.createElement("div");
     containerBodyCardinfo.classList.add("containerBodyCardinfo");
     containerBodyCard.appendChild(containerBodyCardinfo);
@@ -104,4 +105,3 @@ class MediaVideo extends Media {
     divImg.appendChild(icon);
   }
 }
-//const media = createMedia("video", data);
