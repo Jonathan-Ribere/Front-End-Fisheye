@@ -11,7 +11,6 @@ class MediaVideo extends Media {
   display() {
     const video = `assets/medias/${this._photographerId + "/" + this._video}`;
     let thumbnailUrl = "../assets/medias/82/Art_Wooden_Horse_Sculpture.png";
-    console.log(thumbnailUrl);
     const pictureIcon = `assets/icons/heart.svg`;
     const mediaSection = document.querySelector(".containerBody");
     const section = document.createElement("section");

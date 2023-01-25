@@ -1,6 +1,4 @@
 class Lightbox {
-  /** définit les propriétés imageLinks et currentIndex,
-   * et appelle la méthode init. */
   constructor(medias) {
     this.hrefImg = [];
     this.currentIndex = 0;
@@ -28,28 +26,34 @@ class Lightbox {
     document.addEventListener("keyup", this.onKeyUp.bind(this));
   }
 
-  /** La méthode loadMedia utilise l'extension de fichier du lien href
-   *  pour déterminer si le média est une image ou une vidéo.
-   *  Il crée un nouvel élément Image ou vidéo en conséquence, et l'ajoute
-   *  à l'élément container du diaporama. */
-
   loadMedia() {
     const currentMedia = this.medias[this.currentIndex];
-    console.log(currentMedia);
-    //let media;
+    const idMedias = currentMedia._photographerId;
+    const mediaSelectImg = currentMedia._image;
+    const mediaSelectVideo = currentMedia._video;
+    this.media = null;
 
-    /*
-    if (currentImage.dataset.type === "image") {
-      media = new Lightbox(this.currentIndex);
-      console.log(media);
-    } else if (currentImage.dataset.type === "video") {
-      media = document.createElement("video");
+    if (currentMedia instanceof MediaPicture) {
+      const image = new Image();
+      image.classList.add("imgLight");
+      image.onload = () => {
+        const container = document.querySelector(".lightbox__container");
+        container.innerHTML = "";
+        container.appendChild(image);
+      };
+      image.src = `/assets/medias/${idMedias}/${mediaSelectImg}`;
+    } else if (currentMedia instanceof MediaVideo) {
+      const video = document.createElement("video");
+      video.classList.add("videoLight");
+      video.controls = true;
+      video.autoplay = false;
+      video.muted = false;
+      video.addEventListener("canplay", () => {
+        const container = document.querySelector(".lightbox__container");
+        container.appendChild(video);
+      });
+      video.src = `/assets/medias/${idMedias}/${mediaSelectVideo}`;
     }
-    media.onload = () => {
-      this.lightbox.querySelector(".lightbox__container").appendChild(media);
-    };
-    media.src = currentImage.href;
-    */
   }
 
   onKeyUp(e) {
@@ -68,46 +72,41 @@ class Lightbox {
   }
 
   next() {
-    if (this.currentIndex < this.imageLinks.length - 1) {
+    if (this.currentIndex < this.medias.length - 1) {
       this.currentIndex++;
-      this.loadMedia();
+    } else {
+      this.currentIndex = 0;
     }
+    this.loadMedia();
   }
 
   prev() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
-      this.loadMedia();
+    } else {
+      this.currentIndex = this.medias.length - 1;
     }
+    this.loadMedia();
   }
 
   buildDOM() {
     const lightbox = document.createElement("div");
     lightbox.classList.add("lightbox");
-
-    const container = document.createElement("div");
-    container.classList.add("lightbox__container");
-
-    const prevButton = document.createElement("button");
-    prevButton.classList.add("lightbox__prev");
-    prevButton.textContent = "<";
-    prevButton.addEventListener("click", this.prev.bind(this));
-
-    const nextButton = document.createElement("button");
-    nextButton.classList.add("lightbox__next");
-    nextButton.textContent = ">";
-    nextButton.addEventListener("click", this.next.bind(this));
-
-    const closeButton = document.createElement("button");
-    closeButton.classList.add("lightbox__close");
-    closeButton.textContent = "X";
-    closeButton.addEventListener("click", this.close.bind(this));
-
-    lightbox.appendChild(container);
-    lightbox.appendChild(prevButton);
-    lightbox.appendChild(nextButton);
-    lightbox.appendChild(closeButton);
-
+    lightbox.innerHTML = `
+      <button class="lightbox__close">Close</button>
+      <button class="lightbox__prev">Previous</button>
+      <button class="lightbox__next">Next</button>
+      <div class="lightbox__container"></div>
+      `;
+    lightbox
+      .querySelector(".lightbox__close")
+      .addEventListener("click", this.close.bind(this));
+    lightbox
+      .querySelector(".lightbox__prev")
+      .addEventListener("click", this.prev.bind(this));
+    lightbox
+      .querySelector(".lightbox__next")
+      .addEventListener("click", this.next.bind(this));
     return lightbox;
   }
 }

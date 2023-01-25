@@ -1,9 +1,6 @@
-// Extends permet aux MediaPicture et MediaVideo de pouvoir “récupérer” la fonctionnalité Display
 class MediaPicture extends Media {
   constructor(data) {
-    // L’utilisation du super(data) permet de passer des paramètres, ici en l'occurrence data, à la classe  Media
     super(data);
-
     this._image = data.image;
   }
 
