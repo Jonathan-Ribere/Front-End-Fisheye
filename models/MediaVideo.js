@@ -2,15 +2,15 @@ class MediaVideo extends Media {
   constructor(data) {
     super(data);
     this._video = data.video;
+    this._miniVideo = data.miniVideo;
   }
 
-  //get video() {
-  //return `/assets/medias/$(this._id)/$(this._video)`;
-  //}
-  // ici créer function pour afficher les video
   display() {
     const video = `assets/medias/${this._photographerId + "/" + this._video}`;
-    let thumbnailUrl = "../assets/medias/82/Art_Wooden_Horse_Sculpture.png";
+    //const miniVideo = `assets/medias/${this._photographerId}/${this.}/`
+    let thumbnailUrl = `../assets/medias/${
+      this._photographerId + "/" + this._miniVideo
+    }`;
     const pictureIcon = `assets/icons/heart.svg`;
     const mediaSection = document.querySelector(".containerBody");
     const section = document.createElement("section");
