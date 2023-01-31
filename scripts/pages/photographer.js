@@ -76,7 +76,7 @@ function displayHeader(photographer) {
 
   /* Je créer H1 qui sera dans la div "divInfo" */
   const h1 = document.createElement("h1");
-  h1.classList.add("h1");
+  h1.classList.add("photographeh1");
   h1.setAttribute("aria-label", "Nom du photographe");
   h1.setAttribute("role", "heading");
   h1.innerHTML = photographer.name;

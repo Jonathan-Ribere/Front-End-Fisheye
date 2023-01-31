@@ -37,6 +37,9 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.contact_button:hover {
+  background-color: #d3573c;
+}
 
 .modal {
   border-radius: 5px;
@@ -122,6 +125,7 @@ form input {
 }
 .imgLikes {
   cursor: pointer;
+  color: #d3573c;
 }
 .divTitreH2 {
   width: auto;
