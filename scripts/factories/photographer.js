@@ -17,7 +17,7 @@ function photographerFactory(data) {
     const picPhotographer = document.createElement("img");
     picPhotographer.setAttribute("src", picture);
     picPhotographer.setAttribute("alt", "Photo de profile de : " + name);
-    picPhotographer.classList.add("picPotographer");
+    picPhotographer.classList.add("picPhotographer");
     picAndNameContainerPhotographer.appendChild(picPhotographer);
 
     const nameContainerPhotographer = document.createElement("div");
