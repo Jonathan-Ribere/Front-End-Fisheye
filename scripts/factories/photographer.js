@@ -5,6 +5,7 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
     const article = document.createElement("article");
+    article.setAttribute("data-id", id);
 
     // Ajout de la photo et du Nom du photographe
     const picAndNameContainerPhotographer = document.createElement("div");
@@ -30,6 +31,22 @@ function photographerFactory(data) {
     // Ajout de la Ville du Tagline et du prix
     const infoContainerPhotographer = document.createElement("div");
     infoContainerPhotographer.classList.add("infoContainerPhotographer");
+    article.appendChild(infoContainerPhotographer);
+
+    const originePhotographer = document.createElement("p");
+    originePhotographer.classList.add("originePhotographer");
+    originePhotographer.innerHTML = city + ", " + country;
+    infoContainerPhotographer.appendChild(originePhotographer);
+
+    const taglinePhotographer = document.createElement("p");
+    taglinePhotographer.classList.add("taglinePhotographer");
+    taglinePhotographer.innerHTML = tagline;
+    infoContainerPhotographer.appendChild(taglinePhotographer);
+
+    const pricePhotographer = document.createElement("p");
+    pricePhotographer.classList.add("pricePhotographer");
+    pricePhotographer.innerHTML = price + "€/jour";
+    infoContainerPhotographer.appendChild(pricePhotographer);
 
     return article;
   }
