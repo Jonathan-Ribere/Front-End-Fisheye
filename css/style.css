@@ -53,6 +53,9 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+article {
+  text-align: center;
+}
 
 .picPhotographer {
   height: 200px;
@@ -62,4 +65,16 @@ h1 {
 }
 .picAndNameContainerPhotographer {
   text-align: center;
+}
+.namePhotographer {
+  margin-bottom: 5px;
+}
+.originePhotographer {
+  font-size: 18px;
+}
+.originePhotographer,
+.taglinePhotographer,
+.pricePhotographer {
+  margin-top: 0;
+  margin-bottom: 0;
 }
