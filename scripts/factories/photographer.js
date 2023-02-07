@@ -1,54 +1,67 @@
+//photographerFactory crée un objet modèle pour un photographe en utilisant les données fournies
+// en paramètre.
+// Elle définit une méthode display qui retourne l'élément HTML correspondant au photographe.
+// Elle retourne l'objet modèle créé.
 function photographerFactory(data) {
-  const { name, city, country, id, price, tagline, portrait } = data
+  const { name, portrait, city, country, tagline, price } = data;
+  const picture = `assets/photographers/${portrait}`;
 
-  const picture = `assets/photographers/${portrait}`
+  function display() {
+    const article = document.createElement("article");
+    const head = document.createElement("div");
+    head.classList.add("enTete");
+    article.appendChild(head);
 
-  function getUserCardDOM() {
-    const article = document.createElement('article')
-    article.setAttribute('data-id', id)
+    const divImg = document.createElement("div");
+    divImg.classList.add("divImg");
+    divImg.setAttribute("role", "img");
+    divImg.setAttribute("alt", data.name);
+    divImg.setAttribute("tabindex", "3");
+    head.appendChild(divImg);
 
-    // Ajout de la photo et du Nom du photographe
-    const picAndNameContainerPhotographer = document.createElement('div')
-    picAndNameContainerPhotographer.classList.add(
-      'picAndNameContainerPhotographer'
-    )
-    article.appendChild(picAndNameContainerPhotographer)
+    const lien = document.createElement("a");
+    lien.classList.add("lienProfil");
+    const url = "photographer.html";
+    const id = data.id;
+    const test = `?id=${id}`;
+    divImg.appendChild(lien);
+    lien.href = url + test;
 
-    const picPhotographer = document.createElement('img')
-    picPhotographer.setAttribute('src', picture)
-    picPhotographer.setAttribute('alt', 'Photo de profile de : ' + name)
-    picPhotographer.classList.add('picPhotographer')
-    picAndNameContainerPhotographer.appendChild(picPhotographer)
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.setAttribute("alt", "Photo de profile de : " + name);
+    img.classList.add("classImg");
+    lien.appendChild(img);
 
-    const nameContainerPhotographer = document.createElement('div')
-    nameContainerPhotographer.classList.add('NameContainerPhotographer')
-    picPhotographer.appendChild(nameContainerPhotographer)
-    const namePhotographer = document.createElement('h2')
-    namePhotographer.classList.add('namePhotographer')
-    namePhotographer.innerHTML = name
-    picAndNameContainerPhotographer.appendChild(namePhotographer)
+    const h2 = document.createElement("h2");
+    lien.appendChild(h2);
+    h2.innerHTML = name;
 
-    // Ajout de la Ville, Tagline et Prix
-    const infoContainerPhotographer = document.createElement('div')
-    infoContainerPhotographer.classList.add('infoContainerPhotographer')
-    article.appendChild(infoContainerPhotographer)
+    const corps = document.createElement("div");
+    corps.classList.add("corps");
+    article.appendChild(corps);
 
-    const originePhotographer = document.createElement('p')
-    originePhotographer.classList.add('originePhotographer')
-    originePhotographer.innerHTML = city + ', ' + country
-    infoContainerPhotographer.appendChild(originePhotographer)
+    const ville = document.createElement("div");
+    ville.classList.add("ville");
+    ville.setAttribute("aria-label", "Information sur " + data.name);
+    ville.setAttribute("tabindex", "4");
+    corps.appendChild(ville);
 
-    const taglinePhotographer = document.createElement('p')
-    taglinePhotographer.classList.add('taglinePhotographer')
-    taglinePhotographer.innerHTML = tagline
-    infoContainerPhotographer.appendChild(taglinePhotographer)
+    const h3 = document.createElement("h3");
+    h3.classList.add("h3");
+    ville.appendChild(h3);
+    h3.innerHTML = city + ", " + country;
 
-    const pricePhotographer = document.createElement('p')
-    pricePhotographer.classList.add('pricePhotographer')
-    pricePhotographer.innerHTML = price + '€/jour'
-    infoContainerPhotographer.appendChild(pricePhotographer)
+    const paragraphe = document.createElement("p");
+    paragraphe.classList.add("paragraphe");
+    ville.appendChild(paragraphe);
+    paragraphe.innerHTML = tagline;
 
-    return article
+    const prix = document.createElement("p");
+    prix.classList.add("prix");
+    ville.appendChild(prix);
+    prix.innerHTML = price + "€/jour";
+    return article;
   }
-  return { name, picture, getUserCardDOM }
+  return { display };
 }

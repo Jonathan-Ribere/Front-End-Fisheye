@@ -1,37 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link rel="stylesheet" href="/css/lightbox.css" />
+    <link rel="stylesheet" href="/css//photographer.css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/aaf38cea95.js"
+      crossorigin="anonymous"
+    ></script>
+    <title tabindex="1">Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="http://127.0.0.1:5500" aria-label="Lien vers la page d'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="logo du site" />
+      </a>
     </header>
-    <main id="main">
+    <main id="main" aria-label="Contenu principal" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button
+          class="contact_button"
+          onclick="displayModal()"
+          aria-label="Ouvrir la fenêtre de contact"
+          tabindex="4"
+        >
+          Contactez-moi
+        </button>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div id="contact_modal" aria-hidden="true" role="dialog">
+      <div class="modal" tabindex="1">
+        <div class="blocHeader"></div>
+        <header class="headerForm">
+          <div class="headerFormInfo">
+            <div class="headerFormInfo--h2" tabindex="2">
+              <h2 id="formH2" class="h2Form" aria-label="Contactez-moi">
+                Contactez-moi
+              </h2>
+            </div>
+            <div class="headerFormInfo--name">
+              <p id="nomPhotographer"></p>
+            </div>
+          </div>
+          <div class="titreImg">
+            <img
+              src="assets/icons/close.svg"
+              onclick="closeModal()"
+              class="closeForm"
+              alt="Icone close"
+            />
+          </div>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form class="form" id="form">
+          <div class="form-control error">
+            <label for="prenom" tabindex="3">Prénom</label>
+            <input type="text" id="prenom" tabindex="4" />
+            <small></small>
+          </div>
+          <div class="form-control success">
+            <label for="nom" tabindex="5">Nom</label>
+            <input type="text" id="nom" tabindex="6" />
+            <small></small>
+          </div>
+          <div class="form-control">
+            <label for="email" tabindex="7">Email</label>
+            <input type="email" id="email" tabindex="8" />
+            <small></small>
+          </div>
+          <div class="form-control">
+            <label for="textarea" tabindex="9">Votre Message</label>
+            <textarea
+              name="textarea"
+              id="textarea"
+              cols="60"
+              rows="10"
+              tabindex="10"
+            ></textarea>
+
+            <small></small>
+          </div>
+          <button
+            type="submit"
+            onclick="getValue()"
+            class="contact_button"
+            tabindex="11"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="/models/Lightbox.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/models/Photographer.js"></script>
+    <script src="/models/Media.js"></script>
+    <script src="/models/MediaVideo.js"></script>
+    <script src="/models/MediaPicture.js"></script>
+    <script src="/scripts/factories/mediaFactory.js"></script>
+    <script src="/scripts/utils/formulaire.js"></script>
   </body>
 </html>
