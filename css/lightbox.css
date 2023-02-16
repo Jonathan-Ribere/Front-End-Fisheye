@@ -1,10 +1,15 @@
+.containerBox {
+  background: #e5e5e5;
+}
+
 .lightbox {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgb(255 254 254 / 71%);
+
   z-index: 99;
   overflow: auto;
   animation: lightboxIn 0.5s;
@@ -37,7 +42,7 @@
 .lightbox__close {
   width: 20px;
   height: 20px;
-  background: url("/assets/icons/closeSvg.svg") center center / 100% 100%
+  background: url('/assets/icons/closeSvg.svg') center center / 100% 100%
     no-repeat transparent;
   position: fixed;
   top: 20px;
@@ -58,17 +63,20 @@
 
 .lightbox__container img {
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
   animation: lightboxIn 0.5s;
+  object-fit: cover;
 }
 
 .lightbox__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 50px;
-  margin-right: 50px;
-  min-height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 5px;
+  height: 900px;
+  width: 1050px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #95fff9;
 }
 
 .lightbox__loader {
@@ -86,9 +94,16 @@
   }
 }
 .imgLight {
-  width: 43rem;
-  max-height: 70vh;
-  object-fit: cover;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  margin-left: auto;
+  margin-right: auto;
+  background: #c4c4c4;
+  border-radius: 5px;
 }
 
 .videoLight {

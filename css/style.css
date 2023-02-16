@@ -1,7 +1,7 @@
-@import url("photographer.css");
+@import url('photographer.css');
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   margin: 0;
 }
 
@@ -197,10 +197,17 @@ h3 {
   color: white;
   font-weight: bold;
 }
-.select option {
-  color: blue;
-  background-color: yellow;
-  font-size: 18px;
-  padding: 10px;
-  border: 1px solid black;
+select:focus {
+  border-color: #666;
+}
+select option {
+  background-color: #f2f2f2;
+  color: #333;
+}
+select::-ms-expand {
+  display: none;
+}
+
+select::-webkit-select-placeholder {
+  color: #999;
 }
