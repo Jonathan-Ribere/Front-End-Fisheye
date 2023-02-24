@@ -306,6 +306,8 @@ function filter(medias) {
   selectOption.add(titre)
   */
 
+  const select = document.querySelector('')
+
   const containerBody = document.createElement('div')
   containerBody.classList.add('containerBody')
   divContainer.appendChild(containerBody)

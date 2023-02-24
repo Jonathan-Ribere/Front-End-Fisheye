@@ -58,7 +58,6 @@ function displayHeader(photographer) {
     "Contient le nom, l'emplacement et la profession du photographe"
   )
   divInfo.setAttribute('role', 'txt')
-  divInfo.setAttribute('tabindex', '2')
   divHeader.appendChild(divInfo)
 
   const namePhotographe = document.createElement('div')
@@ -70,6 +69,7 @@ function displayHeader(photographer) {
   h1.classList.add('photographeh1')
   h1.setAttribute('aria-label', 'Nom du photographe')
   h1.setAttribute('role', 'heading')
+  h1.setAttribute('tabindex', '2')
   h1.innerHTML = photographer.name
   namePhotographe.appendChild(h1)
 
@@ -124,11 +124,11 @@ function filter(medias) {
 
   const divTitreH2 = document.createElement('div')
   divTitreH2.classList.add('divTitreH2')
-  divTitreH2.setAttribute('tabindex', '7')
   divContainerHeader.appendChild(divTitreH2)
 
   const titreH2 = document.createElement('h2')
   titreH2.classList.add('titreH2')
+  titreH2.setAttribute('tabindex', '7')
   titreH2.innerHTML = 'Trier par '
   titreH2.setAttribute('aria-label', 'Trier par')
   titreH2.setAttribute('role', 'heading')
