@@ -31,26 +31,35 @@ class Lightbox {
     const idMedias = currentMedia._photographerId
     const mediaSelectImg = currentMedia._image
     const mediaSelectVideo = currentMedia._video
+    const mediaSelectTitre = currentMedia._title
     this.media = null
 
     if (currentMedia instanceof MediaPicture) {
       const image = new Image()
       image.classList.add('imgLight')
+      image.setAttribute('tabindex', '2')
       image.onload = () => {
-        const container = document.querySelector('.boxImg')
+        const container = document.querySelector('.mediaBox')
         container.innerHTML = ''
         container.appendChild(image)
+
+        const titreMedia = document.querySelector('.mediaTitre-P')
+        titreMedia.innerHTML = mediaSelectTitre
       }
       image.src = `/assets/medias/${idMedias}/${mediaSelectImg}`
     } else if (currentMedia instanceof MediaVideo) {
       const video = document.createElement('video')
       video.classList.add('imgLight')
+      video.setAttribute('tabindex', '2')
       video.controls = true
       video.autoplay = false
       video.muted = false
       video.addEventListener('canplay', () => {
-        const container = document.querySelector('.boxImg')
+        const container = document.querySelector('.mediaBox')
         container.appendChild(video)
+
+        const titreMedia = document.querySelector('.mediaTitre-P')
+        titreMedia.innerHTML = mediaSelectTitre
       })
       video.src = `/assets/medias/${idMedias}/${mediaSelectVideo}`
     }
@@ -94,11 +103,16 @@ class Lightbox {
     lightbox.classList.add('lightbox')
     lightbox.innerHTML = `
    
-      <div class="lightbox__container">
+      <div class="lightbox__container" tabindex="1">
       <button class="lightbox__close"><i class="fa-sharp fa-solid fa-xmark"></i></button>
       <button class="lightbox__prev"><i class="fa-solid fa-angle-left"></i></button>
       <button class="lightbox__next"><i class="fa-solid fa-angle-right"></i></button>
-      <div class="boxImg"></div>
+      <div class="boxImg">
+      <div class="mediaBox"></div>
+      <div class="mediaTitre">
+      <p class="mediaTitre-P"></p>
+      </div>
+      </div>
       </div>
       `
     lightbox
