@@ -190,6 +190,40 @@ h3 {
   margin-left: 6px;
 }
 
+/* Partie select de photographer */
+.select-box {
+  display: flex;
+  width: 400px;
+}
+
+.select-box .option-container {
+  background-color: #901c1c;
+  color: #f5f6fa;
+  /* max-height: 0;*/
+  width: 100%;
+  /* opacity: 0; */
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.select-box .option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+.select-box .option:hover {
+  background: #333;
+}
+.select-box label {
+  cursor: pointer;
+}
+.select-box .option .radio {
+  display: none;
+}
+
+/* Fin partie select de photographer */
+
 .select {
   width: 9rem;
   padding: 11px;
@@ -210,4 +244,49 @@ select::-ms-expand {
 
 select::-webkit-select-placeholder {
   color: #999;
+}
+
+/* Style pour la liste déroulante */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style pour l'option sélectionnée */
+.dropdown-option.selected,
+.dropdown-selected {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* Style pour les options de la liste déroulante */
+.dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  display: none;
+  z-index: 1;
+}
+
+/* Style pour les options de la liste déroulante lorsqu'elles sont survolées */
+.dropdown-option:hover {
+  background-color: #f1f1f1;
+}
+
+/* Affichage des options de la liste déroulante lorsque l'option sélectionnée est cliquée */
+.dropdown-selected:hover + .dropdown-options,
+.dropdown-options:hover {
+  display: block;
+}
+
+/* Style pour chaque option de la liste déroulante */
+.dropdown-option {
+  padding: 10px;
+  cursor: pointer;
 }

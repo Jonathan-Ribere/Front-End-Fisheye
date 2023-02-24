@@ -3,7 +3,8 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/lightbox.css" />
-    <link rel="stylesheet" href="/css//photographer.css" />
+    <link rel="stylesheet" href="/css/photographer.css" />
+    <link rel="stylesheet" href="/css/select.css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -14,7 +15,7 @@
       src="https://kit.fontawesome.com/aaf38cea95.js"
       crossorigin="anonymous"
     ></script>
-    <title tabindex="1">Fisheye - photographe</title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
@@ -26,6 +27,17 @@
         <img src="assets/images/logo.png" class="logo" alt="logo du site" />
       </a>
     </header>
+
+    <div id="select">
+      <button id="select-first-option" class="select-option">
+        <span id="select-first-option-text">Popularité</span>
+      </button>
+      <div id="select-block-options">
+        <button class="select-option">Date</button>
+        <button class="select-option">Titre</button>
+      </div>
+    </div>
+
     <main id="main" aria-label="Contenu principal" aria-hidden="false">
       <div class="photograph-header">
         <button
@@ -38,12 +50,18 @@
         </button>
       </div>
     </main>
-    <div id="contact_modal" aria-hidden="true" role="dialog">
-      <div class="modal" tabindex="1">
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      tabindex="-1"
+      autofocus
+    >
+      <div class="modal">
         <div class="blocHeader"></div>
         <header class="headerForm">
-          <div class="headerFormInfo">
-            <div class="headerFormInfo--h2" tabindex="2">
+          <div class="headerFormInfo" tabindex="10">
+            <div class="headerFormInfo--h2">
               <h2 id="formH2" class="h2Form" aria-label="Contactez-moi">
                 Contactez-moi
               </h2>
@@ -52,7 +70,7 @@
               <p id="nomPhotographer"></p>
             </div>
           </div>
-          <div class="titreImg">
+          <div class="titreImg" tabindex="20">
             <img
               src="assets/icons/close.svg"
               onclick="closeModal()"
@@ -63,33 +81,33 @@
         </header>
         <form class="form" id="form">
           <div class="form-control error">
-            <label for="prenom" tabindex="3">Prénom</label>
-            <input type="text" id="prenom" tabindex="4" />
+            <label for="prenom" tabindex="11">Prénom</label>
+            <input type="text" id="prenom" tabindex="12" />
             <small></small>
           </div>
           <div class="form-control success">
-            <label for="nom" tabindex="5">Nom</label>
-            <input type="text" id="nom" tabindex="6" />
+            <label for="nom" tabindex="13">Nom</label>
+            <input type="text" id="nom" tabindex="14" />
             <small></small>
           </div>
           <div class="form-control">
-            <label for="email" tabindex="7">Email</label>
-            <input type="email" id="email" tabindex="8" />
+            <label for="email" tabindex="15">Email</label>
+            <input type="email" id="email" tabindex="16" />
             <small></small>
           </div>
           <div class="form-control">
-            <label for="textarea" tabindex="9">Votre Message</label>
+            <label for="textarea" tabindex="17">Votre Message</label>
             <textarea
               name="textarea"
               id="textarea"
               cols="60"
               rows="10"
-              tabindex="10"
+              tabindex="18"
             ></textarea>
 
             <small></small>
           </div>
-          <button type="submit" class="contact_button" tabindex="11">
+          <button type="submit" class="contact_button" tabindex="19">
             Envoyer
           </button>
         </form>
@@ -97,7 +115,6 @@
     </div>
     <script src="/scripts//utils/api.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
-
     <script src="/models/Media.js"></script>
     <script src="/models/MediaVideo.js"></script>
     <script src="/models/MediaPicture.js"></script>

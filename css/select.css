@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.divTitreH2 {
+  display: flex;
+  align-items: center;
+}
+
+#select-first-option span::after {
+  content: ' ^ ';
+  display: inline-block;
+  vertical-align: bottom;
+  position: absolute;
+  transform: translate3d(0, -50%, 0) scale(1.5, 1.5);
+  right: 15px;
+  top: 55%;
+}
+
+.select-option {
+  width: 170px;
+  border: none;
+  background: #911c1c;
+  color: #ffffff;
+  position: relative;
+  display: block;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  height: 60px;
+}
+
+#select-block-options {
+  display: none;
+}

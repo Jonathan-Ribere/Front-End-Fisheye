@@ -113,17 +113,7 @@ function displayHeader(photographer) {
   divImg.appendChild(img)
 }
 
-//displayMedia affiche la liste de médias sur la page web.
-const displayMedia = (medias) => {
-  document.querySelector('.containerBody').innerHTML = ''
-  medias.forEach((element) => {
-    const media = element.display()
-  })
-}
-
-/* Partie pour le tri */
-// filter crée et ajoute à la page web un formulaire de tri des médias.
-function filter() {
+function filter(medias) {
   const divContainer = document.createElement('div')
   divContainer.classList.add('container')
   main.appendChild(divContainer)
@@ -144,60 +134,60 @@ function filter() {
   titreH2.setAttribute('role', 'heading')
   divTitreH2.appendChild(titreH2)
 
-  const divSelect = document.createElement('div')
-  divSelect.classList.add('custom-select')
-  divContainerHeader.appendChild(divSelect)
-
-  const select = document.createElement('select')
-  select.setAttribute('id', 'mySelect')
-  select.classList.add('select')
-  select.setAttribute('tabindex', '8')
-  select.setAttribute('aria-label', 'Sélecteur de tri')
-  let popularite = new Option('Popularité')
-  popularite.setAttribute('value', 'popularite')
-  let date = new Option('Date')
-  date.setAttribute('value', 'date')
-  let titre = new Option('Titre')
-  titre.setAttribute('value', 'titre')
-  divSelect.appendChild(select)
-
-  const selectOption = document.querySelector('select')
-  selectOption.add(popularite)
-  selectOption.add(date)
-  selectOption.add(titre)
+  const select = document.querySelector('#select')
+  divTitreH2.appendChild(select)
 
   const containerBody = document.createElement('div')
   containerBody.classList.add('containerBody')
   divContainer.appendChild(containerBody)
 }
 
-// sortMedias trie les médias selon le critère sélectionné dans le formulaire de tri.
-// Elle prend en paramètre un tableau de médias.
-// Elle récupère la valeur sélectionnée dans le menu déroulant du formulaire de tri, puis appelle la fonction
-function sortMedias(medias) {
-  let x = document.getElementById('mySelect').value
-  if (x === 'popularite') {
-    displayMedia(medias.sort(customSortLikes))
-    gestionnaireClicLikes(medias)
-  } else if (x === 'date') {
-    displayMedia(medias.sort(customSortDate))
-    gestionnaireClicLikes(medias)
-  } else if (x === 'titre') {
-    displayMedia(medias.sort(customSortTitre))
-    gestionnaireClicLikes(medias)
-  }
-  return
-}
+function gestionSelect(medias) {
+  let isOpen = false
+  const selectOptions = document.querySelector('#select-block-options')
+  const firstButtonText = document.querySelector('#select-first-option-text')
+  const optionsButtons = selectOptions.querySelectorAll('button')
 
-/*customSortDate est une fonction de comparaison qui peut être utilisée avec la méthode
-sort de JavaScript pour trier un tableau d'objets en fonction de la propriété _date
-de chaque objet.*/
-customSortDate = (a, b) => {
-  const dateA = new Date(a._date)
-  const dateB = new Date(b._date)
-  if (dateA > dateB) return 1
-  else if (dateA < dateB) return -1
-  return 0
+  document
+    .querySelector('#select-first-option')
+    .addEventListener('click', () => {
+      if (isOpen === false) {
+        // On ouvre le faux select
+        selectOptions.style.display = 'block'
+        isOpen = true
+        return handleButtonsOptions()
+      }
+      if (isOpen === true) {
+        return closeSelect()
+      }
+    })
+
+  function closeSelect() {
+    // On ferme le faux select
+    selectOptions.style.display = 'none'
+    return (isOpen = false)
+  }
+
+  function handleButtonsOptions() {
+    optionsButtons.forEach((button) => {
+      button.onclick = () => {
+        const buttonText = button.textContent
+        if (buttonText === 'Popularité') {
+          displayMedia(medias.sort(customSortLikes))
+          gestionnaireClicLikes(medias)
+        } else if (buttonText === 'Date') {
+          displayMedia(medias.sort(customSortDate))
+          gestionnaireClicLikes(medias)
+        } else if (buttonText === 'Titre') {
+          displayMedia(medias.sort(customSortTitre))
+          gestionnaireClicLikes(medias)
+        }
+        button.innerHTML = firstButtonText.textContent
+        firstButtonText.innerHTML = buttonText
+        return closeSelect()
+      }
+    })
+  }
 }
 
 customSortLikes = (a, b) => {
@@ -208,12 +198,43 @@ customSortLikes = (a, b) => {
   return 0
 }
 
+customSortDate = (a, b) => {
+  const dateA = new Date(a._date)
+  const dateB = new Date(b._date)
+  if (dateA > dateB) return 1
+  else if (dateA < dateB) return -1
+  return 0
+}
+
 customSortTitre = (a, b) => {
   const titreA = a._title
   const titreB = b._title
   if (titreA > titreB) return 1
   else if (titreA < titreB) return -1
   return 0
+}
+
+function observeSelectFirstOptionTextChanges() {
+  const span = document.querySelector('span')
+  // créer un nouvel observer
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        // faire quelque chose ici
+      }
+    })
+  })
+  // configuration de l'observer : observer les modifications de texte dans l'élément span
+  const observerConfig = { childList: true }
+  // attacher l'observer à l'élément span
+  observer.observe(span, observerConfig)
+}
+//displayMedia affiche la liste de médias sur la page web.
+const displayMedia = (medias) => {
+  document.querySelector('.containerBody').innerHTML = ''
+  medias.forEach((element) => {
+    const media = element.display()
+  })
 }
 
 /* idLike a pour but de gérer le comportement de "like" sur les photos du profil. */
@@ -279,19 +300,6 @@ function gestionnaireClicLikes(medias) {
   }
 }
 
-// numberLikeTotal a pour but de calculer et afficher le nombre total de likes
-function numberLikeTotal() {
-  const elements = document.querySelectorAll('.numberLikes')
-  let total = 0
-  for (let i = 0; i < elements.length; i++) {
-    const str = elements[i].innerHTML
-    const num = parseInt(str)
-    total += num
-  }
-  const element = document.querySelector('.txtBar')
-  element.innerHTML = total
-}
-
 function displayBar(photographer) {
   const pictureIcon = `/assets/icons/heart.svg`
   const main = document.querySelector('main')
@@ -338,22 +346,33 @@ function displayBar(photographer) {
   prix.innerHTML = photographer.price + '€ /jour'
 }
 
+// numberLikeTotal a pour but de calculer et afficher le nombre total de likes
+function numberLikeTotal() {
+  const elements = document.querySelectorAll('.numberLikes')
+  let total = 0
+  for (let i = 0; i < elements.length; i++) {
+    const str = elements[i].innerHTML
+    const num = parseInt(str)
+    total += num
+  }
+  const element = document.querySelector('.txtBar')
+  element.innerHTML = total
+}
+
 async function init() {
   const photographerId = getId()
   const photographer = await getPhotographer(photographerId)
-  displayHeader(photographer)
-  const namePhotographeForm = document.querySelector('#nomPhotographer')
-  namePhotographeForm.innerHTML = photographer.name
   const medias = await getMedia(photographerId)
+  displayHeader(photographer)
   filter(medias)
-  document.getElementById('mySelect').addEventListener('change', () => {
-    sortMedias(medias)
-  })
+  displayMedia(medias.sort(customSortLikes))
+  gestionnaireClicLikes(medias)
+  gestionSelect(medias)
+  observeSelectFirstOptionTextChanges()
+  displayMedia(medias)
   displayBar(photographer)
   gestionnaireClicLikes(medias)
-  sortMedias(medias)
   const lightbox = new Lightbox(medias)
   numberLikeTotal()
 }
-
 init()

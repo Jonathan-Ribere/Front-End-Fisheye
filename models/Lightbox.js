@@ -37,19 +37,19 @@ class Lightbox {
       const image = new Image()
       image.classList.add('imgLight')
       image.onload = () => {
-        const container = document.querySelector('.lightbox__container')
+        const container = document.querySelector('.boxImg')
         container.innerHTML = ''
         container.appendChild(image)
       }
       image.src = `/assets/medias/${idMedias}/${mediaSelectImg}`
     } else if (currentMedia instanceof MediaVideo) {
       const video = document.createElement('video')
-      video.classList.add('videoLight')
+      video.classList.add('imgLight')
       video.controls = true
       video.autoplay = false
       video.muted = false
       video.addEventListener('canplay', () => {
-        const container = document.querySelector('.lightbox__container')
+        const container = document.querySelector('.boxImg')
         container.appendChild(video)
       })
       video.src = `/assets/medias/${idMedias}/${mediaSelectVideo}`
@@ -93,10 +93,13 @@ class Lightbox {
     const lightbox = document.createElement('div')
     lightbox.classList.add('lightbox')
     lightbox.innerHTML = `
-      <button class="lightbox__close">Close</button>
-      <button class="lightbox__prev">Previous</button>
-      <button class="lightbox__next">Next</button>
-      <div class="lightbox__container"></div>
+   
+      <div class="lightbox__container">
+      <button class="lightbox__close"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+      <button class="lightbox__prev"><i class="fa-solid fa-angle-left"></i></button>
+      <button class="lightbox__next"><i class="fa-solid fa-angle-right"></i></button>
+      <div class="boxImg"></div>
+      </div>
       `
     lightbox
       .querySelector('.lightbox__close')
