@@ -174,12 +174,15 @@ function gestionSelect(medias) {
         const buttonText = button.textContent
         if (buttonText === 'Popularité') {
           displayMedia(medias.sort(customSortLikes))
+          const lightbox = new Lightbox(medias)
           gestionnaireClicLikes(medias)
         } else if (buttonText === 'Date') {
           displayMedia(medias.sort(customSortDate))
+          const lightbox = new Lightbox(medias)
           gestionnaireClicLikes(medias)
         } else if (buttonText === 'Titre') {
           displayMedia(medias.sort(customSortTitre))
+          const lightbox = new Lightbox(medias)
           gestionnaireClicLikes(medias)
         }
         button.innerHTML = firstButtonText.textContent
