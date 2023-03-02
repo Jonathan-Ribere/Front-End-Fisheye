@@ -34,7 +34,7 @@ class Lightbox {
     const mediaSelectTitre = currentMedia._title
     this.media = null
 
-    if (currentMedia instanceof MediaPicture) {
+    if (currentMedia._image !== undefined) {
       const image = new Image()
       image.classList.add('imgLight')
       image.setAttribute('tabindex', '2')
@@ -47,7 +47,7 @@ class Lightbox {
         titreMedia.innerHTML = mediaSelectTitre
       }
       image.src = `/assets/medias/${idMedias}/${mediaSelectImg}`
-    } else if (currentMedia instanceof MediaVideo) {
+    } else if (currentMedia._video !== undefined) {
       const video = document.createElement('video')
       video.classList.add('imgLight')
       video.setAttribute('tabindex', '2')
@@ -56,12 +56,13 @@ class Lightbox {
       video.muted = false
       video.addEventListener('canplay', () => {
         const container = document.querySelector('.mediaBox')
+        container.innerHTML = ''
         container.appendChild(video)
 
         const titreMedia = document.querySelector('.mediaTitre-P')
         titreMedia.innerHTML = mediaSelectTitre
       })
-      video.src = `/assets/medias/${idMedias}/${mediaSelectVideo}`
+      video.src = `/assets/medias/${idMedias}/${currentMedia._video}`
     }
   }
 
