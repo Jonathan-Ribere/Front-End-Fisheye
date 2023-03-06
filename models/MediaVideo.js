@@ -41,30 +41,6 @@ class MediaVideo extends Media {
     thumbnail_.classList.add('classImgCard')
     lienMp4.appendChild(thumbnail_)
 
-    /*
-    const v = document.createElement("video");
-    v.setAttribute("poster", thumbnailUrl);
-    v.setAttribute("id", "video1");
-    v.setAttribute("controls", "controls");
-    v.classList.add("classImgCard");
-    containerBodyCardImg.appendChild(v);
-
-    const source = document.createElement("source");
-    source.setAttribute("src", video);
-    source.setAttribute("type", "video/mp4");
-    v.appendChild(source);
-
-    const thumbnail1 = document.getElementById("thumbnail1");
-    const video1 = document.getElementById("video");
-    const playButton = document.querySelector(".play-button");
-    thumbnail1.addEventListener("click", function () {
-      video1.play();
-    });
-
-    playButton.addEventListener("click", function () {
-      video1.play();
-    });
-*/
     const containerBodyCardinfo = document.createElement('div')
     containerBodyCardinfo.classList.add('containerBodyCardinfo')
     containerBodyCard.appendChild(containerBodyCardinfo)

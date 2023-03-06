@@ -42,6 +42,7 @@
       <div class="photograph-header">
         <button
           class="contact_button"
+          id="open-modal-btn"
           onclick="displayModal()"
           aria-label="Ouvrir la fenêtre de contact"
           tabindex="4"
@@ -81,35 +82,32 @@
         </header>
         <form class="form" id="form">
           <div class="form-control error">
-            <label for="prenom" tabindex="11">Prénom</label>
-            <input type="text" id="prenom" tabindex="12" />
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" />
             <small></small>
           </div>
           <div class="form-control success">
-            <label for="nom" tabindex="13">Nom</label>
-            <input type="text" id="nom" tabindex="14" />
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" />
             <small></small>
           </div>
           <div class="form-control">
-            <label for="email" tabindex="15">Email</label>
-            <input type="email" id="email" tabindex="16" />
+            <label for="email">Email</label>
+            <input type="email" id="email" />
             <small></small>
           </div>
           <div class="form-control">
-            <label for="textarea" tabindex="17">Votre Message</label>
+            <label for="textarea">Votre Message</label>
             <textarea
               name="textarea"
               id="textarea"
               cols="60"
               rows="10"
-              tabindex="18"
             ></textarea>
 
             <small></small>
           </div>
-          <button type="submit" class="contact_button" tabindex="19">
-            Envoyer
-          </button>
+          <button type="submit" class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>

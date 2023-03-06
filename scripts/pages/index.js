@@ -1,5 +1,3 @@
-//getPhotographers récupère la liste des photographes disponibles à partir d'un fichier JSON.
-
 //displayData affiche la liste des photographes
 async function displayData(photographers) {
   const photographersSection = document.querySelector('.photographer_section')

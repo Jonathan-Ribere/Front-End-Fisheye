@@ -1,10 +1,8 @@
-//getId récupère l'ID du profil dans l'URL de la page.
 function getId() {
   const _id = new URL(location.href).searchParams.get('id')
   return _id
 }
 
-//getPhotographer utilise getData pour récupérer les données du fichier JSON et retourne l'objet du profil qui correspond à l'ID fourni en argument
 async function getPhotographer(id) {
   const data = await getData1()
   const photographer = data.photographers.find(function (element) {
@@ -13,8 +11,6 @@ async function getPhotographer(id) {
   return photographer
 }
 
-/* getMedia utilise également getData pour récupérer les données du fichier JSON et retourne
-un tableau d'objets médias qui appartiennent au profil d'ID fourni en argument.*/
 async function getMedia(idProfil) {
   const data = await getData1()
   const dataMedia = data.media
@@ -31,7 +27,6 @@ async function getMedia(idProfil) {
   })
   return medias
 }
-/* Fin de la partie qui regroupe tous les functions de récupération */
 
 /* Partie qui regroupe tous les functions d'affichage */
 function displayHeader(photographer) {
@@ -163,7 +158,6 @@ function gestionSelect(medias) {
     })
 
   function closeSelect() {
-    // On ferme le faux select
     selectOptions.style.display = 'none'
     return (isOpen = false)
   }
@@ -240,7 +234,6 @@ const displayMedia = (medias) => {
   })
 }
 
-/* idLike a pour but de gérer le comportement de "like" sur les photos du profil. */
 function gestionnaireClicLikes(medias) {
   // Récupère tous les éléments ayant la classe "imgLikes"
   const elementsLikes = document.getElementsByClassName('imgLikes')
@@ -349,7 +342,6 @@ function displayBar(photographer) {
   prix.innerHTML = photographer.price + '€ /jour'
 }
 
-// numberLikeTotal a pour but de calculer et afficher le nombre total de likes
 function numberLikeTotal() {
   const elements = document.querySelectorAll('.numberLikes')
   let total = 0
