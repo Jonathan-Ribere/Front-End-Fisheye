@@ -245,33 +245,13 @@ function gestionnaireClicLikes(medias) {
     elementsLike.addEventListener('click', (e) => {
       // Récupère la valeur de l'attribut "data-id" de l'élément cliqué
       const id = e.currentTarget.dataset.id
-      // Vérifie que l'attribut "data-id" existe
-      if (id === undefined) {
-        console.error("attribut 'data-id' manquant")
-        return
-      }
-      // Vérifie que la valeur de l'attribut "data-id" est bien un nombre
-      if (isNaN(id)) {
-        console.error("attribut 'data-id' doit être un nombre")
-        return
-      }
       // Récupère le média correspondant à l'id
       const media = array.find((media) => {
         return media._id === Number(id)
       })
-      // Vérifie si le média a été trouvé
-      if (!media) {
-        console.error('média introuvable')
-        return
-      }
       // Récupère la valeur de l'attribut "data-like" de l'élément cliqué
       let atributValue = e.currentTarget.dataset.like
 
-      // Si l'attribut "data-like" n'existe pas, il est mis à faux par défaut
-      if (atributValue === undefined) {
-        atributValue = false
-        e.currentTarget.dataset.like = atributValue
-      }
       // Si la valeur de l'attribut "data-like" est fausse, incrémente le nombre de likes
       if (atributValue === 'false') {
         media._likes += 1
@@ -283,14 +263,8 @@ function gestionnaireClicLikes(medias) {
       }
       // Récupère le noeud de compte
       const countNode = e.currentTarget.parentNode.firstChild
-      // Vérifie si le noeud de compte a été trouvé
-      if (!countNode) {
-        console.error('noeud de compte introuvable')
-        return
-      }
+
       countNode.textContent = media._likes
-      // Appele la fonction "numberLikeTotal" après chaque modification du nombre de "likes"
-      // pour mettre à jour le nombre total affiché sur la bar en bas de la page.
       numberLikeTotal()
     })
   }
