@@ -117,13 +117,13 @@ function gestionSelect() {
   }
 
   function handleButtonsOptions() {
-    optionsButtons.forEach((button) => {
-      button.onclick = () => {
-        const buttonText = button.textContent
+    optionsButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var buttonText = button.textContent
         button.innerHTML = firstButtonText.textContent
         firstButtonText.innerHTML = buttonText
-        return closeSelect()
-      }
+        closeSelect()
+      })
     })
   }
 }

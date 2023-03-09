@@ -43,7 +43,6 @@
         <button
           class="contact_button"
           id="open-modal-btn"
-          onclick="displayModal()"
           aria-label="Ouvrir la fenêtre de contact"
           tabindex="4"
         >
@@ -74,8 +73,7 @@
           <div class="titreImg" tabindex="20">
             <img
               src="assets/icons/close.svg"
-              onclick="closeModal()"
-              class="closeForm"
+              id="closeForm"
               alt="Icone close"
             />
           </div>
@@ -113,12 +111,12 @@
     </div>
     <script src="/scripts//utils/api.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/formulaire.js"></script>
     <script src="/models/Media.js"></script>
     <script src="/models/MediaVideo.js"></script>
     <script src="/models/MediaPicture.js"></script>
     <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/models/Lightbox.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/formulaire.js"></script>
   </body>
 </html>

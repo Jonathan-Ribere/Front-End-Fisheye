@@ -105,9 +105,9 @@ class Lightbox {
     lightbox.innerHTML = `
    
       <div class="lightbox__container" tabindex="1">
-      <button class="lightbox__close"><i class="fa-sharp fa-solid fa-xmark"></i></button>
-      <button class="lightbox__prev"><i class="fa-solid fa-angle-left"></i></button>
-      <button class="lightbox__next"><i class="fa-solid fa-angle-right"></i></button>
+      <button class="lightbox__close color"><i class="colorRed fa-sharp fa-solid fa-xmark"></i></button>
+      <button class="lightbox__prev"><i class="colorRed fa-solid fa-angle-left"></i></button>
+      <button class="lightbox__next"><i class="colorRed fa-solid fa-angle-right"></i></button>
       <div class="boxImg">
       <div class="mediaBox"></div>
       <div class="mediaTitre">

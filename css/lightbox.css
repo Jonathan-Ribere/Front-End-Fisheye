@@ -17,11 +17,14 @@ body {
 }
 
 .lightbox__container {
-  width: 80%;
-  background-color: #e5e5e5;
-  border: 1px solid #95fff9;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .media {
@@ -74,7 +77,24 @@ body {
 }
 
 .boxImg {
-  min-width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 80%;
+  height: 80%;
+  max-width: 800px;
+  max-height: 800px;
+}
+
+.colorRed {
+  color: #901c1c;
+}
+
+.mediaBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mediaTitre {
+  flex: 0 0 auto;
+  text-align: center;
 }

@@ -164,7 +164,7 @@ function gestionSelect(medias) {
 
   function handleButtonsOptions() {
     optionsButtons.forEach((button) => {
-      button.onclick = () => {
+      button.addEventListener('click', function () {
         const buttonText = button.textContent
         if (buttonText === 'Popularité') {
           displayMedia(medias.sort(customSortLikes))
@@ -182,7 +182,7 @@ function gestionSelect(medias) {
         button.innerHTML = firstButtonText.textContent
         firstButtonText.innerHTML = buttonText
         return closeSelect()
-      }
+      })
     })
   }
 }
