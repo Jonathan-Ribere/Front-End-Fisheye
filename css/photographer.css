@@ -118,7 +118,7 @@ form input {
   display: flex;
   justify-content: end;
 }
-.closeForm {
+#closeForm {
   width: 25px;
 }
 .success {
