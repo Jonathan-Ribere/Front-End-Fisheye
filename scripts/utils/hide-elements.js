@@ -4,7 +4,7 @@
  */
 
 // Sélectionnez tous les éléments que vous souhaitez masquer
-let elementsToHide = document.querySelector('#main')
+const elementsToHide = document.querySelector('#main')
 console.log(elementsToHide)
 
 // Parcourir chaque élément et ajouter l'attribut aria-hidden
