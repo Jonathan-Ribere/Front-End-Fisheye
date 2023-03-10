@@ -261,11 +261,21 @@ function gestionnaireClicLikes(medias) {
         media._likes -= 1
         e.currentTarget.dataset.like = false
       }
+
       // Récupère le noeud de compte
       const countNode = e.currentTarget.parentNode.firstChild
 
       countNode.textContent = media._likes
       numberLikeTotal()
+    })
+
+    // Ajoute un écouteur d'événement "keypress" à l'élément
+    elementsLike.addEventListener('keypress', (e) => {
+      // Vérifie si la touche appuyée est la touche "Entrée"
+      if (e.key === 'Enter') {
+        // Déclenche l'événement "click" sur l'élément
+        e.currentTarget.click()
+      }
     })
   }
 }
