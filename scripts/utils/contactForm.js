@@ -1,50 +1,55 @@
-const button = document.getElementById('open-modal-btn')
-
-button.addEventListener('click', function () {
-  // Sélectionner l'élément racine dont vous voulez masquer tous les descendants
-  const rootElement = document.getElementById('main')
-  // Appeler la fonction hideDescendants pour masquer tous les descendants de l'élément racine
-  hideDescendants(rootElement)
-
-  displayModal()
-})
-
-function hideDescendants(element) {
-  // Ajouter l'attribut aria-hidden à l'élément actuel
-  element.setAttribute('aria-hidden', 'true')
-
-  // Parcourir tous les enfants de l'élément
-  const children = element.children
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i]
-    // Récursivement masquer tous les descendants de l'enfant
-    hideDescendants(child)
-  }
-}
+const modal = document.querySelector('#contact_modal')
+const triggerBtn = document.querySelector('#open-modal-btn')
+const modalContent = document.querySelector('.modal')
+const focusableElems = modalContent.querySelectorAll(
+  '#prenom, input:not([type="hidden"]), select, textarea, button, label[for="prenom"]'
+)
+const bodyElems = document.body.querySelectorAll('*:not(#contact_modal)')
 
 function displayModal() {
-  const modal = document.getElementById('contact_modal')
   modal.style.display = 'block'
+  focusableElems[0].focus()
+
+  for (let elem of bodyElems) {
+    elem.setAttribute('tabindex', '-1')
+  }
+
+  modal.addEventListener('keydown', trapFocusInsideModal)
+  modal.addEventListener('keydown', closeModalOnEsc)
 }
-
-const imgElement = document.getElementById('closeForm')
-imgElement.addEventListener('click', function () {
-  // Sélectionnez l'élément que vous souhaitez afficher
-  const elementToShow = document.querySelector('#main')
-  console.log(elementToShow)
-
-  // Enlever l'attribut aria-hidden
-  elementToShow.removeAttribute('aria-hidden')
-  closeModal()
-})
 
 function closeModal() {
-  const modal = document.getElementById('contact_modal')
   modal.style.display = 'none'
+
+  for (let elem of bodyElems) {
+    elem.removeAttribute('tabindex')
+  }
+
+  triggerBtn.focus()
+  modal.removeEventListener('keydown', trapFocusInsideModal)
+  modal.removeEventListener('keydown', closeModalOnEsc)
 }
 
-document.addEventListener('keyup', function (e) {
-  if (e.key === 'Escape') {
+function trapFocusInsideModal(event) {
+  const firstElem = focusableElems[0]
+  const lastElem = focusableElems[focusableElems.length - 1]
+
+  if (event.key === 'Tab') {
+    if (event.shiftKey && document.activeElement === firstElem) {
+      event.preventDefault()
+      lastElem.focus()
+    } else if (!event.shiftKey && document.activeElement === lastElem) {
+      event.preventDefault()
+      firstElem.focus()
+    }
+  }
+}
+
+function closeModalOnEsc(event) {
+  if (event.key === 'Escape') {
     closeModal()
   }
-})
+}
+
+triggerBtn.addEventListener('click', displayModal)
+modalContent.querySelector('#closeForm').addEventListener('click', closeModal)
