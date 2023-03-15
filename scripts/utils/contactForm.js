@@ -8,14 +8,39 @@ const bodyElems = document.body.querySelectorAll('*:not(#contact_modal)')
 
 function displayModal() {
   modal.style.display = 'block'
-  focusableElems[0].focus()
 
   for (let elem of bodyElems) {
-    elem.setAttribute('tabindex', '-1')
+    if (elem.tagName.toLowerCase() !== 'form') {
+      elem.setAttribute('tabindex', '-1')
+    }
   }
+
+  const formElems = modalContent.querySelectorAll(
+    '#prenom, #nom, input:not([type="hidden"]), textarea, button, label[for="prenom"], label[for="nom"]'
+  )
+
+  for (let i = 0; i < formElems.length; i++) {
+    formElems[i].setAttribute('tabindex', i.toString())
+  }
+
+  formElems[0].focus()
 
   modal.addEventListener('keydown', trapFocusInsideModal)
   modal.addEventListener('keydown', closeModalOnEsc)
+}
+
+function closeModal() {
+  modal.style.display = 'none'
+
+  // rétablit la navigation par tabulation pour les éléments en arrière-plan
+  for (let elem of bodyElems) {
+    elem.removeAttribute('aria-hidden')
+    elem.removeAttribute('tabindex')
+  }
+
+  triggerBtn.focus()
+  modal.removeEventListener('keydown', trapFocusInsideModal)
+  modal.removeEventListener('keydown', closeModalOnEsc)
 }
 
 function closeModal() {
