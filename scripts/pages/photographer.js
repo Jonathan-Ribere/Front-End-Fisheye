@@ -348,9 +348,8 @@ async function init() {
   gestionnaireClicLikes(medias)
   gestionSelect(medias)
   observeSelectFirstOptionTextChanges()
-  displayMedia(medias)
+  //displayMedia(medias)
   displayBar(photographer)
-  gestionnaireClicLikes(medias)
   const lightbox = new Lightbox(medias)
   numberLikeTotal()
 }

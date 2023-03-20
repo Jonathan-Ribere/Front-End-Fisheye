@@ -2,7 +2,7 @@ const modal = document.querySelector('#contact_modal')
 const triggerBtn = document.querySelector('#open-modal-btn')
 const modalContent = document.querySelector('.modal')
 const focusableElems = modalContent.querySelectorAll(
-  '#prenom, input:not([type="hidden"]), select, textarea, button, label[for="prenom"]'
+  ' input:not([type="hidden"]), select, textarea, button'
 )
 const bodyElems = document.body.querySelectorAll('*:not(#contact_modal)')
 
@@ -16,11 +16,11 @@ function displayModal() {
   }
 
   const formElems = modalContent.querySelectorAll(
-    '#prenom, #nom, input:not([type="hidden"]), textarea, button, label[for="prenom"], label[for="nom"]'
+    ' input:not([type="hidden"]), textarea, button, label[htmlFor="prenom"], label[htmlFor="nom"], label[htmlFor="email"], label[htmlFor="textarea"]'
   )
 
   for (let i = 0; i < formElems.length; i++) {
-    formElems[i].setAttribute('tabindex', i.toString())
+    formElems[i].setAttribute('tabindex', 1)
   }
 
   formElems[0].focus()
