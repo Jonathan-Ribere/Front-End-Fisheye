@@ -2,21 +2,15 @@ const modal = document.querySelector('#contact_modal')
 const triggerBtn = document.querySelector('#open-modal-btn')
 const modalContent = document.querySelector('.modal')
 const focusableElems = modalContent.querySelectorAll(
-  ' input:not([type="hidden"]), select, textarea, button'
+  '#prenom, input:not([type="hidden"]), select, textarea, button, label[for="prenom"]'
 )
 const bodyElems = document.body.querySelectorAll('*:not(#contact_modal)')
 
 function displayModal() {
   modal.style.display = 'block'
 
-  for (let elem of bodyElems) {
-    if (elem.tagName.toLowerCase() !== 'form') {
-      elem.setAttribute('tabindex', '-1')
-    }
-  }
-
   const formElems = modalContent.querySelectorAll(
-    ' input:not([type="hidden"]), textarea, button, label[htmlFor="prenom"], label[htmlFor="nom"], label[htmlFor="email"], label[htmlFor="textarea"]'
+    '#prenom, #nom, input:not([type="hidden"]), textarea, button, label[for="prenom"], label[for="nom"]'
   )
 
   for (let i = 0; i < formElems.length; i++) {

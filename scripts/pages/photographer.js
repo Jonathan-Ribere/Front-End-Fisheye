@@ -1,3 +1,5 @@
+let isOpen = false
+
 function getId() {
   const _id = new URL(location.href).searchParams.get('id')
   return _id
@@ -137,11 +139,42 @@ function filter(medias) {
   divContainer.appendChild(containerBody)
 }
 
-function gestionSelect(medias) {
-  let isOpen = false
-  const selectOptions = document.querySelector('#select-block-options')
+function handleButtonsOptions(selectOptions, medias) {
   const firstButtonText = document.querySelector('#select-first-option-text')
   const optionsButtons = selectOptions.querySelectorAll('button')
+
+  optionsButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      const buttonText = button.textContent
+      console.log('ICI', buttonText)
+      if (buttonText === 'Popularité') {
+        displayMedia(medias.sort(customSortLikes))
+        const lightbox = new Lightbox(medias)
+        gestionnaireClicLikes(medias)
+      } else if (buttonText === 'Date') {
+        displayMedia(medias.sort(customSortDate))
+        const lightbox = new Lightbox(medias)
+        gestionnaireClicLikes(medias)
+      } else if (buttonText === 'Titre') {
+        displayMedia(medias.sort(customSortTitre))
+        const lightbox = new Lightbox(medias)
+        gestionnaireClicLikes(medias)
+      }
+      button.innerHTML = firstButtonText.textContent
+      firstButtonText.innerHTML = buttonText
+      return closeSelect(selectOptions)
+    })
+  })
+}
+
+function closeSelect(selectOptions) {
+  selectOptions.style.display = 'none'
+  return (isOpen = false)
+}
+
+function gestionSelect(medias) {
+  const selectOptions = document.querySelector('#select-block-options')
+  handleButtonsOptions(selectOptions, medias)
 
   document
     .querySelector('#select-first-option')
@@ -150,41 +183,12 @@ function gestionSelect(medias) {
         // On ouvre le faux select
         selectOptions.style.display = 'block'
         isOpen = true
-        return handleButtonsOptions()
+        return
       }
       if (isOpen === true) {
-        return closeSelect()
+        return closeSelect(selectOptions)
       }
     })
-
-  function closeSelect() {
-    selectOptions.style.display = 'none'
-    return (isOpen = false)
-  }
-
-  function handleButtonsOptions() {
-    optionsButtons.forEach((button) => {
-      button.addEventListener('click', function () {
-        const buttonText = button.textContent
-        if (buttonText === 'Popularité') {
-          displayMedia(medias.sort(customSortLikes))
-          const lightbox = new Lightbox(medias)
-          gestionnaireClicLikes(medias)
-        } else if (buttonText === 'Date') {
-          displayMedia(medias.sort(customSortDate))
-          const lightbox = new Lightbox(medias)
-          gestionnaireClicLikes(medias)
-        } else if (buttonText === 'Titre') {
-          displayMedia(medias.sort(customSortTitre))
-          const lightbox = new Lightbox(medias)
-          gestionnaireClicLikes(medias)
-        }
-        button.innerHTML = firstButtonText.textContent
-        firstButtonText.innerHTML = buttonText
-        return closeSelect()
-      })
-    })
-  }
 }
 
 customSortLikes = (a, b) => {
@@ -348,8 +352,9 @@ async function init() {
   gestionnaireClicLikes(medias)
   gestionSelect(medias)
   observeSelectFirstOptionTextChanges()
-  //displayMedia(medias)
+  displayMedia(medias)
   displayBar(photographer)
+  gestionnaireClicLikes(medias)
   const lightbox = new Lightbox(medias)
   numberLikeTotal()
 }
