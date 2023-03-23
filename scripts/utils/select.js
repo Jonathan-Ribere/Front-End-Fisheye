@@ -3,46 +3,19 @@ function filter(medias) {
   const divContainer = document.createElement('div')
   divContainer.classList.add('container')
   main.appendChild(divContainer)
-
   const divContainerHeader = document.createElement('div')
   divContainerHeader.classList.add('container-header')
   divContainer.appendChild(divContainerHeader)
-
   const divTitreH2 = document.createElement('div')
   divTitreH2.classList.add('divTitreH2')
   divTitreH2.setAttribute('tabindex', '7')
   divContainerHeader.appendChild(divTitreH2)
-
   const titreH2 = document.createElement('h2')
   titreH2.classList.add('titreH2')
   titreH2.innerHTML = 'Trier par '
   titreH2.setAttribute('aria-label', 'Trier par')
   titreH2.setAttribute('role', 'heading')
   divTitreH2.appendChild(titreH2)
-  /*
-
-  const divSelect = document.createElement('div')
-  divSelect.classList.add('custom-select')
-  divContainerHeader.appendChild(divSelect)
-  const select = document.createElement('select')
-  select.setAttribute('id', 'mySelect')
-  select.classList.add('select')
-  select.setAttribute('tabindex', '8')
-  select.setAttribute('aria-label', 'Sélecteur de tri')
-  let popularite = new Option('Popularité')
-  popularite.setAttribute('value', 'popularite')
-  let date = new Option('Date')
-  date.setAttribute('value', 'date')
-  let titre = new Option('Titre')
-  titre.setAttribute('value', 'titre')
-  divSelect.appendChild(select)
-
-  const selectOption = document.querySelector('select-option')
-  selectOption.add(popularite)
-  selectOption.add(date)
-  selectOption.add(titre)
-  */
-
   const containerBody = document.createElement('div')
   containerBody.classList.add('containerBody')
   divContainer.appendChild(containerBody)
