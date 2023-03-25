@@ -7,11 +7,11 @@ Si le type est autre chose, elle lève une exception.
 Elle retourne l'objet créé. 
 */
 function creatMedia(type, data) {
-  if (type === "image") {
-    return new MediaPicture(data);
-  } else if (type === "video") {
-    return new MediaVideo(data);
+  if (type === 'image') {
+    return new MediaPicture(data)
+  } else if (type === 'video') {
+    return new MediaVideo(data)
   } else {
-    throw "Mauvais type de format ";
+    throw 'Mauvais type de format '
   }
 }

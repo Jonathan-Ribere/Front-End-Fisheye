@@ -4,6 +4,7 @@ class Lightbox {
     this.currentIndex = 0
     this.medias = medias
     this.init()
+    this.onKeyUp = this.onKeyUp.bind(this)
   }
 
   init() {
@@ -23,7 +24,7 @@ class Lightbox {
     this.lightbox = this.buildDOM()
     this.loadMedia()
     document.body.appendChild(this.lightbox)
-    document.addEventListener('keyup', this.onKeyUp.bind(this))
+    document.addEventListener('keyup', this.onKeyUp)
   }
 
   loadMedia() {
@@ -77,8 +78,8 @@ class Lightbox {
   }
 
   close() {
-    this.lightbox.remove()
     document.removeEventListener('keyup', this.onKeyUp)
+    this.lightbox.remove()
   }
 
   next() {
